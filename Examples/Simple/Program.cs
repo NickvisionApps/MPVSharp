@@ -11,12 +11,15 @@ public class Program
             Console.WriteLine($"Usage: {AppDomain.CurrentDomain.FriendlyName} file1 file2...");
             return 1;
         }
+        // Create and init player
         var player = new MPVClient();
         player.SetProperty("input-default-bindings", true);
         player.SetProperty("input-vo-keyboard", true);
         player.SetProperty("ytdl", true);
         player.SetProperty("osc", true);
+        player.SetProperty("osd-msg1", "Position: ${time-pos}");
         Console.WriteLine($"Init: {player.Initialize()}");
+        // Add paths to playlist and play
         foreach (var path in args)
         {
             Console.WriteLine($"Adding {path}...");
@@ -24,18 +27,18 @@ public class Program
         }
         player.Command("playlist-play-index 0");
         var alive = true;
-        player.Destroyed += () => alive = false;
-        player.FlagPropertyChanged += (sender, e) =>
+        // Watch properties
+        player.PropertyChanged += (sender, e) =>
         {
-            if (e.Name == "pause")
-            {
-                Console.WriteLine($"Paused: {e.Data == 1}");
-            }
+            Console.WriteLine($"{e.Name}: {e.Data}");
         };
-        player.ObserveProperty("pause", MPVFormat.Flag);
+        player.ObserveProperty("pause");
+        player.ObserveProperty("playlist/count");
+        player.ObserveProperty("filename/no-ext");
+        // Application loop
+        player.Destroyed += () => alive = false;
         while (alive)
         {
-            player.SetProperty("osd-msg1", $"Position: ${{time-pos}}");
             Thread.Sleep(1000);
         }
         return 0;

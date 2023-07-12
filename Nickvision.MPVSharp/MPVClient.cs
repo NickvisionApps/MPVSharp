@@ -72,11 +72,7 @@ public partial class MPVClient : IDisposable
     /// </summary>
     public double EventTimeout { get; set; }
     
-    public event EventHandler<StringPropertyChangedEventArgs>? StringPropertyChanged;
-    public event EventHandler<StringPropertyChangedEventArgs>? OsdStringPropertyChanged;
-    public event EventHandler<FlagPropertyChangedEventArgs>? FlagPropertyChanged;
-    public event EventHandler<Int64PropertyChangedEventArgs>? Int64PropertyChanged;
-    public event EventHandler<DoublePropertyChangedEventArgs>? DoublePropertyChanged;
+    public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
     public event Action? Destroyed;
     
     /// <summary>
@@ -136,27 +132,25 @@ public partial class MPVClient : IDisposable
                     break;
                 case MPVEventId.PropertyChange:
                     var prop = Marshal.PtrToStructure<MPVEventProperty>(mpvEvent.Data);
-                    switch (prop.Format)
+                    if (prop.Format != MPVFormat.Node)
+                    {
+                        Console.WriteLine($"Property {prop.Name} is not in MPVNode format, skipping.");
+                        break;
+                    }
+                    var node = Marshal.PtrToStructure<MPVNode>(prop.Data);
+                    switch (node.Format)
                     {
                         case MPVFormat.String:
-                            StringPropertyChanged?.Invoke(this, new StringPropertyChangedEventArgs(prop.Name, Marshal.PtrToStringUTF8(Marshal.ReadIntPtr(prop.Data)) ?? ""));
-                            break;
-                        case MPVFormat.OsdString:
-                            OsdStringPropertyChanged?.Invoke(this, new StringPropertyChangedEventArgs(prop.Name, Marshal.PtrToStringUTF8(Marshal.ReadIntPtr(prop.Data)) ?? ""));
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Name, node.Format, Marshal.PtrToStringUTF8(node.String) ?? ""));
                             break;
                         case MPVFormat.Flag:
-                            FlagPropertyChanged?.Invoke(this, new FlagPropertyChangedEventArgs(prop.Name, Marshal.ReadInt32(prop.Data)));
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Name, node.Format, node.Flag));
                             break;
                         case MPVFormat.Int64:
-                            Int64PropertyChanged?.Invoke(this, new Int64PropertyChangedEventArgs(prop.Name, Marshal.ReadInt64(prop.Data)));
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Name, node.Format, node.Int64));
                             break;
                         case MPVFormat.Double:
-                            var ba = new byte[sizeof(double)];
-                            for (var i = 0; i < ba.Length; i++)
-                            {
-                                ba[i] = Marshal.ReadByte(prop.Data, i);
-                            }
-                            DoublePropertyChanged?.Invoke(this, new DoublePropertyChangedEventArgs(prop.Name, BitConverter.ToDouble(ba, 0)));
+                            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Name, node.Format, node.Double));
                             break;
                     };
                     break;
@@ -168,13 +162,12 @@ public partial class MPVClient : IDisposable
     /// Adds property to watch in event loop
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="format">Property format</param>
     /// <param name="replyUserdata">reply Id</param>
     /// <returns>MPVError</returns>
-    public MPVError ObserveProperty(string name, MPVFormat format, ulong replyUserdata = 0) => mpv_observe_property(_handle, replyUserdata, name, format);
+    public MPVError ObserveProperty(string name, ulong replyUserdata = 0) => mpv_observe_property(_handle, replyUserdata, name, MPVFormat.Node);
 
     /// <summary>
-    /// Undo all ObserveProperty() for giver reply Id
+    /// Undo all ObserveProperty() for given reply Id
     /// </summary>
     /// <param name="replyUserdata">reply Id</param>
     /// <returns>Number of properties to unobserve or error code</returns>
@@ -193,7 +186,7 @@ public partial class MPVClient : IDisposable
     }
 
     /// <summary>
-    /// Sets long property
+    /// Sets long int property
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Property value</param>
@@ -335,6 +328,15 @@ public partial class MPVClient : IDisposable
     /// <param name="data">Option value</param>
     /// <returns>MPVError</returns>
     public MPVError SetOption(string name, string data) => mpv_set_option(_handle, name, MPVFormat.String, ref data);
+
+    /// <summary>
+    /// Sets option in specified format
+    /// </summary>
+    /// <param name="name">Option name</param>
+    /// <param name="format">Option MPV format</param>
+    /// <param name="data">Option value</param>
+    /// <returns>MPVError</returns>
+    public MPVError SetOption(string name, MPVFormat format, nint data) => mpv_set_option(_handle, name, format, data);
     
     /// <summary>
     /// Finalizes the MPVClient

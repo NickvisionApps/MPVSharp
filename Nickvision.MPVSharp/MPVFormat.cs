@@ -1,5 +1,8 @@
 namespace Nickvision.MPVSharp;
 
+/// <summary>
+/// MPV data format
+/// </summary>
 public enum MPVFormat
 {
     None = 0,

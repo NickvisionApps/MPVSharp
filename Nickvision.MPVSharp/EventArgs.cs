@@ -1,49 +1,20 @@
 using System;
 
-public class StringPropertyChangedEventArgs : EventArgs
+namespace Nickvision.MPVSharp;
+
+/// <summary>
+/// Args for PropertyChange event
+/// </summary>
+public class PropertyChangedEventArgs : EventArgs
 {
     public string Name;
-    public string Data;
+    public MPVFormat Format;
+    public object Data;
 
-    public StringPropertyChangedEventArgs(string name, string data)
+    public PropertyChangedEventArgs(string name, MPVFormat format, object data)
     {
         Name = name;
-        Data = data;
-    }
-}
-
-public class FlagPropertyChangedEventArgs : EventArgs
-{
-    public string Name;
-    public int Data;
-
-    public FlagPropertyChangedEventArgs(string name, int data)
-    {
-        Name = name;
-        Data = data;
-    }
-}
-
-public class Int64PropertyChangedEventArgs : EventArgs
-{
-    public string Name;
-    public long Data;
-
-    public Int64PropertyChangedEventArgs(string name, long data)
-    {
-        Name = name;
-        Data = data;
-    }
-}
-
-public class DoublePropertyChangedEventArgs : EventArgs
-{
-    public string Name;
-    public double Data;
-
-    public DoublePropertyChangedEventArgs(string name, double data)
-    {
-        Name = name;
+        Format = format;
         Data = data;
     }
 }

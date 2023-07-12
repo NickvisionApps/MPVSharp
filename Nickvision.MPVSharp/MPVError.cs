@@ -1,5 +1,8 @@
 namespace Nickvision.MPVSharp;
 
+/// <summary>
+/// MPV error code
+/// </summary>
 public enum MPVError {
     Generic = -20,
     NotImplemented,
