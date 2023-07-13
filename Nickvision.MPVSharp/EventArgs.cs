@@ -1,3 +1,5 @@
+using Nickvision.MPVSharp.Internal;
+
 namespace Nickvision.MPVSharp;
 
 /// <summary>

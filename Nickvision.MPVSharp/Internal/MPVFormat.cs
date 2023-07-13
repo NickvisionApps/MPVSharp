@@ -1,4 +1,4 @@
-namespace Nickvision.MPVSharp;
+namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
 /// MPV data format

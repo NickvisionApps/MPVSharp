@@ -1,4 +1,4 @@
-namespace Nickvision.MPVSharp;
+namespace Nickvision.MPVSharp.Internal;
 
 public enum MPVEventId {
     None = 0,

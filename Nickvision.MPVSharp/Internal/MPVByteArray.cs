@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Nickvision.MPVSharp;
+namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
 /// MPV Byte Array
