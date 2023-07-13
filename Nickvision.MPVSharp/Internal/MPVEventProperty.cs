@@ -17,7 +17,9 @@ public struct MPVEventProperty
     /// </summary>
     public MPVFormat Format;
     /// <summary>
-    /// Property value
+    /// Property data pointer
     /// </summary>
     public nint Data;
+
+    public static MPVEventProperty FromIntPtr(nint data) => Marshal.PtrToStructure<MPVEventProperty>(data);
 }

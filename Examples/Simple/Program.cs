@@ -12,13 +12,13 @@ public class Program
             return 1;
         }
         // Create and init player
-        var player = new MPVClient();
+        var player = new Client();
         player.SetProperty("input-default-bindings", true);
         player.SetProperty("input-vo-keyboard", true);
         player.SetProperty("ytdl", true);
         player.SetProperty("osc", true);
         player.SetProperty("osd-msg1", "Position: ${time-pos}");
-        Console.WriteLine($"Init: {player.Initialize()}");
+        player.Initialize();
         // Add paths to playlist and play
         foreach (var path in args)
         {
@@ -30,10 +30,9 @@ public class Program
         // Watch properties
         player.PropertyChanged += (sender, e) =>
         {
-            Console.WriteLine($"{e.Name}: {e.Data}");
+            Console.WriteLine($"{e.Name}: {e.Node.ToString()}");
         };
-        player.ObserveProperty("pause");
-        player.ObserveProperty("playlist/count");
+        player.ObserveProperty("playlist-pos");
         player.ObserveProperty("filename/no-ext");
         // Application loop
         player.Destroyed += () => alive = false;
