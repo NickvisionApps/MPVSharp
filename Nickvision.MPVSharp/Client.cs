@@ -27,7 +27,7 @@ public partial class Client : IDisposable
     }
 
     /// <summary>
-    /// Init MPV client, should be called after setting options
+    /// Init MPV client, some options can only be set before init
     /// </summary>
     public void Initialize()
     {
@@ -39,7 +39,7 @@ public partial class Client : IDisposable
     }
 
     /// <summary>
-    /// Executes command array
+    /// Execute command array
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
     public void Command(string[] command)
@@ -52,13 +52,13 @@ public partial class Client : IDisposable
     }
     
     /// <summary>
-    /// Executes command list
+    /// Execute command list
     /// </summary>
     /// <param name="command">A command to execute as list of strings</param>
     public void Command(List<string> command) => Command(command.ToArray());
 
     /// <summary>
-    /// Executes command string
+    /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
     public void Command(string command)
@@ -69,6 +69,7 @@ public partial class Client : IDisposable
             throw new ClientException(success);
         }
     }
+
     /// <summary>
     /// MPV events loop
     /// </summary>
@@ -98,6 +99,11 @@ public partial class Client : IDisposable
         }
     }
 
+    /// <summary>
+    /// Add property to watch in event loop
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="replyUserdata">Optional reply Id</param>
     public void ObserveProperty(string name, ulong replyUserdata = 0)
     {
         var success = _mpv.ObserveProperty(name, MPVFormat.Node, replyUserdata);
@@ -107,39 +113,119 @@ public partial class Client : IDisposable
         }
     }
 
+    /// <summary>
+    /// Undo all ObserveProperty()
+    /// </summary>
+    /// <returns>Number of properties tp unobserve or error code</returns>
     public int UnobserveProperty(ulong replyUserdata = 0) => _mpv.UnobserveProperty(replyUserdata);
 
+    /// <summary>
+    /// Set property using String format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
     public void SetProperty(string name, string data)
     {
-        var success = _mpv.SetProperty(name, MPVFormat.String, data);
+        var success = _mpv.SetProperty(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
     }
 
+    /// <summary>
+    /// Set property using Flag format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Bool data</param>
     public void SetProperty(string name, bool data)
     {
-        var success = _mpv.SetProperty(name, MPVFormat.Flag, data);
+        var success = _mpv.SetProperty(name, data ? 1 : 0);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
     }
 
+    /// <summary>
+    /// Set property using Int64 format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Long int data</param>
     public void SetProperty(string name, long data)
     {
-        var success = _mpv.SetProperty(name, MPVFormat.Int64, data);
+        var success = _mpv.SetProperty(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
     }
-    
 
+    /// <summary>
+    /// Set property using Double format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Double data</param>
     public void SetProperty(string name, double data)
     {
-        var success = _mpv.SetProperty(name, MPVFormat.Double, data);
+        var success = _mpv.SetProperty(name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Get property using String format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    public void GetProperty(string name, out string data)
+    {
+        var success = _mpv.GetProperty(name, out data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Get property using Flag format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    public void GetProperty(string name, out bool data)
+    {
+        var success = _mpv.GetProperty(name, out int flag);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+        data = flag == 1;
+    }
+
+    /// <summary>
+    /// Get property using Long format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Long int data</param>
+    public void GetProperty(string name, out long data)
+    {
+        var success = _mpv.GetProperty(name, out data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Get property using Double format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Double data</param>
+    public void GetProperty(string name, out double data)
+    {
+        var success = _mpv.GetProperty(name, out data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);

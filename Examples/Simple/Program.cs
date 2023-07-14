@@ -16,7 +16,7 @@ public class Program
         player.SetProperty("input-default-bindings", true);
         player.SetProperty("input-vo-keyboard", true);
         player.SetProperty("ytdl", true);
-        player.SetProperty("osc", true);
+        player.SetProperty("osc", false);
         player.SetProperty("osd-msg1", "Position: ${time-pos}");
         player.Initialize();
         // Add paths to playlist and play
