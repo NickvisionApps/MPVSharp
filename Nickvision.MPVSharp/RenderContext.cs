@@ -20,7 +20,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     {
         var glParams = new MPVOpenGLInitParams
         {
-            GetProcAddrFn = (ctx, name) => EglGetProcAddress(name),
+            GetProcAddrFn = (ctx, name) => OpenGLHelpers.EglGetProcAddress(name),
             Param = IntPtr.Zero
         };
         var glParamsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(glParams));
@@ -46,7 +46,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     public void RenderGL(int width, int height)
     {
         int fboInt;
-        GLGetIntegerv(GLDrawFramebufferBinding, out fboInt);
+        OpenGLHelpers.GLGetIntegerv(GLDrawFramebufferBinding, out fboInt);
         var fbo = new MPVOpenGLFBO
         {
             FBO = fboInt,

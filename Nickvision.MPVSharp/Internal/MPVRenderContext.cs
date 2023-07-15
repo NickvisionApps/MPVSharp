@@ -20,10 +20,6 @@ public partial class MPVRenderContext
     private static partial void mpv_render_context_report_swap(nint ctx);
     [LibraryImport("libmpv.so.2")]
     private static partial void mpv_render_context_free(nint ctx);
-    [LibraryImport("libEGL.so.1", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint eglGetProcAddress(string name);
-    [LibraryImport("libGL.so.1")]
-    private static partial void glGetIntegerv(int pname, out int data);
 
     public delegate void MPVRenderUpdateFn(nint data);
     
@@ -49,8 +45,4 @@ public partial class MPVRenderContext
     public void ReportSwap() => mpv_render_context_report_swap(_handle);
 
     public void Free() => mpv_render_context_free(_handle);
-    
-    public nint EglGetProcAddress(string name) => eglGetProcAddress(name);
-    
-    public void GLGetIntegerv(int pname, out int data) => glGetIntegerv(pname, out data);
 }
