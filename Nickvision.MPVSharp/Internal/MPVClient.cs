@@ -74,6 +74,8 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_load_config_file(nint handle, string path);
     [LibraryImport("libmpv.so.2")]
     private static partial long mpv_get_time_us(nint handle);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_request_log_messages(nint handle, string logLevel);
 
     private const int LcNumeric = 1;
     protected readonly nint Handle;
@@ -297,6 +299,13 @@ public partial class MPVClient : ICloneable
     /// <param name="data">String data</param>
     /// <returns>MPVError</returns>
     public MPVError SetOptionString(string name, string data) => mpv_set_option_string(Handle, name, data);
+
+    /// <summary>
+    /// Request log messages with specified minimum log level
+    /// </summary>
+    /// <param name="logLevel">Log level as string</logLevel>
+    /// <returns>MPVError</returns>
+    public MPVError RequestLogMessages(string logLevel) => mpv_request_log_messages(Handle, logLevel);
 
     /// <summary>
     /// Destroy the client

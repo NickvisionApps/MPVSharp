@@ -17,7 +17,7 @@ public class PropertyChangedEventArgs : EventArgs
     public MPVNode? Node;
 
     /// <summary>
-    /// Creates args for PropertyChange event
+    /// Create args for PropertyChange event
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="node">Node holding data</param>

@@ -12,6 +12,7 @@ public class Client : MPVClient, IDisposable
     public double EventTimeout { get; set; }
     
     public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
+    public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event Action? Destroyed;
     
     /// <summary>
@@ -83,6 +84,10 @@ public class Client : MPVClient, IDisposable
                     case MPVEventId.Shutdown:
                         Dispose();
                         Destroyed?.Invoke();
+                        break;
+                    case MPVEventId.LogMessage:
+                        var msg = clientEvent.GetEventLogMessage();
+                        LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
                         break;
                     case MPVEventId.PropertyChange:
                         var prop = clientEvent.GetEventProperty();
@@ -271,13 +276,34 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
-    public new void SetOption(string name, string data)
+    public void SetOption(string name, string data)
     {
         var success = base.SetOptionString(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
+    }
+
+    /// <summary>
+    /// Request log messages with specified minimum log level
+    /// </summary>
+    /// <param name="logLevel">Log level as MPVLogLevel</param>
+    /// <returns>MPVError</returns>
+    public MPVError RequestLogMessages(MPVLogLevel logLevel)
+    {
+        var level = logLevel switch
+        {
+            MPVLogLevel.Fatal => "fatal",
+            MPVLogLevel.Error => "error",
+            MPVLogLevel.Warn => "warn",
+            MPVLogLevel.Info => "info",
+            MPVLogLevel.V => "v",
+            MPVLogLevel.Debug => "debug",
+            MPVLogLevel.Trace => "trace",
+            _ => "no"
+        };
+        return base.RequestLogMessages(level);
     }
 
     /// <summary>

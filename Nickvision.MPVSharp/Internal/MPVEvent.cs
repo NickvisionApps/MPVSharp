@@ -34,6 +34,18 @@ public partial struct MPVEvent
     public string Name => mpv_event_name(Id);
 
     /// <summary>
+    /// Get EventLogMessage of LogMessage event
+    /// </summary>
+    public MPVEventLogMessage? GetEventLogMessage()
+    {
+        if (Id != MPVEventId.LogMessage)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventLogMessage>(_data);
+    }
+
+    /// <summary>
     /// Get MPVEventProperty of PropertyChange or GetPropertyReply event
     /// </summary>
     public MPVEventProperty? GetEventProperty()

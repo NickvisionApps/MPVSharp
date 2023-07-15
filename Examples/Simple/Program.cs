@@ -32,6 +32,12 @@ public class Program
         };
         player.ObserveProperty("playlist-pos");
         player.ObserveProperty("filename/no-ext");
+        // Enable logging
+        player.RequestLogMessages("info");
+        player.LogMessageReceived += (sender, e) =>
+        {
+            Console.Write($"[{e.Prefix}] {e.Text}"); // Log messages (e.Text) end with newline char
+        };
         // Application loop
         player.Destroyed += () => alive = false;
         while (alive)
