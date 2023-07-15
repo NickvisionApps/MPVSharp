@@ -288,9 +288,21 @@ public class Client : MPVClient, IDisposable
     /// <summary>
     /// Request log messages with specified minimum log level
     /// </summary>
+    /// <param name="logLevel">Log level as string</param>
+    public new void RequestLogMessages(string logLevel)
+    {
+        var success = base.RequestLogMessages(logLevel);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Request log messages with specified minimum log level
+    /// </summary>
     /// <param name="logLevel">Log level as MPVLogLevel</param>
-    /// <returns>MPVError</returns>
-    public MPVError RequestLogMessages(MPVLogLevel logLevel)
+    public void RequestLogMessages(MPVLogLevel logLevel)
     {
         var level = logLevel switch
         {
@@ -303,7 +315,7 @@ public class Client : MPVClient, IDisposable
             MPVLogLevel.Trace => "trace",
             _ => "no"
         };
-        return base.RequestLogMessages(level);
+        RequestLogMessages(level);
     }
 
     /// <summary>

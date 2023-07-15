@@ -303,7 +303,7 @@ public partial class MPVClient : ICloneable
     /// <summary>
     /// Request log messages with specified minimum log level
     /// </summary>
-    /// <param name="logLevel">Log level as string</logLevel>
+    /// <param name="logLevel">Log level as string</param>
     /// <returns>MPVError</returns>
     public MPVError RequestLogMessages(string logLevel) => mpv_request_log_messages(Handle, logLevel);
 
