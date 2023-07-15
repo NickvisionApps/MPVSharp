@@ -6,8 +6,11 @@ namespace Nickvision.MPVSharp.Internal;
 /// MPV Event structure
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct MPVEvent
+public partial struct MPVEvent
 {
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string mpv_event_name(MPVEventId id);
+
     /// <summary>
     /// Event Id
     /// </summary>
@@ -25,6 +28,14 @@ public struct MPVEvent
     /// </summary>
     private nint _data;
 
+    /// <summary>
+    /// Get string describing the event
+    /// </summary>
+    public string Name => mpv_event_name(Id);
+
+    /// <summary>
+    /// Get MPVEventProperty of PropertyChange or GetPropertyReply event
+    /// </summary>
     public MPVEventProperty? GetEventProperty()
     {
         if (Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply)
