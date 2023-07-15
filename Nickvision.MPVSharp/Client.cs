@@ -318,6 +318,8 @@ public class Client : MPVClient, IDisposable
         RequestLogMessages(level);
     }
 
+    public void CyclePause() => Command("cycle pause");
+
     public RenderContext CreateRenderContext() => new RenderContext(Handle);
 
     /// <summary>
