@@ -23,5 +23,14 @@ public struct MPVEvent
     /// <summary>
     /// Event data
     /// </summary>
-    public nint Data;
+    private nint _data;
+
+    public MPVEventProperty? GetEventProperty()
+    {
+        if (Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventProperty>(_data);
+    }
 }

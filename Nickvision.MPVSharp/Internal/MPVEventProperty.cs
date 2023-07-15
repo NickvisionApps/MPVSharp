@@ -19,7 +19,18 @@ public struct MPVEventProperty
     /// <summary>
     /// Property data pointer
     /// </summary>
-    public nint Data;
+    private nint _data;
 
-    public static MPVEventProperty FromIntPtr(nint data) => Marshal.PtrToStructure<MPVEventProperty>(data);
+    public object? GetData()
+    {
+        return Format switch
+        {
+            MPVFormat.String or MPVFormat.OsdString => Marshal.PtrToStringUTF8(_data),
+            MPVFormat.Flag => Marshal.ReadInt32(_data) == 1,
+            MPVFormat.Int64 => Marshal.ReadInt64(_data),
+            MPVFormat.Double => 0.0,
+            MPVFormat.Node => Marshal.PtrToStructure<MPVNode>(_data),
+            _ => null
+        };
+    }
 }

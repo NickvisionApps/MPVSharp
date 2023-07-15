@@ -15,9 +15,19 @@ public struct MPVNodeList
     /// <summary>
     /// Pointer to values
     /// </summary>
-    public nint Values;
+    private readonly nint _values;
     /// <summary>
     /// Pointer to keys (IntPtr.Zero for NodeArray format)
     /// </summary>
-    public nint Keys;
+    private readonly nint _keys;
+
+    public static explicit operator MPVNode[]?(MPVNodeList n)
+    {
+        var result = new MPVNode[n.Num];
+        for (var i = 0; i < n.Num; i++)
+        {
+            result[i] = Marshal.PtrToStructure<MPVNode>(n._values + i * 12);
+        }
+        return result;
+    }
 }

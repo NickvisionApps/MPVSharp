@@ -79,7 +79,7 @@ public partial class Client : IDisposable
         {
             try
             {
-                var clientEvent = new ClientEvent(_mpv.WaitEvent(EventTimeout));
+                var clientEvent = _mpv.WaitEvent(EventTimeout);
                 switch (clientEvent.Id)
                 {
                     case MPVEventId.Shutdown:
@@ -88,7 +88,11 @@ public partial class Client : IDisposable
                         break;
                     case MPVEventId.PropertyChange:
                         var prop = clientEvent.GetEventProperty();
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Name, prop.Node));
+                        if (prop == null)
+                        {
+                            throw new ClientException(MPVError.PropertyError);
+                        }
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Value.Name, (MPVNode?)prop.Value.GetData()));
                         break;
                 }
             }
