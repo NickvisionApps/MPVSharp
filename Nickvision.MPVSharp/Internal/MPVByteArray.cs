@@ -11,7 +11,7 @@ public struct MPVByteArray
     /// <summary>
     /// Pointer to byte[]
     /// </summary>
-    public nint Data;
+    private nint _data;
     /// <summary>
     /// Array size
     /// </summary>
@@ -20,7 +20,7 @@ public struct MPVByteArray
     public static implicit operator byte[](MPVByteArray mba)
     {
         var result = new byte[mba.Size];
-        Marshal.Copy(mba.Data, result, 0, (int)mba.Size);
+        Marshal.Copy(mba._data, result, 0, (int)mba.Size);
         return result;
     }
 }
