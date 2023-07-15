@@ -6,7 +6,7 @@ namespace Nickvision.MPVSharp.Internal;
 /// MPV Client object
 /// </summary>
 /// <remarks>
-/// This object implements most of functions from libmpv's client.h that accept mpv_handle
+/// This object implements most of functions from libmpv's client.h that accept mpvHandle
 /// </remarks>
 public partial class MPVClient : ICloneable
 {
@@ -70,9 +70,11 @@ public partial class MPVClient : ICloneable
     private static partial long mpv_client_id(nint handle);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_load_config_file(nint handle, string path);
+    [LibraryImport("libmpv.so.2")]
+    private static partial long mpv_get_time_us(nint handle);
 
-    private const int LC_NUMERIC = 1;
-    private nint _handle { get; init; }
+    private const int LcNumeric = 1;
+    protected readonly nint Handle;
 
     /// <summary>
     /// Construct MPV Client
@@ -83,10 +85,10 @@ public partial class MPVClient : ICloneable
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            setlocale(LC_NUMERIC, "C");
+            setlocale(LcNumeric, "C");
         }
-        _handle = mpv_create_client(handle ?? IntPtr.Zero, name);
-        if (_handle == IntPtr.Zero)
+        Handle = mpv_create_client(handle ?? IntPtr.Zero, name);
+        if (Handle == IntPtr.Zero)
         {
             throw new Exception("Failed to create MPV client");
         }
@@ -98,31 +100,37 @@ public partial class MPVClient : ICloneable
     /// <returns>MPVClient as object</returns>
     public object Clone()
     {
-        return new MPVClient(_handle);
+        return new MPVClient(Handle);
     }
 
     /// <summary>
     /// Unique client name
     /// </summary>
-    public string Name => mpv_client_name(_handle);
+    public string Name => mpv_client_name(Handle);
 
     /// <summary>
     /// Unique client ID
     /// </summary>
-    public long Id => mpv_client_id(_handle);
+    public long Id => mpv_client_id(Handle);
 
     /// <summary>
     /// Load config file
     /// </summary>
     /// <param name="path">Absolute path to config</param>
     /// <returns>MPVError</returns>
-    public MPVError LoadConfigFile(string path) => mpv_load_config_file(_handle, path);
+    public MPVError LoadConfigFile(string path) => mpv_load_config_file(Handle, path);
+
+    /// <summary>
+    /// Get internal time
+    /// </summary>
+    /// <returns>Time in milliseconds</returns>
+    public long GetTimeUs() => mpv_get_time_us(Handle);
 
     /// <summary>
     /// Init MPV client, should be called after setting options
     /// </summary>
     /// <returns>MPVError</returns>
-    public MPVError Initialize() => mpv_initialize(_handle);
+    public MPVError Initialize() => mpv_initialize(Handle);
 
     /// <summary>
     /// Executes command array
@@ -134,7 +142,7 @@ public partial class MPVClient : ICloneable
         var nullTermArray = new string?[command.Length + 1];
         Array.Copy(command, nullTermArray, command.Length);
         nullTermArray[^1] = null;
-        return mpv_command(_handle, nullTermArray);
+        return mpv_command(Handle, nullTermArray);
     }
     
     /// <summary>
@@ -142,14 +150,14 @@ public partial class MPVClient : ICloneable
     /// </summary>
     /// <param name="command">A command string</param>
     /// <returns>MPVError</returns>
-    public MPVError CommandString(string command) => mpv_command_string(_handle, command);
+    public MPVError CommandString(string command) => mpv_command_string(Handle, command);
     
     /// <summary>
     /// Wait for an event or until timeout
     /// </summary>
     /// <param name="eventTimeout">Timeout in seconds</param>
     /// <returns>MPVError</returns>
-    public MPVEvent WaitEvent(double eventTimeout) => Marshal.PtrToStructure<MPVEvent>(mpv_wait_event(_handle, eventTimeout));
+    public MPVEvent WaitEvent(double eventTimeout) => Marshal.PtrToStructure<MPVEvent>(mpv_wait_event(Handle, eventTimeout));
 
     /// <summary>
     /// Add property to watch using events
@@ -158,14 +166,14 @@ public partial class MPVClient : ICloneable
     /// <param name="format">Property MPVFormat</param>
     /// <param name="replyUserdata">Optional reply Id</param>
     /// <returns>MPVError</returns>
-    public MPVError ObserveProperty(string name, MPVFormat format, ulong replyUserdata) => mpv_observe_property(_handle, replyUserdata, name, format);
+    public MPVError ObserveProperty(string name, MPVFormat format, ulong replyUserdata) => mpv_observe_property(Handle, replyUserdata, name, format);
     
     /// <summary>
     /// Undo all ObserveProperty() for given reply Id
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <returns>Number of properties to unobserve or error code</returns>
-    public int UnobserveProperty(ulong replyUserdata) => mpv_unobserve_property(_handle, replyUserdata);
+    public int UnobserveProperty(ulong replyUserdata) => mpv_unobserve_property(Handle, replyUserdata);
 
     /// <summary>
     /// Set property using String format
@@ -173,7 +181,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
     /// <returns>MPVError</returns>
-    public MPVError SetProperty(string name, string data) => mpv_set_property(_handle, name, MPVFormat.String, ref data);
+    public MPVError SetProperty(string name, string data) => mpv_set_property(Handle, name, MPVFormat.String, ref data);
 
     /// <summary>
     /// Set property using Flag format
@@ -181,7 +189,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Flag data (0 or 1)</param>
     /// <returns>MPVError</returns>
-    public MPVError SetProperty(string name, int data) => mpv_set_property(_handle, name, MPVFormat.Flag, ref data);
+    public MPVError SetProperty(string name, int data) => mpv_set_property(Handle, name, MPVFormat.Flag, ref data);
 
     /// <summary>
     /// Set property using Int64 format
@@ -189,7 +197,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
     /// <returns>MPVError</returns>
-    public MPVError SetProperty(string name, long data) => mpv_set_property(_handle, name, MPVFormat.Int64, ref data);
+    public MPVError SetProperty(string name, long data) => mpv_set_property(Handle, name, MPVFormat.Int64, ref data);
 
     /// <summary>
     /// Set property using Double format
@@ -197,7 +205,15 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
     /// <returns>MPVError</returns>
-    public MPVError SetProperty(string name, double data) => mpv_set_property(_handle, name, MPVFormat.Double, ref data);
+    public MPVError SetProperty(string name, double data) => mpv_set_property(Handle, name, MPVFormat.Double, ref data);
+
+    /// <summary>
+    /// Set property using String format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    /// <returns>MPVError</returns>
+    public MPVError SetPropertyString(string name, string data) => mpv_set_property(Handle, name, MPVFormat.String, ref data);
 
     /// <summary>
     /// Get property using Flag format
@@ -205,7 +221,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out int data) => mpv_get_property(_handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out int data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
 
     /// <summary>
     /// Get property using Int64 format
@@ -213,7 +229,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out long data) => mpv_get_property(_handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out long data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
 
 
     /// <summary>
@@ -222,7 +238,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out double data) => mpv_get_property(_handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out double data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
 
 
     /// <summary>
@@ -231,16 +247,16 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out string data) => mpv_get_property(_handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
 
 
     /// <summary>
     /// Destroy the client
     /// </summary>
-    public void Destroy() => mpv_destroy(_handle);
+    public void Destroy() => mpv_destroy(Handle);
 
     /// <summary>
     /// Bring down the player and all its clients
     /// </summary>
-    public void TerminateDestroy() => mpv_terminate_destroy(_handle);
+    public void TerminateDestroy() => mpv_terminate_destroy(Handle);
 }

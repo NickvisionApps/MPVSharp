@@ -2,9 +2,8 @@ using Nickvision.MPVSharp.Internal;
 
 namespace Nickvision.MPVSharp;
 
-public partial class Client : IDisposable
+public class Client : MPVClient, IDisposable
 {
-    private readonly MPVClient _mpv;
     private bool _disposed;
 
     /// <summary>
@@ -20,7 +19,6 @@ public partial class Client : IDisposable
     /// </summary>
     public Client()
     {
-        _mpv = new MPVClient();
         _disposed = false;
         EventTimeout = 0;
         Task.Run(HandleEvents);
@@ -29,9 +27,9 @@ public partial class Client : IDisposable
     /// <summary>
     /// Init MPV client, some options can only be set before init
     /// </summary>
-    public void Initialize()
+    public new void Initialize()
     {
-        var success = _mpv.Initialize();
+        var success = base.Initialize();
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -42,9 +40,9 @@ public partial class Client : IDisposable
     /// Execute command array
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
-    public void Command(string[] command)
+    public new void Command(string[] command)
     {
-        var success = _mpv.Command(command);
+        var success = base.Command(command);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -63,7 +61,7 @@ public partial class Client : IDisposable
     /// <param name="command">A command string</param>
     public void Command(string command)
     {
-        var success = _mpv.CommandString(command);
+        var success = CommandString(command);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -79,7 +77,7 @@ public partial class Client : IDisposable
         {
             try
             {
-                var clientEvent = _mpv.WaitEvent(EventTimeout);
+                var clientEvent = WaitEvent(EventTimeout);
                 switch (clientEvent.Id)
                 {
                     case MPVEventId.Shutdown:
@@ -88,11 +86,7 @@ public partial class Client : IDisposable
                         break;
                     case MPVEventId.PropertyChange:
                         var prop = clientEvent.GetEventProperty();
-                        if (prop == null)
-                        {
-                            throw new ClientException(MPVError.PropertyError);
-                        }
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop.Value.Name, (MPVNode?)prop.Value.GetData()));
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop!.Value.Name, (MPVNode?)prop.Value.GetData()));
                         break;
                 }
             }
@@ -110,7 +104,7 @@ public partial class Client : IDisposable
     /// <param name="replyUserdata">Optional reply Id</param>
     public void ObserveProperty(string name, ulong replyUserdata = 0)
     {
-        var success = _mpv.ObserveProperty(name, MPVFormat.Node, replyUserdata);
+        var success = ObserveProperty(name, MPVFormat.Node, replyUserdata);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -118,19 +112,13 @@ public partial class Client : IDisposable
     }
 
     /// <summary>
-    /// Undo all ObserveProperty()
-    /// </summary>
-    /// <returns>Number of properties tp unobserve or error code</returns>
-    public int UnobserveProperty(ulong replyUserdata = 0) => _mpv.UnobserveProperty(replyUserdata);
-
-    /// <summary>
     /// Set property using String format
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
-    public void SetProperty(string name, string data)
+    public new void SetProperty(string name, string data)
     {
-        var success = _mpv.SetProperty(name, data);
+        var success = base.SetProperty(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -144,7 +132,7 @@ public partial class Client : IDisposable
     /// <param name="data">Bool data</param>
     public void SetProperty(string name, bool data)
     {
-        var success = _mpv.SetProperty(name, data ? 1 : 0);
+        var success = base.SetProperty(name, data ? 1 : 0);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -156,9 +144,9 @@ public partial class Client : IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
-    public void SetProperty(string name, long data)
+    public new void SetProperty(string name, long data)
     {
-        var success = _mpv.SetProperty(name, data);
+        var success = base.SetProperty(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -170,9 +158,9 @@ public partial class Client : IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
-    public void SetProperty(string name, double data)
+    public new void SetProperty(string name, double data)
     {
-        var success = _mpv.SetProperty(name, data);
+        var success = base.SetProperty(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -184,9 +172,9 @@ public partial class Client : IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
-    public void GetProperty(string name, out string data)
+    public new void GetProperty(string name, out string data)
     {
-        var success = _mpv.GetProperty(name, out data);
+        var success = base.GetProperty(name, out data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -200,7 +188,7 @@ public partial class Client : IDisposable
     /// <param name="data">String data</param>
     public void GetProperty(string name, out bool data)
     {
-        var success = _mpv.GetProperty(name, out int flag);
+        var success = base.GetProperty(name, out int flag);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -213,9 +201,9 @@ public partial class Client : IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
-    public void GetProperty(string name, out long data)
+    public new void GetProperty(string name, out long data)
     {
-        var success = _mpv.GetProperty(name, out data);
+        var success = base.GetProperty(name, out data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -227,9 +215,9 @@ public partial class Client : IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
-    public void GetProperty(string name, out double data)
+    public new void GetProperty(string name, out double data)
     {
-        var success = _mpv.GetProperty(name, out data);
+        var success = base.GetProperty(name, out data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -261,7 +249,7 @@ public partial class Client : IDisposable
         }
         if (disposing)
         {
-            _mpv.Destroy();
+            Destroy();
         }
         _disposed = true;
     }
