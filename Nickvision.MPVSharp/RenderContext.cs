@@ -8,6 +8,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     private const int GLDrawFramebufferBinding = 0x8CA6;
     private readonly nint _clientHandle;
     private bool _disposed;
+    private MPVRenderUpdateFn? _callback;
     
     public RenderContext(nint clientHandle)
     {
@@ -38,7 +39,8 @@ public class RenderContext : MPVRenderContext, IDisposable
         {
             throw new ClientException(success);
         }
-        SetUpdateCallback(callback);
+        _callback = callback;
+        SetUpdateCallback(_callback);
     }
     
     public void RenderGL(int width, int height)

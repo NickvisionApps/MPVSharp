@@ -1,7 +1,7 @@
 using Nickvision.MPVSharp;
 using System.Runtime.InteropServices;
 
-namespace Nickvision.MPVSharp.Example.GirCore;
+namespace Nickvision.MPVSharp.Examples.GirCore;
 
 /// <summary>
 /// Main application window
@@ -17,7 +17,6 @@ public partial class MainWindow : Gtk.ApplicationWindow
     private readonly GSourceFunc _queueRender;
     private readonly Client _player;
     private RenderContext? _ctx;
-    private RenderContext.MPVRenderUpdateFn _renderCallback;
     
     /// <summary>
     /// Construct window
@@ -58,9 +57,6 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _player.ObserveProperty("media-title");
         pauseButton.OnClicked += (sender, e) => _player.CyclePause();
         // Setup rendering
-        // We create callback for MPV to call every time the screen needs to be redrawn,
-        // the callback calls GtkGLArea.QueueDraw which in turn makes RenderContext draw image
-        _renderCallback = (x) => g_idle_add(_queueRender, IntPtr.Zero); // QueueDraw must be called from GTK thread
         _queueRender = (x) =>
         {
             _glArea.QueueDraw();
@@ -79,7 +75,9 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _glArea.MakeCurrent();
         _player.Initialize();
         _ctx = _player.CreateRenderContext();
-        _ctx.SetupGL(_renderCallback);
+        // We create callback for MPV to call every time the screen needs to be redrawn,
+        // the callback calls GtkGLArea.QueueDraw which in turn makes RenderContext draw image
+        _ctx.SetupGL((x) => g_idle_add(_queueRender, IntPtr.Zero)); // QueueDraw must be called from GTK thread
         _player.Command("loadfile https://www.youtube.com/watch?v=UXqq0ZvbOnk append-play");
     }
 
@@ -89,7 +87,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     private void OnUnrealizeGLArea(Gtk.Widget sender, EventArgs e)
     {
         // Free RenderContext first, then the Client
-        _ctx.Dispose();
+        _ctx?.Dispose();
         _player.Dispose();
     }
 
@@ -98,7 +96,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// </summary>
     private bool OnRenderGLArea(Gtk.Widget sender, EventArgs e)
     {
-        _ctx.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());
+        _ctx?.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());
         return false;
     }
 }
