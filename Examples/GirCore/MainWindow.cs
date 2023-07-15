@@ -70,6 +70,8 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <summary>
     /// Occurs on GLArea initialization. Set up render context and start playing.
     /// </summary>
+    /// <param name="sender">Gtk.Widget that invoked the event</param>
+    /// <param name="e">EventArgs</param>
     private void OnRealizeGLArea(Gtk.Widget sender, EventArgs e)
     {
         _glArea.MakeCurrent();
@@ -84,6 +86,8 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <summary>
     /// Occurs on GLArea destruction. Free MPV objects
     /// </summary>
+    /// <param name="sender">Gtk.Widget that invoked the event</param>
+    /// <param name="e">EventArgs</param>
     private void OnUnrealizeGLArea(Gtk.Widget sender, EventArgs e)
     {
         // Free RenderContext first, then the Client
@@ -94,6 +98,8 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <summary>
     /// Occurs on GLArea redraw. Call RenderContext to redraw image
     /// </summary>
+    /// <param name="sender">Gtk.Widget that invoked the event</param>
+    /// <param name="e">EventArgs</param>
     private bool OnRenderGLArea(Gtk.Widget sender, EventArgs e)
     {
         _ctx?.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());

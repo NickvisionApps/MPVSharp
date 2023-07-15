@@ -11,7 +11,7 @@ public partial class MPVRenderContext
     [LibraryImport("libmpv.so.2")]
     private static partial MPVError mpv_render_context_get_info(nint ctx, MPVRenderParam param);
     [LibraryImport("libmpv.so.2")]
-    private static partial void mpv_render_context_set_update_callback(nint ctx, MPVRenderUpdateFn callback, nint data);
+    private static partial void mpv_render_context_set_update_callback(nint ctx, MPVRenderUpdateFn? callback, nint data);
     [LibraryImport("libmpv.so.2")]
     private static partial ulong mpv_render_context_update(nint ctx);
     [LibraryImport("libmpv.so.2")]
@@ -40,7 +40,7 @@ public partial class MPVRenderContext
     
     public MPVError GetInfo(MPVRenderParam param) => mpv_render_context_get_info(_handle, param);
     
-    public void SetUpdateCallback(MPVRenderUpdateFn callback, nint data = 0) => mpv_render_context_set_update_callback(_handle, callback, data);
+    public void SetUpdateCallback(MPVRenderUpdateFn? callback, nint data = 0) => mpv_render_context_set_update_callback(_handle, callback, data);
     
     public ulong Update() => mpv_render_context_update(_handle);
 
