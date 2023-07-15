@@ -5,7 +5,7 @@ namespace Nickvision.MPVSharp.Internal;
 /// <summary>
 /// MPV data node
 /// </summary>
-[StructLayout(LayoutKind.Explicit, Size = 12)]
+[StructLayout(LayoutKind.Explicit)]
 public struct MPVNode {
     [FieldOffset(0)]
     private readonly nint _string;
@@ -45,8 +45,8 @@ public struct MPVNode {
             MPVFormat.Flag => _flag == 1 ? "True" : "False",
             MPVFormat.Int64 => _int64.ToString(),
             MPVFormat.Double => _double.ToString(),
-            MPVFormat.NodeArray => $"{Marshal.PtrToStructure<MPVNodeList>(_nodeList).ToString()} (NodeArray)",
-            MPVFormat.NodeMap => $"{Marshal.PtrToStructure<MPVNodeList>(_nodeList).ToString()} (NodeMap)",
+            MPVFormat.NodeArray => Marshal.PtrToStructure<MPVNodeList>(_nodeList).ToString(),
+            MPVFormat.NodeMap => Marshal.PtrToStructure<MPVNodeList>(_nodeList).ToString(),
             MPVFormat.ByteArray => _byteArray.ToString(),
             _ => Marshal.PtrToStringUTF8(_string)
         } ?? "";

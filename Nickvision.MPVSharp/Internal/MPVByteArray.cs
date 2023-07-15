@@ -17,7 +17,7 @@ public struct MPVByteArray
     /// </summary>
     public uint Size;
     
-    public static explicit operator byte[](MPVByteArray mba)
+    public static implicit operator byte[](MPVByteArray mba)
     {
         var result = new byte[mba.Size];
         Marshal.Copy(mba.Data, result, 0, (int)mba.Size);
