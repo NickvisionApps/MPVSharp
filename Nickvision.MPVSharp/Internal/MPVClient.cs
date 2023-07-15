@@ -40,6 +40,8 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref double data);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref string data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref MPVNode data);
     // Get property
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out int data);
@@ -49,6 +51,8 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out double data);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out string data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out MPVNode data);
     // Set option
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref int data);
@@ -208,6 +212,14 @@ public partial class MPVClient : ICloneable
     public MPVError SetProperty(string name, double data) => mpv_set_property(Handle, name, MPVFormat.Double, ref data);
 
     /// <summary>
+    /// Set property using Node format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    /// <returns>MPVError</returns>
+    public MPVError SetProperty(string name, MPVNode data) => mpv_set_property(Handle, name, MPVFormat.Node, ref data);
+
+    /// <summary>
     /// Set property using String format
     /// </summary>
     /// <param name="name">Property name</param>
@@ -248,6 +260,15 @@ public partial class MPVClient : ICloneable
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
     public MPVError GetProperty(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
+
+
+    /// <summary>
+    /// Get property using Node format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Object to write data to</param>
+    /// <returns>MPVError</returns>
+    public MPVError GetProperty(string name, out MPVNode data) => mpv_get_property(Handle, name, MPVFormat.Node, out data);
 
 
     /// <summary>

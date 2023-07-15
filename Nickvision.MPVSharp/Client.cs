@@ -168,6 +168,20 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
+    /// Set property using Node format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    public new void SetProperty(string name, MPVNode data)
+    {
+        var success = base.SetProperty(name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
     /// Get property using String format
     /// </summary>
     /// <param name="name">Property name</param>
@@ -216,6 +230,20 @@ public class Client : MPVClient, IDisposable
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
     public new void GetProperty(string name, out double data)
+    {
+        var success = base.GetProperty(name, out data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Get property using Node format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    public new void GetProperty(string name, out MPVNode data)
     {
         var success = base.GetProperty(name, out data);
         if (success < MPVError.Success)
