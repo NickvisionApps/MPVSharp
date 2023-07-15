@@ -23,6 +23,8 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_command(nint handle, string?[] command);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_string(nint handle, string command);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_command_ret(nint handle, string?[] command, out MPVNode node);
     // Events
     [LibraryImport("libmpv.so.2")]
     private static partial nint mpv_wait_event(nint handle, double timeout);
@@ -55,13 +57,9 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out MPVNode data);
     // Set option
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref int data);
+    private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref MPVNode data);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref long data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref double data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref string data);
+    private static partial MPVError mpv_set_option_string(nint handle, string name, string data);
     // Destroy client
     [LibraryImport("libmpv.so.2")]
     private static partial void mpv_destroy(nint handle);
@@ -137,7 +135,7 @@ public partial class MPVClient : ICloneable
     public MPVError Initialize() => mpv_initialize(Handle);
 
     /// <summary>
-    /// Executes command array
+    /// Execute command array
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
     /// <returns>MPVError</returns>
@@ -148,9 +146,23 @@ public partial class MPVClient : ICloneable
         nullTermArray[^1] = null;
         return mpv_command(Handle, nullTermArray);
     }
-    
+
     /// <summary>
-    /// Executes command string
+    /// Execute command array and return the result
+    /// </summary>
+    /// <param name="command">A command to execute as array of strings</param>
+    /// <param name="node">MPVNode with the result of command</param>
+    /// <returns>MPVError</returns>
+    public MPVError CommandRet(string[] command, out MPVNode node)
+    {
+        var nullTermArray = new string?[command.Length + 1];
+        Array.Copy(command, nullTermArray, command.Length);
+        nullTermArray[^1] = null;
+        return mpv_command_ret(Handle, nullTermArray, out node);
+    }
+
+    /// <summary>
+    /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
     /// <returns>MPVError</returns>
@@ -270,6 +282,21 @@ public partial class MPVClient : ICloneable
     /// <returns>MPVError</returns>
     public MPVError GetProperty(string name, out MPVNode data) => mpv_get_property(Handle, name, MPVFormat.Node, out data);
 
+    /// <summary>
+    /// Set option using Node format
+    /// </summary>
+    /// <param name="name">Option name</param>
+    /// <param name="data">MPVNode with data</param>
+    /// <returns>MPVError</returns>
+    public MPVError SetOption(string name, MPVNode data) => mpv_set_option(Handle, name, MPVFormat.Node, ref data);
+
+    /// <summary>
+    /// Set option using Node format
+    /// </summary>
+    /// <param name="name">Option name</param>
+    /// <param name="data">String data</param>
+    /// <returns>MPVError</returns>
+    public MPVError SetOptionString(string name, string data) => mpv_set_option_string(Handle, name, data);
 
     /// <summary>
     /// Destroy the client

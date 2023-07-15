@@ -253,6 +253,34 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
+    /// Set option using Node format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    public new void SetOption(string name, MPVNode data)
+    {
+        var success = base.SetOption(name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
+    /// Set option using String format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    public new void SetOption(string name, string data)
+    {
+        var success = base.SetOptionString(name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
     /// Finalizes the Client
     /// </summary>
     ~Client() => Dispose(false);
