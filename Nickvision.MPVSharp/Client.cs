@@ -318,6 +318,8 @@ public class Client : MPVClient, IDisposable
         RequestLogMessages(level);
     }
 
+    public RenderContext CreateRenderContext() => new RenderContext(Handle);
+
     /// <summary>
     /// Finalizes the Client
     /// </summary>
