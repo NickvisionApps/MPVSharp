@@ -7,7 +7,7 @@ public enum MPVFormat
 {
     None = 0,
     String,
-    OsdString,
+    OSDString,
     Flag,
     Int64,
     Double,

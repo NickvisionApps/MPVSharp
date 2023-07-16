@@ -25,7 +25,7 @@ public struct MPVEventProperty
     {
         return Format switch
         {
-            MPVFormat.String or MPVFormat.OsdString => Marshal.PtrToStringUTF8(_data),
+            MPVFormat.String or MPVFormat.OSDString => Marshal.PtrToStringUTF8(_data),
             MPVFormat.Flag => Marshal.ReadInt32(_data) == 1,
             MPVFormat.Int64 => Marshal.ReadInt64(_data),
             MPVFormat.Double => 0.0,

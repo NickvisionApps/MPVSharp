@@ -277,7 +277,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out long data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out long data) => mpv_get_property(Handle, name, MPVFormat.Int64, out data);
 
 
     /// <summary>
@@ -286,7 +286,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out double data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out double data) => mpv_get_property(Handle, name, MPVFormat.Double, out data);
 
 
     /// <summary>
@@ -295,7 +295,7 @@ public partial class MPVClient : ICloneable
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
-    public MPVError GetProperty(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
+    public MPVError GetProperty(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.String, out data);
 
 
     /// <summary>
@@ -305,6 +305,15 @@ public partial class MPVClient : ICloneable
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
     public MPVError GetProperty(string name, out MPVNode data) => mpv_get_property(Handle, name, MPVFormat.Node, out data);
+
+
+    /// <summary>
+    /// Get property using OSDString format
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Object to write data to</param>
+    /// <returns>MPVError</returns>
+    public MPVError GetPropertyOSDString(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.OSDString, out data);
 
     public MPVError GetPropertyAsync(ulong replyUserdata, string name, MPVFormat format) => mpv_get_property_async(Handle, replyUserdata, name, format);
 
