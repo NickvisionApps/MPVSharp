@@ -55,6 +55,8 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out string data);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out MPVNode data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_get_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format);
     // Set option
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref MPVNode data);
@@ -283,6 +285,8 @@ public partial class MPVClient : ICloneable
     /// <param name="data">Object to write data to</param>
     /// <returns>MPVError</returns>
     public MPVError GetProperty(string name, out MPVNode data) => mpv_get_property(Handle, name, MPVFormat.Node, out data);
+
+    public MPVError GetPropertyAsync(ulong replyUserdata, string name, MPVFormat format) => mpv_get_property_async(Handle, replyUserdata, name, format);
 
     /// <summary>
     /// Set option using Node format

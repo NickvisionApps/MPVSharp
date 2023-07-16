@@ -13,6 +13,7 @@ public class Client : MPVClient, IDisposable
     
     public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
+    public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
     public event Action? Destroyed;
     
     /// <summary>
@@ -90,8 +91,12 @@ public class Client : MPVClient, IDisposable
                         LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
                         break;
                     case MPVEventId.PropertyChange:
-                        var prop = clientEvent.GetEventProperty();
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop!.Value.Name, (MPVNode?)prop.Value.GetData()));
+                        var changedProp = clientEvent.GetEventProperty();
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
+                        break;
+                    case MPVEventId.GetPropertyReply:
+                        var getProp = clientEvent.GetEventProperty();
+                        GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
                         break;
                 }
             }
@@ -251,6 +256,15 @@ public class Client : MPVClient, IDisposable
     public new void GetProperty(string name, out MPVNode data)
     {
         var success = base.GetProperty(name, out data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void GetPropertyAsync(ulong replyUserdata, string name)
+    {
+        var success = base.GetPropertyAsync(replyUserdata, name, MPVFormat.Node);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);

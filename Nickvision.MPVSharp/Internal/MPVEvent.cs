@@ -50,7 +50,7 @@ public partial struct MPVEvent
     /// </summary>
     public MPVEventProperty? GetEventProperty()
     {
-        if (Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply)
+        if ((Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply) || Error < (int)MPVError.Success)
         {
             return null;
         }
