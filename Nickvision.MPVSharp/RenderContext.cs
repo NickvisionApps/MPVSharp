@@ -16,11 +16,11 @@ public class RenderContext : MPVRenderContext, IDisposable
         _clientHandle = clientHandle;
     }
     
-    public void SetupGL(MPVRenderUpdateFn callback)
+    public void SetupGL(MPVRenderUpdateFn? callback)
     {
         var glParams = new MPVOpenGLInitParams
         {
-            GetProcAddrFn = (ctx, name) => OpenGLHelpers.EglGetProcAddress(name),
+            GetProcAddrFn = (ctx, name) => OpenGLHelpers.EGLGetProcAddress(name),
             Param = IntPtr.Zero
         };
         var glParamsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(glParams));
@@ -28,7 +28,7 @@ public class RenderContext : MPVRenderContext, IDisposable
         var glStringPtr = Marshal.StringToCoTaskMemUTF8("opengl");
         var renderParams = new MPVRenderParam[]
         {
-            new MPVRenderParam { Type = MPVRenderParamType.ApiType, Data = glStringPtr },
+            new MPVRenderParam { Type = MPVRenderParamType.APIType, Data = glStringPtr },
             new MPVRenderParam { Type = MPVRenderParamType.OpenGLInitParams, Data = glParamsPtr },
             new MPVRenderParam { Type = MPVRenderParamType.Invalid, Data = IntPtr.Zero }
         };
@@ -39,14 +39,17 @@ public class RenderContext : MPVRenderContext, IDisposable
         {
             throw new ClientException(success);
         }
-        _callback = callback;
-        SetUpdateCallback(_callback);
+        if (callback != null)
+        {
+            _callback = callback;
+            SetUpdateCallback(_callback);
+        }
     }
     
     public void RenderGL(int width, int height)
     {
         int fboInt;
-        OpenGLHelpers.GLGetIntegerv(GLDrawFramebufferBinding, out fboInt);
+        OpenGLHelpers.GLGetIntegerV(GLDrawFramebufferBinding, out fboInt);
         var fbo = new MPVOpenGLFBO
         {
             FBO = fboInt,
@@ -61,7 +64,8 @@ public class RenderContext : MPVRenderContext, IDisposable
         var renderParams = new MPVRenderParam []
         {
             new MPVRenderParam { Type = MPVRenderParamType.OpenGLFBO, Data = fboPtr },
-            new MPVRenderParam { Type = MPVRenderParamType.FlipY, Data = flipYPtr }
+            new MPVRenderParam { Type = MPVRenderParamType.FlipY, Data = flipYPtr },
+            new MPVRenderParam { Type = MPVRenderParamType.Invalid, Data = IntPtr.Zero }
         };
         var success = Render(renderParams);
         Marshal.FreeHGlobal(fboPtr);
