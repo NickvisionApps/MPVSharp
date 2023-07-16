@@ -44,6 +44,16 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref string data);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref MPVNode data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref int data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref long data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref double data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref string data);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref MPVNode data);
     // Get property
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out int data);
@@ -242,6 +252,16 @@ public partial class MPVClient : ICloneable
     /// <param name="data">String data</param>
     /// <returns>MPVError</returns>
     public MPVError SetPropertyString(string name, string data) => mpv_set_property(Handle, name, MPVFormat.String, ref data);
+
+    public MPVError SetPropertyAsync(ulong replyUserdata, string name, int data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Flag, ref data);
+
+    public MPVError SetPropertyAsync(ulong replyUserdata, string name, long data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Int64, ref data);
+
+    public MPVError SetPropertyAsync(ulong replyUserdata, string name, double data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Double, ref data);
+
+    public MPVError SetPropertyAsync(ulong replyUserdata, string name, string data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.String, ref data);
+    
+    public MPVError SetPropertyAsync(ulong replyUserdata, string name, MPVNode data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Node, ref data);
 
     /// <summary>
     /// Get property using Flag format

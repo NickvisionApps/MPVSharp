@@ -14,6 +14,7 @@ public class Client : MPVClient, IDisposable
     public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
+    public event EventHandler<SetPropertyReplyReceivedEventArgs>? SetPropertyReplyReceived;
     public event Action? Destroyed;
     
     /// <summary>
@@ -97,6 +98,9 @@ public class Client : MPVClient, IDisposable
                     case MPVEventId.GetPropertyReply:
                         var getProp = clientEvent.GetEventProperty();
                         GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
+                        break;
+                    case MPVEventId.SetPropertyReply:
+                        SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
                         break;
                 }
             }
@@ -185,6 +189,51 @@ public class Client : MPVClient, IDisposable
     public new void SetProperty(string name, MPVNode data)
     {
         var success = base.SetProperty(name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void SetPropertyAsync(ulong replyUserdata, string name, int data)
+    {
+        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void SetPropertyAsync(ulong replyUserdata, string name, long data)
+    {
+        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void SetPropertyAsync(ulong replyUserdata, string name, double data)
+    {
+        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void SetPropertyAsync(ulong replyUserdata, string name, string data)
+    {
+        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    public new void SetPropertyAsync(ulong replyUserdata, string name, MPVNode data)
+    {
+        var success = base.SetPropertyAsync(replyUserdata, name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
