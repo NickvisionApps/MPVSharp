@@ -1,4 +1,4 @@
-![Nuget](https://img.shields.io/nuget/v/Nickvision.MPVSharp)
+[![Nuget](https://img.shields.io/nuget/v/Nickvision.MPVSharp)](https://www.nuget.org/packages/Nickvision.MPVSharp/)
 
 # Nickvision.MPVSharp
 
@@ -19,20 +19,25 @@ You also need `libmpv` installed on your system.
 
 There are 2 namespaces:
 * **`Nickvision.MPVSharp.Internal`** provides objects and methods that closely follow libmpv C API. You can find functions from `client.h` in `MPVClient.cs` and functions from `render.h` in `MPVRenderContext.cs`
-* **`Nickvision.MPVSharp`** gives you another objects that work on top of `Internal` counterpart, but provide you with various helpers and convinience functions. In short, they are easier to use.
+* **`Nickvision.MPVSharp`** gives you another objects that work on top of `Internal` counterpart, but provides you with various helpers and convinience functions. They are easier to use, but the API is slightly different than in `Internal`, so you will probably want to read [`Client.cs`](Nickvision.MPVSharp/Client.cs) to find what methods you can use.
 
-There are comments in the code, but they are just an adaptation of some parts of comments from libmpc, which is very well documented:
+Look at the [examples](#examples) to get the basic idea how to use MPVSharp.
+
+There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpc, which is very well documented:
 * [client.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/client.h)
 * [render.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render.h)
 * [renger_gl.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render_gl.h)
+
+Refer to MPV documentation to find the list of [options](https://mpv.io/manual/master/#options), [commands](https://mpv.io/manual/master/#list-of-input-commands) and [properties](https://mpv.io/manual/master/#properties).
+
+# Examples
 
 ![GirCore Example](Examples/GirCore/Screenshot.png)
 
 <sub>GirCore example playing [Charge](https://www.youtube.com/watch?v=UXqq0ZvbOnk) - Blender open movie, licensed under CC BY 4.0</sub>
 
-If you're not familiar with libmpv at all, start by looking at MPVSharp examples, they are very simple but will give you basic knowledge how to start/embed MPV in your application.
 * [Simple](Examples/Simple) - basic program playing your file/link. If the file is video, a window will be created by MPV itself.
-* [GirCore](Examples/GirCore) - GTK4 application playing a video from youtube. Made with [GirCore](https://github.com/gircore/gir.core). Requires gtk-4 to be installed.
+* [GirCore](Examples/GirCore) - GTK4 application playing a video from youtube. Made with [GirCore](https://github.com/gircore/gir.core). Requires GTK4 to be installed.
 * [OpenGL](Examples/OpenGL) - [OpenTK](https://opentk.net/index.html) application playing a video from youtube.
 
 # Chat
@@ -40,6 +45,7 @@ If you're not familiar with libmpv at all, start by looking at MPVSharp examples
 
 # Dependencies
 - [.NET 7](https://dotnet.microsoft.com/en-us/)
+- libmpv
 
 # Code of Conduct
 
