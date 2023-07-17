@@ -11,18 +11,17 @@ public struct MPVEventClientMessage {
     /// <summary>
     /// Pointer to arbitraty arguments chosen by the sender of the message
     /// </summary>
-    public nint ArgsPtr;
+    private nint _argsPtr;
     
     /// <summary>
     /// Get string args from args pointer of a message
     /// </summary>
     public static string[] GetStringArgs(MPVEventClientMessage m)
     {
-        var ptr = m.ArgsPtr;
         var result = new string[m.Num];
         for (var i = 0; i < m.Num; i++)
         {
-            result[i] = Marshal.PtrToStringUTF8(Marshal.ReadIntPtr(m.ArgsPtr + i * nint.Size))!;
+            result[i] = Marshal.PtrToStringUTF8(Marshal.ReadIntPtr(m._argsPtr + i * nint.Size))!;
         }
         return result;
     }
