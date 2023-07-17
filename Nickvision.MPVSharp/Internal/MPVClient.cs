@@ -23,8 +23,16 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_command(nint handle, string?[] command);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_string(nint handle, string command);
+    [LibraryImport("libmpv.so.2")]
+    private static partial MPVError mpv_command_node(nint handle, ref MPVNode command, out MPVNode result);
     [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_ret(nint handle, string?[] command, out MPVNode node);
+    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_command_async(nint handle, ulong replyUserdata, string?[] command);
+    [LibraryImport("libmpv.so.2")]
+    private static partial MPVError mpv_command_node_async(nint handle, ulong replyUserdata, ref MPVNode command);
+    [LibraryImport("libmpv.so.2")]
+    private static partial void mpv_abort_async_command(nint handle, ulong replyUserdata);
     // Events
     [LibraryImport("libmpv.so.2")]
     private static partial nint mpv_wait_event(nint handle, double timeout);
@@ -161,6 +169,8 @@ public partial class MPVClient : ICloneable
         return mpv_command(Handle, nullTermArray);
     }
 
+    public MPVError CommandNode(MPVNode command, out MPVNode result) => mpv_command_node(Handle, ref command, out result);
+
     /// <summary>
     /// Execute command array and return the result
     /// </summary>
@@ -182,6 +192,18 @@ public partial class MPVClient : ICloneable
     /// <returns>MPVError</returns>
     public MPVError CommandString(string command) => mpv_command_string(Handle, command);
     
+    public MPVError CommandAsync(ulong replyUserdata, string?[] command)
+    {
+        var nullTermArray = new string?[command.Length + 1];
+        Array.Copy(command, nullTermArray, command.Length);
+        nullTermArray[^1] = null;
+        return mpv_command_async(Handle, replyUserdata, nullTermArray);
+    }
+
+    public MPVError CommandNodeAsync(ulong replyUserdata, MPVNode command) => mpv_command_node_async(Handle, replyUserdata, ref command);
+
+    public void AbortAsyncCommand(ulong replyUserdata) => mpv_abort_async_command(Handle, replyUserdata);
+
     /// <summary>
     /// Wait for an event or until timeout
     /// </summary>

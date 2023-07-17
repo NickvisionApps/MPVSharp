@@ -8,10 +8,16 @@ namespace Nickvision.MPVSharp;
 public class ClientException : Exception
 {
     /// <summary>
+    /// MPV Error code
+    /// </summary>
+    public MPVError Error;
+
+    /// <summary>
     /// Construct Client Exception
     /// </summary>
-    /// <param name="error">MPVError</param>
+    /// <param name="error">Error code</param>
     public ClientException(MPVError error) : base(error.ToMPVErrorString())
     {
+        Error = error;
     }
 }

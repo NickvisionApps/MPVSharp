@@ -1,9 +1,11 @@
+using Nickvision.MPVSharp.Internal;
+
 namespace Nickvision.MPVSharp;
 
 /// <summary>
-/// Args for SetPropertyReply event
+/// Args for CommandReply event
 /// </summary>
-public class SetPropertyReplyReceivedEventArgs : EventArgs
+public class CommandReplyReceivedEventArgs : EventArgs
 {
     /// <summary>
     /// Reply userdata
@@ -13,15 +15,21 @@ public class SetPropertyReplyReceivedEventArgs : EventArgs
     /// Error code
     /// </summary>
     public int Error;
+    /// <summary>
+    /// Command result
+    /// </summary>
+    public MPVNode Result;
 
     /// <summary>
-    /// Create args for SetPropertyReply event
+    /// Create args for CommandReply event
     /// </summary>
     /// <param name="replyUserdata">Reply userdata</param>
     /// <param name="error">Error code</param>
-    public SetPropertyReplyReceivedEventArgs(ulong replyUserdata, int error)
+    /// <param name="result">Command result</param>
+    public CommandReplyReceivedEventArgs(ulong replyUserdata, int error, MPVNode result)
     {
         ReplyUserdata = replyUserdata;
         Error = error;
+        Result = result;
     }
 }

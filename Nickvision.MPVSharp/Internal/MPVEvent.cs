@@ -56,4 +56,49 @@ public partial struct MPVEvent
         }
         return Marshal.PtrToStructure<MPVEventProperty>(_data);
     }
+
+    public MPVEventCommand? GetCommandResult()
+    {
+        if (Id != MPVEventId.CommandReply)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventCommand>(_data);
+    }
+
+    public MPVEventStartFile? GetStartFile()
+    {
+        if (Id != MPVEventId.StartFile)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventStartFile>(_data);
+    }
+
+    public MPVEventEndFile? GetEndFile()
+    {
+        if (Id != MPVEventId.EndFile)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventEndFile>(_data);
+    }
+
+    public string[]? GetClientMessage()
+    {
+        if (Id != MPVEventId.ClientMessage)
+        {
+            return null;
+        }
+        return MPVEventClientMessage.GetStringArgs(Marshal.PtrToStructure<MPVEventClientMessage>(_data));
+    }
+
+    public MPVEventHook? GetHook()
+    {
+        if (Id != MPVEventId.Hook)
+        {
+            return null;
+        }
+        return Marshal.PtrToStructure<MPVEventHook>(_data);
+    }
 }

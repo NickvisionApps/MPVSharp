@@ -11,10 +11,21 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     public double EventTimeout { get; set; }
     
-    public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
     public event EventHandler<SetPropertyReplyReceivedEventArgs>? SetPropertyReplyReceived;
+    public event EventHandler<CommandReplyReceivedEventArgs>? CommandReplyReceived;
+    public event EventHandler<FileStartedEventArgs>? FileStarted;
+    public event EventHandler<FileEndedEventArgs>? FileEnded;
+    public event Action? FileLoaded;
+    public event EventHandler<ClientMessageReceivedEventArgs>? ClientMessageReceived;
+    public event Action? VideoReconfigured;
+    public event Action? AudioReconfigured;
+    public event Action? SeekStarted;
+    public event Action? PlaybackRestarted;
+    public event EventHandler<PropertyChangedEventArgs>? PropertyChanged;
+    public event Action? QueueOverflowed;
+    public event EventHandler<HookTriggeredEventArgs>? HookTriggered;
     public event Action? Destroyed;
     
     /// <summary>
@@ -91,10 +102,6 @@ public class Client : MPVClient, IDisposable
                         var msg = clientEvent.GetEventLogMessage();
                         LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
                         break;
-                    case MPVEventId.PropertyChange:
-                        var changedProp = clientEvent.GetEventProperty();
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
-                        break;
                     case MPVEventId.GetPropertyReply:
                         var getProp = clientEvent.GetEventProperty();
                         GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
@@ -102,11 +109,54 @@ public class Client : MPVClient, IDisposable
                     case MPVEventId.SetPropertyReply:
                         SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
                         break;
+                    case MPVEventId.CommandReply:
+                        var getResult = clientEvent.GetCommandResult();
+                        CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
+                        break;
+                    case MPVEventId.StartFile:
+                        var startData = clientEvent.GetStartFile();
+                        FileStarted?.Invoke(this, new FileStartedEventArgs(startData!.Value.PlaylistEntryId));
+                        break;
+                    case MPVEventId.EndFile:
+                        var endData = clientEvent.GetEndFile();
+                        FileEnded?.Invoke(this, new FileEndedEventArgs(endData!.Value.Reason, endData.Value.Error, endData.Value.PlaylistEntryId, endData.Value.PlaylistInsertId, endData.Value.PlaylistInsertNumEntries));
+                        break;
+                    case MPVEventId.FileLoaded:
+                        FileLoaded?.Invoke();
+                        break;
+                    case MPVEventId.ClientMessage:
+                        var clientMsg = clientEvent.GetClientMessage();
+                        ClientMessageReceived?.Invoke(this, new ClientMessageReceivedEventArgs(clientMsg!));
+                        break;
+                    case MPVEventId.VideoReconfig:
+                        VideoReconfigured?.Invoke();
+                        break;
+                    case MPVEventId.AudioReconfig:
+                        AudioReconfigured?.Invoke();
+                        break;
+                    case MPVEventId.Seek:
+                        SeekStarted?.Invoke();
+                        break;
+                    case MPVEventId.PlaybackRestart:
+                        PlaybackRestarted?.Invoke();
+                        break;
+                    case MPVEventId.PropertyChange:
+                        var changedProp = clientEvent.GetEventProperty();
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
+                        break;
+                    case MPVEventId.QueueOverflow:
+                        QueueOverflowed?.Invoke();
+                        break;
+                    case MPVEventId.Hook:
+                        var hook = clientEvent.GetHook();
+                        HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
+                        break;
                 }
             }
             catch (ClientException e)
             {
                 Console.WriteLine(e);
+                Environment.Exit((int)e.Error);
             }
         }
     }
@@ -311,7 +361,7 @@ public class Client : MPVClient, IDisposable
         }
     }
 
-    public new void GetPropertyAsync(ulong replyUserdata, string name)
+    public void GetPropertyAsync(ulong replyUserdata, string name)
     {
         var success = base.GetPropertyAsync(replyUserdata, name, MPVFormat.Node);
         if (success < MPVError.Success)

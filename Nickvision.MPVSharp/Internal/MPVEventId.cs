@@ -10,8 +10,6 @@ public enum MPVEventId {
     StartFile,
     EndFile,
     FileLoaded,
-    Idle = 11,
-    Tick = 14,
     ClientMessage = 16,
     VideoReconfig,
     AudioReconfig,
