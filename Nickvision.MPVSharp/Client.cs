@@ -8,7 +8,6 @@ namespace Nickvision.MPVSharp;
 public class Client : MPVClient, IDisposable
 {
     private bool _disposed;
-    private readonly WakeUpCallback _wakeupCallback;
     
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
@@ -33,8 +32,7 @@ public class Client : MPVClient, IDisposable
     public Client()
     {
         _disposed = false;
-        _wakeupCallback = (x) => Task.Run(HandleEvents);
-        base.SetWakeUpCallback(_wakeupCallback, IntPtr.Zero);
+        Task.Run(HandleEvents);
     }
 
     /// <summary>
@@ -58,13 +56,13 @@ public class Client : MPVClient, IDisposable
 
     /// <summary>
     /// A placeholder to disallow setting wake up callback,
-    /// because only one can be set and there's already one.
+    /// because we're already running event loop.
     /// </summary>
     /// <param name="callback">Callback function</param>
     /// <param name="data">Pointer to arbitrary data to pass to callback</param>
     public new void SetWakeUpCallback(WakeUpCallback callback, nint data)
     {
-        Console.WriteLine("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because only one callback can be set, and there's already one.");
+        Console.WriteLine("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because event loop is already running.");
         Environment.Exit((int)MPVError.Unsupported);
     }
 
@@ -167,8 +165,6 @@ public class Client : MPVClient, IDisposable
                     var hook = clientEvent.GetHook();
                     HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
                     break;
-                default:
-                    return;
             }
         }
     }
