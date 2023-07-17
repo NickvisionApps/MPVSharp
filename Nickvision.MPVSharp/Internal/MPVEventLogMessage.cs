@@ -2,9 +2,6 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
 
-/// <summary>
-/// Event Log Message structure
-/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVEventLogMessage
 {

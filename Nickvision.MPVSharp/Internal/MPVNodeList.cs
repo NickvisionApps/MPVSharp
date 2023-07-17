@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// MPV Node List
+/// Array/Dictionary-like MPV structure
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVNodeList
 {
     /// <summary>
-    /// Number of elements
+    /// Number of entries
     /// </summary>
     public int Num;
     /// <summary>

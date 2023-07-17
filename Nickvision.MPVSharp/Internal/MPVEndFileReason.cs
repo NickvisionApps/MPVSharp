@@ -1,5 +1,8 @@
 namespace Nickvision.MPVSharp.Internal;
 
+/// <summary>
+/// Possible reasons for EndFile event
+/// </summary>
 public enum MPVEndFileReason {
     /// <summary>
     /// The end of file was reached.

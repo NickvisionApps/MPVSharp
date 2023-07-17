@@ -2,9 +2,6 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
 
-/// <summary>
-/// MPV event property struct
-/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVEventProperty
 {
@@ -21,6 +18,9 @@ public struct MPVEventProperty
     /// </summary>
     private nint _data;
 
+    /// <summary>
+    /// Returns data object
+    /// </summary>
     public object? GetData()
     {
         return Format switch

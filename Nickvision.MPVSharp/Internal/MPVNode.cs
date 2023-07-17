@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// MPV data node
+/// Generic data storage
 /// </summary>
 [StructLayout(LayoutKind.Explicit)]
 public partial struct MPVNode {
@@ -63,6 +63,9 @@ public partial struct MPVNode {
 
     public static MPVNode FromIntPtr(nint data) => Marshal.PtrToStructure<MPVNode>(data);
 
+    /// <summary>
+    /// Frees any data referenced by the node. It doesn't free the node itself.
+    /// </summary>
     public static void FreeNodeContents(MPVNode node) => mpv_free_node_contents(ref node);
     
     public static explicit operator string?(MPVNode n) => Marshal.PtrToStringUTF8(n._string);
@@ -79,6 +82,10 @@ public partial struct MPVNode {
 
     public static explicit operator MPVByteArray?(MPVNode n) => n.Format == MPVFormat.ByteArray ? Marshal.PtrToStructure<MPVByteArray>(n._byteArray) : null;
 
+    /// <summary>
+    /// Get string representation of the node content.
+    /// Not to be confused with string? cast.
+    /// </summary>
     public override string ToString()
     {
         return Format switch
