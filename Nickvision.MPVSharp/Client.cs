@@ -2,14 +2,13 @@ using Nickvision.MPVSharp.Internal;
 
 namespace Nickvision.MPVSharp;
 
+/// <summary>
+/// MPV Client class with helpers and convenience functions
+/// </summary>
 public class Client : MPVClient, IDisposable
 {
     private bool _disposed;
-
-    /// <summary>
-    /// Timeout for mpv_wait_event in seconds (0 by default)
-    /// </summary>
-    public double EventTimeout { get; set; }
+    private readonly WakeUpCallback _wakeupCallback;
     
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
@@ -27,20 +26,27 @@ public class Client : MPVClient, IDisposable
     public event Action? QueueOverflowed;
     public event EventHandler<HookTriggeredEventArgs>? HookTriggered;
     public event Action? Destroyed;
-    
+
     /// <summary>
-    /// Creates MPV Client
+    /// Construct Client
     /// </summary>
     public Client()
     {
         _disposed = false;
-        EventTimeout = 0;
-        Task.Run(HandleEvents);
+        _wakeupCallback = (x) => Task.Run(HandleEvents);
+        base.SetWakeUpCallback(_wakeupCallback, IntPtr.Zero);
     }
 
     /// <summary>
-    /// Init MPV client, some options can only be set before init
+    /// Initialize an uninitialized mpv instance.
+    /// If the mpv instance is already running, an error is returned.
     /// </summary>
+    /// <returns>Error code</returns>
+    /// <remarks>
+    /// Some options are required to set before Initialize:
+    /// config, config-dir, input-conf, load-scripts, script,
+    /// player-operation-mode, input-app-events (OSX), all encoding mode options
+    /// </remarks>
     public new void Initialize()
     {
         var success = base.Initialize();
@@ -48,6 +54,18 @@ public class Client : MPVClient, IDisposable
         {
             throw new ClientException(success);
         }
+    }
+
+    /// <summary>
+    /// A placeholder to disallow setting wake up callback,
+    /// because only one can be set and there's already one.
+    /// </summary>
+    /// <param name="callback">Callback function</param>
+    /// <param name="data">Pointer to arbitrary data to pass to callback</param>
+    public new void SetWakeUpCallback(WakeUpCallback callback, nint data)
+    {
+        Console.WriteLine("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because only one callback can be set, and there's already one.");
+        Environment.Exit((int)MPVError.Unsupported);
     }
 
     /// <summary>
@@ -89,74 +107,68 @@ public class Client : MPVClient, IDisposable
     {
         while (!_disposed)
         {
-            try
+            var clientEvent = WaitEvent(0);
+            switch (clientEvent.Id)
             {
-                var clientEvent = WaitEvent(EventTimeout);
-                switch (clientEvent.Id)
-                {
-                    case MPVEventId.Shutdown:
-                        Dispose();
-                        Destroyed?.Invoke();
-                        break;
-                    case MPVEventId.LogMessage:
-                        var msg = clientEvent.GetEventLogMessage();
-                        LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
-                        break;
-                    case MPVEventId.GetPropertyReply:
-                        var getProp = clientEvent.GetEventProperty();
-                        GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
-                        break;
-                    case MPVEventId.SetPropertyReply:
-                        SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
-                        break;
-                    case MPVEventId.CommandReply:
-                        var getResult = clientEvent.GetCommandResult();
-                        CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
-                        break;
-                    case MPVEventId.StartFile:
-                        var startData = clientEvent.GetStartFile();
-                        FileStarted?.Invoke(this, new FileStartedEventArgs(startData!.Value.PlaylistEntryId));
-                        break;
-                    case MPVEventId.EndFile:
-                        var endData = clientEvent.GetEndFile();
-                        FileEnded?.Invoke(this, new FileEndedEventArgs(endData!.Value.Reason, endData.Value.Error, endData.Value.PlaylistEntryId, endData.Value.PlaylistInsertId, endData.Value.PlaylistInsertNumEntries));
-                        break;
-                    case MPVEventId.FileLoaded:
-                        FileLoaded?.Invoke();
-                        break;
-                    case MPVEventId.ClientMessage:
-                        var clientMsg = clientEvent.GetClientMessage();
-                        ClientMessageReceived?.Invoke(this, new ClientMessageReceivedEventArgs(clientMsg!));
-                        break;
-                    case MPVEventId.VideoReconfig:
-                        VideoReconfigured?.Invoke();
-                        break;
-                    case MPVEventId.AudioReconfig:
-                        AudioReconfigured?.Invoke();
-                        break;
-                    case MPVEventId.Seek:
-                        SeekStarted?.Invoke();
-                        break;
-                    case MPVEventId.PlaybackRestart:
-                        PlaybackRestarted?.Invoke();
-                        break;
-                    case MPVEventId.PropertyChange:
-                        var changedProp = clientEvent.GetEventProperty();
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
-                        break;
-                    case MPVEventId.QueueOverflow:
-                        QueueOverflowed?.Invoke();
-                        break;
-                    case MPVEventId.Hook:
-                        var hook = clientEvent.GetHook();
-                        HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
-                        break;
-                }
-            }
-            catch (ClientException e)
-            {
-                Console.WriteLine(e);
-                Environment.Exit((int)e.Error);
+                case MPVEventId.Shutdown:
+                    Dispose();
+                    Destroyed?.Invoke();
+                    break;
+                case MPVEventId.LogMessage:
+                    var msg = clientEvent.GetEventLogMessage();
+                    LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
+                    break;
+                case MPVEventId.GetPropertyReply:
+                    var getProp = clientEvent.GetEventProperty();
+                    GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
+                    break;
+                case MPVEventId.SetPropertyReply:
+                    SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
+                    break;
+                case MPVEventId.CommandReply:
+                    var getResult = clientEvent.GetCommandResult();
+                    CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
+                    break;
+                case MPVEventId.StartFile:
+                    var startData = clientEvent.GetStartFile();
+                    FileStarted?.Invoke(this, new FileStartedEventArgs(startData!.Value.PlaylistEntryId));
+                    break;
+                case MPVEventId.EndFile:
+                    var endData = clientEvent.GetEndFile();
+                    FileEnded?.Invoke(this, new FileEndedEventArgs(endData!.Value.Reason, endData.Value.Error, endData.Value.PlaylistEntryId, endData.Value.PlaylistInsertId, endData.Value.PlaylistInsertNumEntries));
+                    break;
+                case MPVEventId.FileLoaded:
+                    FileLoaded?.Invoke();
+                    break;
+                case MPVEventId.ClientMessage:
+                    var clientMsg = clientEvent.GetClientMessage();
+                    ClientMessageReceived?.Invoke(this, new ClientMessageReceivedEventArgs(clientMsg!));
+                    break;
+                case MPVEventId.VideoReconfig:
+                    VideoReconfigured?.Invoke();
+                    break;
+                case MPVEventId.AudioReconfig:
+                    AudioReconfigured?.Invoke();
+                    break;
+                case MPVEventId.Seek:
+                    SeekStarted?.Invoke();
+                    break;
+                case MPVEventId.PlaybackRestart:
+                    PlaybackRestarted?.Invoke();
+                    break;
+                case MPVEventId.PropertyChange:
+                    var changedProp = clientEvent.GetEventProperty();
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
+                    break;
+                case MPVEventId.QueueOverflow:
+                    QueueOverflowed?.Invoke();
+                    break;
+                case MPVEventId.Hook:
+                    var hook = clientEvent.GetHook();
+                    HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
+                    break;
+                default:
+                    return;
             }
         }
     }
@@ -375,6 +387,9 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">MPVNode with data</param>
+    /// <remarks>
+    /// You can't normally set options during runtime.
+    /// </remarks>
     public new void SetOption(string name, MPVNode data)
     {
         var success = base.SetOption(name, data);
@@ -389,6 +404,9 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <remarks>
+    /// You can't normally set options during runtime.
+    /// </remarks>
     public void SetOption(string name, string data)
     {
         var success = base.SetOptionString(name, data);
