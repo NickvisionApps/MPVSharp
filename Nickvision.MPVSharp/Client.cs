@@ -1,4 +1,5 @@
 using Nickvision.MPVSharp.Internal;
+using System.Globalization;
 
 namespace Nickvision.MPVSharp;
 
@@ -8,7 +9,7 @@ namespace Nickvision.MPVSharp;
 public class Client : MPVClient, IDisposable
 {
     private bool _disposed;
-    
+
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
     public event EventHandler<SetPropertyReplyReceivedEventArgs>? SetPropertyReplyReceived;
@@ -445,9 +446,55 @@ public class Client : MPVClient, IDisposable
         RequestLogMessages(level);
     }
 
+    /// <summary>
+    /// Create OpenGLRenderContext
+    /// </summary>
+    /// <returns>New render context</returns>
+    public RenderContext CreateRenderContext() => new RenderContext(Handle);
+
+    /// <summary>
+    /// Toggle paused state
+    /// </summary>
     public void CyclePause() => Command("cycle pause");
 
-    public RenderContext CreateRenderContext() => new RenderContext(Handle);
+    /// <summary>
+    /// Seek command
+    /// </summary>
+    /// <param name="target">Time in seconds</param>
+    /// <param name="flags">Seek flags</param>
+    public void Seek(double target, string flags = "relative")
+    {
+        try
+        {
+            Command(new []{"seek", target.ToString(CultureInfo.InvariantCulture), flags});
+        }
+        catch (ClientException) { } // Seek fails if nothing is playing, we don't want a crash
+    }
+
+    /// <summary>
+    /// Load a file from path or URL
+    /// </summary>
+    /// <param name="url">File path or URL</param>
+    /// <param name="flags">Loadfile flags</param>
+    public void LoadFile(string url, string flags = "replace") => Command(new []{"loadfile", url, flags});
+
+    /// <summary>
+    /// Play next file in playlist
+    /// </summary>
+    /// <param name="force">Whether to terminate playback if there are no more files</param>
+    public void PlaylistNext(bool force = false) => Command(new []{"playlist-next", force ? "force" : "weak"});
+
+    /// <summary>
+    /// Play previous file in playlist
+    /// </summary>
+    /// <param name="force">Whether to terminate playback if the first file is being playing</param>
+    public void PlaylistPrev(bool force = false) => Command(new []{"playlist-prev", force ? "force" : "weak"});
+
+    /// <summary>
+    /// Start (or restart) playback of the given playlist index
+    /// </summary>
+    /// <param name="index">0-based index</param>
+    public void PlaylistPlayIndex(uint index) => Command(new []{"playlist-play-index", index.ToString()});
 
     /// <summary>
     /// Finalizes the Client
