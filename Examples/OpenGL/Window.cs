@@ -42,7 +42,7 @@ public class MPVWindow : GameWindow
         _ctx = _player.CreateRenderContext();
         // GameWindow calls OnRenderFrame, well, every frame, so we don't need callback for MPV to tell us when to draw
         _ctx.SetupGL(null);
-        _player.Command("loadfile https://www.youtube.com/watch?v=UXqq0ZvbOnk append-play");
+        _player.LoadFile("https://www.youtube.com/watch?v=UXqq0ZvbOnk");
     }
     
     /// <summary>
@@ -57,6 +57,14 @@ public class MPVWindow : GameWindow
         if (KeyboardState.IsKeyReleased(Keys.Space))
         {
             _player.CyclePause();
+        }
+        if (KeyboardState.IsKeyDown(Keys.Left))
+        {
+            _player.Seek(-0.5);
+        }
+        if (KeyboardState.IsKeyDown(Keys.Right))
+        {
+            _player.Seek(0.5);
         }
         SwapBuffers();
     }

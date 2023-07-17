@@ -21,7 +21,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <summary>
     /// Construct window
     /// </summary>
-    public MainWindow()
+    public MainWindow(Gtk.Application application)
     {
         SetSizeRequest(640, 400);
         var header = Gtk.HeaderBar.New();
@@ -65,6 +65,15 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _glArea.OnRealize += OnRealizeGLArea;
         _glArea.OnUnrealize += OnUnrealizeGLArea;
         _glArea.OnRender += OnRenderGLArea;
+        // Keyboard shortcuts
+        var actSeekLeft = Gio.SimpleAction.New("seek-left", null);
+        actSeekLeft.OnActivate += (sender, e) => _player.Seek(-1);
+        AddAction(actSeekLeft);
+        application.SetAccelsForAction("win.seek-left", new []{"a"});
+        var actSeekRight = Gio.SimpleAction.New("seek-right", null);
+        actSeekRight.OnActivate += (sender, e) => _player.Seek(1);
+        AddAction(actSeekRight);
+        application.SetAccelsForAction("win.seek-right", new []{"d"});
     }
 
     /// <summary>

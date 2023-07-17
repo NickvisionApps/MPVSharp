@@ -21,7 +21,7 @@ public class Program
         foreach (var path in args)
         {
             Console.WriteLine($"Adding {path}...");
-            player.Command(new string[] {"loadfile", path, "append"});
+            player.LoadFile(path, "append");
         }
         player.Command("playlist-play-index 0");
         var alive = true;
