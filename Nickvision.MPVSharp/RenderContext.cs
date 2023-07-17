@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp;
 
+/// <summary>
+/// OpenGL render context
+/// </summary>
 public class RenderContext : MPVRenderContext, IDisposable
 {
     private const int GLDrawFramebufferBinding = 0x8CA6;
@@ -10,12 +13,18 @@ public class RenderContext : MPVRenderContext, IDisposable
     private bool _disposed;
     private MPVRenderUpdateFn? _callback;
     
+    /// <summary>
+    /// Construct RenderContext
+    /// </summary>
     public RenderContext(nint clientHandle)
     {
         _disposed = false;
         _clientHandle = clientHandle;
     }
     
+    /// <summary>
+    /// Setup OpenGL rendering
+    /// </summary>
     public void SetupGL(MPVRenderUpdateFn? callback)
     {
         var glParams = new MPVOpenGLInitParams
@@ -46,10 +55,14 @@ public class RenderContext : MPVRenderContext, IDisposable
         }
     }
     
+    /// <summary>
+    /// Render frame
+    /// </summary>
+    /// <param name="width">Rendering area width</param>
+    /// <param name="height">Rendering area width</param>
     public void RenderGL(int width, int height)
     {
-        int fboInt;
-        OpenGLHelpers.GLGetIntegerV(GLDrawFramebufferBinding, out fboInt);
+        OpenGLHelpers.GLGetIntegerV(GLDrawFramebufferBinding, out int fboInt);
         var fbo = new MPVOpenGLFBO
         {
             FBO = fboInt,

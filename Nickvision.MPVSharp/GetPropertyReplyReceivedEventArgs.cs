@@ -23,7 +23,7 @@ public class GetPropertyReplyReceivedEventArgs : EventArgs
     /// <summary>
     /// Create args for GetPropertyReply event
     /// </summary>
-    /// <param name="replyUserdata">Reply userdata</param>
+    /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
     /// <param name="node">Node holding data</param>
     public GetPropertyReplyReceivedEventArgs(ulong replyUserdata, string name, MPVNode? node)

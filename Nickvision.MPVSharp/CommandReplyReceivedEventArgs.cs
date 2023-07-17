@@ -23,7 +23,7 @@ public class CommandReplyReceivedEventArgs : EventArgs
     /// <summary>
     /// Create args for CommandReply event
     /// </summary>
-    /// <param name="replyUserdata">Reply userdata</param>
+    /// <param name="replyUserdata">Reply Id</param>
     /// <param name="error">Error code</param>
     /// <param name="result">Command result</param>
     public CommandReplyReceivedEventArgs(ulong replyUserdata, int error, MPVNode result)
