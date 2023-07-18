@@ -23,14 +23,14 @@ public struct MPVNodeList
     /// </summary>
     private readonly nint _keys;
 
-    private const int NodeSize = 16;
+    private const int NODE_SIZE = 16;
 
     public static explicit operator MPVNode[](MPVNodeList n)
     {
         var result = new MPVNode[n.Num];
         for (var i = 0; i < n.Num; i++)
         {
-            result[i] = Marshal.PtrToStructure<MPVNode>(n._values + i * NodeSize);
+            result[i] = Marshal.PtrToStructure<MPVNode>(n._values + i * NODE_SIZE);
         }
         return result;
     }

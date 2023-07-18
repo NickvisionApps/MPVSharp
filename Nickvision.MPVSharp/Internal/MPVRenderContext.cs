@@ -8,6 +8,8 @@ namespace Nickvision.MPVSharp.Internal;
 /// </summary>
 public partial class MPVRenderContext
 {
+    public delegate void MPVRenderUpdateFn(nint data);
+
     [LibraryImport("libmpv.so.2")]
     private static partial MPVError mpv_render_context_create(out nint ctx, nint handle, MPVRenderParam[] param);
     [LibraryImport("libmpv.so.2")]
@@ -24,8 +26,6 @@ public partial class MPVRenderContext
     private static partial void mpv_render_context_report_swap(nint ctx);
     [LibraryImport("libmpv.so.2")]
     private static partial void mpv_render_context_free(nint ctx);
-
-    public delegate void MPVRenderUpdateFn(nint data);
     
     private nint _handle;
     

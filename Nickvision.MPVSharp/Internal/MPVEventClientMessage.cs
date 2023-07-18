@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 [StructLayout(LayoutKind.Sequential)]
-public struct MPVEventClientMessage {
+public struct MPVEventClientMessage
+{
     /// <summary>
     /// Number of arguments
     /// </summary>

@@ -6,7 +6,8 @@ namespace Nickvision.MPVSharp.Internal;
 /// Generic data storage
 /// </summary>
 [StructLayout(LayoutKind.Explicit)]
-public partial struct MPVNode {
+public partial struct MPVNode
+{
     [LibraryImport("libmpv.so.2")]
     private static partial void mpv_free_node_contents(ref MPVNode node);
 

@@ -117,33 +117,33 @@ public class Client : MPVClient, IDisposable
                     Destroyed?.Invoke();
                     break;
                 case MPVEventId.LogMessage:
-                    var msg = clientEvent.GetEventLogMessage();
+                    var msg = clientEvent.EventLogMessage;
                     LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
                     break;
                 case MPVEventId.GetPropertyReply:
-                    var getProp = clientEvent.GetEventProperty();
+                    var getProp = clientEvent.EventProperty;
                     GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
                     break;
                 case MPVEventId.SetPropertyReply:
                     SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
                     break;
                 case MPVEventId.CommandReply:
-                    var getResult = clientEvent.GetCommandResult();
+                    var getResult = clientEvent.CommandResult;
                     CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
                     break;
                 case MPVEventId.StartFile:
-                    var startData = clientEvent.GetStartFile();
+                    var startData = clientEvent.StartFile;
                     FileStarted?.Invoke(this, new FileStartedEventArgs(startData!.Value.PlaylistEntryId));
                     break;
                 case MPVEventId.EndFile:
-                    var endData = clientEvent.GetEndFile();
+                    var endData = clientEvent.EndFile;
                     FileEnded?.Invoke(this, new FileEndedEventArgs(endData!.Value.Reason, endData.Value.Error, endData.Value.PlaylistEntryId, endData.Value.PlaylistInsertId, endData.Value.PlaylistInsertNumEntries));
                     break;
                 case MPVEventId.FileLoaded:
                     FileLoaded?.Invoke();
                     break;
                 case MPVEventId.ClientMessage:
-                    var clientMsg = clientEvent.GetClientMessage();
+                    var clientMsg = clientEvent.ClientMessage;
                     ClientMessageReceived?.Invoke(this, new ClientMessageReceivedEventArgs(clientMsg!));
                     break;
                 case MPVEventId.VideoReconfig:
@@ -159,14 +159,14 @@ public class Client : MPVClient, IDisposable
                     PlaybackRestarted?.Invoke();
                     break;
                 case MPVEventId.PropertyChange:
-                    var changedProp = clientEvent.GetEventProperty();
+                    var changedProp = clientEvent.EventProperty;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
                     break;
                 case MPVEventId.QueueOverflow:
                     QueueOverflowed?.Invoke();
                     break;
                 case MPVEventId.Hook:
-                    var hook = clientEvent.GetHook();
+                    var hook = clientEvent.Hook;
                     HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
                     break;
             }
@@ -453,7 +453,7 @@ public class Client : MPVClient, IDisposable
     /// Create OpenGLRenderContext
     /// </summary>
     /// <returns>New render context</returns>
-    public RenderContext CreateRenderContext() => new RenderContext(Handle);
+    public RenderContext CreateRenderContext() => new RenderContext(_handle);
 
     /// <summary>
     /// Toggle paused state

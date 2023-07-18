@@ -31,100 +31,113 @@ public partial struct MPVEvent
     private nint _data;
 
     /// <summary>
-    /// Get string describing the event
+    /// The string describing the event
     /// </summary>
-    /// <returns>Event name</returns>
-    public string GetName() => mpv_event_name(Id);
+    public string Name => mpv_event_name(Id);
 
     /// <summary>
-    /// Get EventLogMessage of LogMessage event
+    /// The EventLogMessage of LogMessage event
     /// </summary>
-    /// <returns>MPVEventLogMessage or null if wrong event Id</returns>
-    public MPVEventLogMessage? GetEventLogMessage()
+    public MPVEventLogMessage? EventLogMessage
     {
-        if (Id != MPVEventId.LogMessage)
+        get
         {
-            return null;
+            if (Id != MPVEventId.LogMessage)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventLogMessage>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventLogMessage>(_data);
     }
 
     /// <summary>
-    /// Get MPVEventProperty of PropertyChange or GetPropertyReply event
+    /// The MPVEventProperty of PropertyChange or GetPropertyReply event
     /// </summary>
-    /// <returns>MPVEventProperty or null if wrong event Id</returns>
-    public MPVEventProperty? GetEventProperty()
+    public MPVEventProperty? EventProperty
     {
-        if ((Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply) || Error < (int)MPVError.Success)
+        get
         {
-            return null;
+            if ((Id != MPVEventId.PropertyChange && Id != MPVEventId.GetPropertyReply) || Error < (int)MPVError.Success)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventProperty>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventProperty>(_data);
     }
 
     /// <summary>
-    /// Get MPVEventCommand of CommandReply event
+    /// The MPVEventCommand of CommandReply event
     /// </summary>
-    /// <returns>MPVEventCommand or null if wrong event Id</returns>
-    public MPVEventCommand? GetCommandResult()
+    public MPVEventCommand? CommandResult
     {
-        if (Id != MPVEventId.CommandReply)
+        get
         {
-            return null;
+            if (Id != MPVEventId.CommandReply)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventCommand>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventCommand>(_data);
     }
 
     /// <summary>
-    /// Get MPVEventStartFile of StartFile event
+    /// The MPVEventStartFile of StartFile event
     /// </summary>
-    /// <returns>MPVEventStartFile or null if wrong event Id</returns>
-    public MPVEventStartFile? GetStartFile()
+    public MPVEventStartFile? StartFile
     {
-        if (Id != MPVEventId.StartFile)
+        get
         {
-            return null;
+            if (Id != MPVEventId.StartFile)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventStartFile>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventStartFile>(_data);
     }
 
     /// <summary>
-    /// Get MPVEventEndFile of EndFile event
+    /// The MPVEventEndFile of EndFile event
     /// </summary>
-    /// <returns>MPVEventEndFile or null if wrong event Id</returns>
-    public MPVEventEndFile? GetEndFile()
+    public MPVEventEndFile? EndFile
     {
-        if (Id != MPVEventId.EndFile)
+        get
         {
-            return null;
+            if (Id != MPVEventId.EndFile)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventEndFile>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventEndFile>(_data);
     }
 
     /// <summary>
-    /// Get client message of ClientMessage event
+    /// The client message of ClientMessage event
     /// </summary>
-    /// <returns>Array of string args or null if wrong event Id</returns>
-    public string[]? GetClientMessage()
+    public string[]? ClientMessage
     {
-        if (Id != MPVEventId.ClientMessage)
+        get
         {
-            return null;
+            if (Id != MPVEventId.ClientMessage)
+            {
+                return null;
+            }
+            return MPVEventClientMessage.GetStringArgs(Marshal.PtrToStructure<MPVEventClientMessage>(_data));
         }
-        return MPVEventClientMessage.GetStringArgs(Marshal.PtrToStructure<MPVEventClientMessage>(_data));
     }
 
     /// <summary>
-    /// Get MPVEventHook of Hook event
+    /// The MPVEventHook of Hook event
     /// </summary>
-    /// <returns>MPVEventHook or null if wrong event Id</returns>
-    public MPVEventHook? GetHook()
+    public MPVEventHook? Hook
     {
-        if (Id != MPVEventId.Hook)
+        get
         {
-            return null;
+            if (Id != MPVEventId.Hook)
+            {
+                return null;
+            }
+            return Marshal.PtrToStructure<MPVEventHook>(_data);
         }
-        return Marshal.PtrToStructure<MPVEventHook>(_data);
     }
 
     /// <summary>
