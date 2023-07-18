@@ -1,5 +1,8 @@
 using Nickvision.MPVSharp.Internal;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Nickvision.MPVSharp;
 

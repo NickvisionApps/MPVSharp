@@ -1,4 +1,5 @@
 using Nickvision.MPVSharp.Internal;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp;
