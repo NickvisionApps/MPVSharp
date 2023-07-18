@@ -1,5 +1,8 @@
 using Nickvision.MPVSharp.Internal;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Nickvision.MPVSharp;
 
@@ -37,15 +40,45 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
+    /// Finalizes the Client
+    /// </summary>
+    ~Client() => Dispose(false);
+
+    /// <summary>
+    /// Frees resources used by the Client object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the Client object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            Destroy();
+        }
+        _disposed = true;
+    }
+
+    /// <summary>
     /// Initialize an uninitialized mpv instance.
     /// If the mpv instance is already running, an error is returned.
     /// </summary>
-    /// <returns>Error code</returns>
     /// <remarks>
     /// Some options are required to set before Initialize:
     /// config, config-dir, input-conf, load-scripts, script,
     /// player-operation-mode, input-app-events (OSX), all encoding mode options
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if initialization was not successful</exception>
     public new void Initialize()
     {
         var success = base.Initialize();
@@ -61,16 +94,14 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="callback">Callback function</param>
     /// <param name="data">Pointer to arbitrary data to pass to callback</param>
-    public new void SetWakeUpCallback(WakeUpCallback callback, nint data)
-    {
-        Console.WriteLine("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because event loop is already running.");
-        Environment.Exit((int)MPVError.Unsupported);
-    }
+    /// <exception cref="InvalidOperationException">Thrown if method is called as operation unsupported</exception>
+    public new void SetWakeUpCallback(WakeUpCallback callback, nint data) => throw new InvalidOperationException("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because event loop is already running.");
 
     /// <summary>
     /// Execute command array
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
+    /// <exception cref="ClientException">Thrown if command was not successful</exception>
     public new void Command(string[] command)
     {
         var success = base.Command(command);
@@ -81,23 +112,32 @@ public class Client : MPVClient, IDisposable
     }
     
     /// <summary>
+    /// Execute command string
+    /// </summary>
+    /// <param name="command">A command string</param>
+    /// <exception cref="ClientException">Thrown if command was not successful</exception>
+    public new void CommandString(string command)
+    {
+        var success = base.CommandString(command);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
+    /// <summary>
     /// Execute command list
     /// </summary>
     /// <param name="command">A command to execute as list of strings</param>
+    /// <remarks>Alias for Command(string[])</remarks>
     public void Command(List<string> command) => Command(command.ToArray());
 
     /// <summary>
     /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
-    public void Command(string command)
-    {
-        var success = CommandString(command);
-        if (success < MPVError.Success)
-        {
-            throw new ClientException(success);
-        }
-    }
+    /// <remarks>Alias for CommandString(string)</remarks>
+    public void Command(string command) => CommandString(command);
 
     /// <summary>
     /// MPV events loop
@@ -114,33 +154,33 @@ public class Client : MPVClient, IDisposable
                     Destroyed?.Invoke();
                     break;
                 case MPVEventId.LogMessage:
-                    var msg = clientEvent.GetEventLogMessage();
+                    var msg = clientEvent.EventLogMessage;
                     LogMessageReceived?.Invoke(this, new LogMessageReceivedEventArgs(msg!.Value.Prefix, msg.Value.Text, msg.Value.LogLevel));
                     break;
                 case MPVEventId.GetPropertyReply:
-                    var getProp = clientEvent.GetEventProperty();
+                    var getProp = clientEvent.EventProperty;
                     GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
                     break;
                 case MPVEventId.SetPropertyReply:
                     SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
                     break;
                 case MPVEventId.CommandReply:
-                    var getResult = clientEvent.GetCommandResult();
+                    var getResult = clientEvent.CommandResult;
                     CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
                     break;
                 case MPVEventId.StartFile:
-                    var startData = clientEvent.GetStartFile();
+                    var startData = clientEvent.StartFile;
                     FileStarted?.Invoke(this, new FileStartedEventArgs(startData!.Value.PlaylistEntryId));
                     break;
                 case MPVEventId.EndFile:
-                    var endData = clientEvent.GetEndFile();
+                    var endData = clientEvent.EndFile;
                     FileEnded?.Invoke(this, new FileEndedEventArgs(endData!.Value.Reason, endData.Value.Error, endData.Value.PlaylistEntryId, endData.Value.PlaylistInsertId, endData.Value.PlaylistInsertNumEntries));
                     break;
                 case MPVEventId.FileLoaded:
                     FileLoaded?.Invoke();
                     break;
                 case MPVEventId.ClientMessage:
-                    var clientMsg = clientEvent.GetClientMessage();
+                    var clientMsg = clientEvent.ClientMessage;
                     ClientMessageReceived?.Invoke(this, new ClientMessageReceivedEventArgs(clientMsg!));
                     break;
                 case MPVEventId.VideoReconfig:
@@ -156,14 +196,14 @@ public class Client : MPVClient, IDisposable
                     PlaybackRestarted?.Invoke();
                     break;
                 case MPVEventId.PropertyChange:
-                    var changedProp = clientEvent.GetEventProperty();
+                    var changedProp = clientEvent.EventProperty;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
                     break;
                 case MPVEventId.QueueOverflow:
                     QueueOverflowed?.Invoke();
                     break;
                 case MPVEventId.Hook:
-                    var hook = clientEvent.GetHook();
+                    var hook = clientEvent.Hook;
                     HookTriggered?.Invoke(this, new HookTriggeredEventArgs(hook!.Value.Name, hook.Value.Id));
                     break;
             }
@@ -175,6 +215,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="replyUserdata">Optional reply Id</param>
+    /// <exception cref="ClientException">Thrown if can't observe property</exception>
     public void ObserveProperty(string name, ulong replyUserdata = 0)
     {
         var success = ObserveProperty(name, MPVFormat.Node, replyUserdata);
@@ -189,6 +230,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, string data)
     {
         var success = base.SetProperty(name, data);
@@ -203,6 +245,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Bool data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public void SetProperty(string name, bool data)
     {
         var success = base.SetProperty(name, data ? 1 : 0);
@@ -217,6 +260,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, long data)
     {
         var success = base.SetProperty(name, data);
@@ -231,6 +275,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, double data)
     {
         var success = base.SetProperty(name, data);
@@ -245,6 +290,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, MPVNode data)
     {
         var success = base.SetProperty(name, data);
@@ -254,15 +300,29 @@ public class Client : MPVClient, IDisposable
         }
     }
 
-    public new void SetPropertyAsync(ulong replyUserdata, string name, int data)
+    /// <summary>
+    /// Set property using Flag format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Bool data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
+    public void SetPropertyAsync(ulong replyUserdata, string name, bool data)
     {
-        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        var success = base.SetPropertyAsync(replyUserdata, name, data ? 1 : 0);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
     }
 
+    /// <summary>
+    /// Set property using Int64 format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, long data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -272,6 +332,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using Double format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, double data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -281,6 +348,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using String format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, string data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -290,6 +364,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using Node format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, MPVNode data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -304,6 +385,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out string data)
     {
         var success = base.GetProperty(name, out data);
@@ -318,6 +400,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public void GetProperty(string name, out bool data)
     {
         var success = base.GetProperty(name, out int flag);
@@ -333,6 +416,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out long data)
     {
         var success = base.GetProperty(name, out data);
@@ -347,6 +431,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out double data)
     {
         var success = base.GetProperty(name, out data);
@@ -361,6 +446,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out MPVNode data)
     {
         var success = base.GetProperty(name, out data);
@@ -370,6 +456,12 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Get property using Node format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public void GetPropertyAsync(ulong replyUserdata, string name)
     {
         var success = base.GetPropertyAsync(replyUserdata, name, MPVFormat.Node);
@@ -387,6 +479,7 @@ public class Client : MPVClient, IDisposable
     /// <remarks>
     /// You can't normally set options during runtime.
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if can't set option</exception>
     public new void SetOption(string name, MPVNode data)
     {
         var success = base.SetOption(name, data);
@@ -404,6 +497,7 @@ public class Client : MPVClient, IDisposable
     /// <remarks>
     /// You can't normally set options during runtime.
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if can't set option</exception>
     public void SetOption(string name, string data)
     {
         var success = base.SetOptionString(name, data);
@@ -417,6 +511,7 @@ public class Client : MPVClient, IDisposable
     /// Request log messages with specified minimum log level
     /// </summary>
     /// <param name="logLevel">Log level as string</param>
+    /// <exception cref="ClientException">Thrown if failed to request messages</exception>
     public new void RequestLogMessages(string logLevel)
     {
         var success = base.RequestLogMessages(logLevel);
@@ -432,7 +527,7 @@ public class Client : MPVClient, IDisposable
     /// <param name="logLevel">Log level as MPVLogLevel</param>
     public void RequestLogMessages(MPVLogLevel logLevel)
     {
-        var level = logLevel switch
+        RequestLogMessages(logLevel switch
         {
             MPVLogLevel.Fatal => "fatal",
             MPVLogLevel.Error => "error",
@@ -442,15 +537,14 @@ public class Client : MPVClient, IDisposable
             MPVLogLevel.Debug => "debug",
             MPVLogLevel.Trace => "trace",
             _ => "no"
-        };
-        RequestLogMessages(level);
+        });
     }
 
     /// <summary>
     /// Create OpenGLRenderContext
     /// </summary>
     /// <returns>New render context</returns>
-    public RenderContext CreateRenderContext() => new RenderContext(Handle);
+    public RenderContext CreateRenderContext() => new RenderContext(_handle);
 
     /// <summary>
     /// Toggle paused state
@@ -495,34 +589,4 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="index">0-based index</param>
     public void PlaylistPlayIndex(uint index) => Command(new []{"playlist-play-index", index.ToString()});
-
-    /// <summary>
-    /// Finalizes the Client
-    /// </summary>
-    ~Client() => Dispose(false);
-
-    /// <summary>
-    /// Frees resources used by the Client object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the Client object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            Destroy();
-        }
-        _disposed = true;
-    }
 }

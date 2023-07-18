@@ -2,8 +2,12 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
 
+/// <summary>
+/// Data for EndFile event
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct MPVEventEndFile {
+public struct MPVEventEndFile
+{
     /// <summary>
     /// Event reason
     /// </summary>

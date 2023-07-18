@@ -5,7 +5,8 @@ namespace Nickvision.MPVSharp.Internal;
 /// <summary>
 /// MPV error codes
 /// </summary>
-public enum MPVError {
+public enum MPVError
+{
     /// <summary>
     /// Unspecified error.
     /// </summary>

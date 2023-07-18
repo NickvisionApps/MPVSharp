@@ -2,14 +2,18 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
 
+/// <summary>
+/// Data for ClientMessage event
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct MPVEventClientMessage {
+public struct MPVEventClientMessage
+{
     /// <summary>
     /// Number of arguments
     /// </summary>
     public int Num;
     /// <summary>
-    /// Pointer to arbitraty arguments chosen by the sender of the message
+    /// Pointer to arbitrary arguments chosen by the sender of the message
     /// </summary>
     private nint _argsPtr;
     

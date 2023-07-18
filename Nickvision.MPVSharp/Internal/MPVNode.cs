@@ -6,7 +6,8 @@ namespace Nickvision.MPVSharp.Internal;
 /// Generic data storage
 /// </summary>
 [StructLayout(LayoutKind.Explicit)]
-public partial struct MPVNode {
+public partial struct MPVNode
+{
     [LibraryImport("libmpv.so.2")]
     private static partial void mpv_free_node_contents(ref MPVNode node);
 
@@ -25,42 +26,73 @@ public partial struct MPVNode {
     [FieldOffset(8)]
     public MPVFormat Format;
 
+    /// <summary>
+    /// Construct MPVNode containing string
+    /// </summary>
+    /// <param name="str">String</param>
+    /// <param name="format">Node format (String or OSDString)</param>
     public MPVNode(string str, MPVFormat format = MPVFormat.String)
     {
         _string = Marshal.StringToCoTaskMemUTF8(str);
         Format = MPVFormat.String;
     }
-    
+
+    /// <summary>
+    /// Construct MPVNode containing flag
+    /// </summary>
+    /// <param name="flag">Flag (0 or 1)</param>
     public MPVNode(int flag)
     {
         _flag = flag;
         Format = MPVFormat.Flag;
     }
 
+    /// <summary>
+    /// Construct MPVNode containing Int64
+    /// </summary>
+    /// <param name="int64">Long int</param>
     public MPVNode(long int64)
     {
         _int64 = int64;
         Format = MPVFormat.Int64;
     }
 
+    /// <summary>
+    /// Construct MPVNode containing Double
+    /// </summary>
+    /// <param name="dbl">Double</param>
     public MPVNode(double dbl)
     {
         _double = dbl;
         Format = MPVFormat.Double;
     }
 
+    /// <summary>
+    /// Construct MPVNode containing NodeList
+    /// </summary>
+    /// <param name="list">NodeList</param>
+    /// <param name="format">Node format (NodeMap or NodeArray)</param>
     public MPVNode(MPVNodeList list, MPVFormat format)
     {
         Marshal.StructureToPtr(list, _nodeList, true);
         Format = format;
     }
 
+    /// <summary>
+    /// Construct MPVNode containing ByteArray
+    /// </summary>
+    /// <param name="ba">MPVByteArray</param>
     public MPVNode(MPVByteArray ba)
     {
         Marshal.StructureToPtr(ba, _byteArray, true);
         Format = MPVFormat.ByteArray;
     }
 
+    /// <summary>
+    /// Get MPVNode from pointer
+    /// </summary>
+    /// <param name="data">Pointer to node</param>
+    /// <returns>Node from pointer</returns>
     public static MPVNode FromIntPtr(nint data) => Marshal.PtrToStructure<MPVNode>(data);
 
     /// <summary>

@@ -3,7 +3,8 @@ namespace Nickvision.MPVSharp.Internal;
 /// <summary>
 /// Possible event Ids
 /// </summary>
-public enum MPVEventId {
+public enum MPVEventId
+{
     /// <summary>
     /// Nothing happened
     /// </summary>

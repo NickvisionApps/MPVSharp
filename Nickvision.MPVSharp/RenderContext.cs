@@ -1,4 +1,5 @@
 using Nickvision.MPVSharp.Internal;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp;
@@ -8,9 +9,10 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class RenderContext : MPVRenderContext, IDisposable
 {
-    private const int GLDrawFramebufferBinding = 0x8CA6;
-    private readonly nint _clientHandle;
+    private const int GL_DRAW_FRAMEBUFFER_BINDING = 0x8CA6;
+
     private bool _disposed;
+    private readonly nint _clientHandle;
     private MPVRenderUpdateFn? _callback;
     
     /// <summary>
@@ -20,14 +22,46 @@ public class RenderContext : MPVRenderContext, IDisposable
     {
         _disposed = false;
         _clientHandle = clientHandle;
+        _callback = null;
+    }
+
+    /// <summary>
+    /// Finalizes the RenderContext
+    /// </summary>
+    ~RenderContext() => Dispose(false);
+
+    /// <summary>
+    /// Frees resources used by the RenderContext object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the RenderContext object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            Free();
+        }
+        _disposed = true;
     }
     
     /// <summary>
     /// Setup OpenGL rendering
     /// </summary>
+    /// <exception cref="ClientException">Thrown if unable to setup GL</exception>
     public void SetupGL(MPVRenderUpdateFn? callback)
     {
-        var glParams = new MPVOpenGLInitParams
+        var glParams = new MPVOpenGLInitParams()
         {
             GetProcAddrFn = (ctx, name) => OpenGLHelpers.EGLGetProcAddress(name),
             Param = IntPtr.Zero
@@ -62,7 +96,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     /// <param name="height">Rendering area width</param>
     public void RenderGL(int width, int height)
     {
-        OpenGLHelpers.GLGetIntegerV(GLDrawFramebufferBinding, out int fboInt);
+        OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out int fboInt);
         var fbo = new MPVOpenGLFBO
         {
             FBO = fboInt,
@@ -87,35 +121,5 @@ public class RenderContext : MPVRenderContext, IDisposable
         {
             throw new ClientException(success);
         }
-    }
-
-    /// <summary>
-    /// Finalizes the RenderContext
-    /// </summary>
-    ~RenderContext() => Dispose(false);
-
-    /// <summary>
-    /// Frees resources used by the RenderContext object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the RenderContext object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            Free();
-        }
-        _disposed = true;
     }
 }

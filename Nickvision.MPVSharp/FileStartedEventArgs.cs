@@ -1,3 +1,5 @@
+using System;
+
 namespace Nickvision.MPVSharp;
 
 /// <summary>
@@ -5,7 +7,10 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class FileStartedEventArgs : EventArgs
 {
-    public long PlaylistEntryId;
+    /// <summary>
+    /// Index of file in playlist
+    /// </summary>
+    public long PlaylistEntryId { get; init; }
 
     /// <summary>
     /// Create args for StartFile event

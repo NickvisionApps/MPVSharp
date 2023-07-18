@@ -1,4 +1,4 @@
-﻿using Nickvision.MPVSharp;
+﻿namespace Nickvision.MPVSharp.Examples.Simple;
 
 public class Program
 {
@@ -10,7 +10,7 @@ public class Program
             return 1;
         }
         // Create and init player
-        var player = new Client();
+        using var player = new Client();
         player.SetProperty("input-default-bindings", true);
         player.SetProperty("input-vo-keyboard", true);
         player.SetProperty("ytdl", true);

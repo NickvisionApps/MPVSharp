@@ -1,3 +1,5 @@
+using System;
+
 namespace Nickvision.MPVSharp;
 
 /// <summary>
@@ -8,11 +10,11 @@ public class SetPropertyReplyReceivedEventArgs : EventArgs
     /// <summary>
     /// Reply userdata
     /// </summary>
-    public ulong ReplyUserdata;
+    public ulong ReplyUserdata { get; init; }
     /// <summary>
     /// Error code
     /// </summary>
-    public int Error;
+    public int Error { get; init; }
 
     /// <summary>
     /// Create args for SetPropertyReply event
