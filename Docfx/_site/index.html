@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Nickvision.MPVSharp </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Nickvision.MPVSharp ">
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/blob/check/Docs/index.md/#L1">
+  </head>
+
+  <script type="module">
+    import options from './public/main.js'
+    import { init } from './public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="nickvisionmpvsharp">Nickvision.MPVSharp</h1>
+
+<p><strong>Use MPV in your C# apps</strong></p>
+<p>MPVSharp provides C# bindings for <a href="https://mpv.io/manual/master/#embedding-into-other-programs-libmpv">libmpv</a>, a library for embedding amazing <a href="https://mpv.io/">MPV</a> player into another apps.</p>
+<h1 id="installation">Installation</h1>
+<p><a href='https://www.nuget.org/packages/Nickvision.MPVSharp/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'></a></p>
+<p>You also need <code>libmpv</code> installed on your system.</p>
+<blockquote>
+<p><strong>The package only supports Linux at the moment!</strong></p>
+</blockquote>
+<h1 id="how-to-use">How to use</h1>
+<p>There are 2 namespaces:</p>
+<ul>
+<li><strong><code>Nickvision.MPVSharp.Internal</code></strong> provides objects and methods that closely follow libmpv C API. You can find functions from <code>client.h</code> in <code>MPVClient.cs</code> and functions from <code>render.h</code> in <code>MPVRenderContext.cs</code></li>
+<li><strong><code>Nickvision.MPVSharp</code></strong> gives you another objects that work on top of <code>Internal</code> counterpart, but provides you with various helpers and convenience functions. They are easier to use, but the API is slightly different than in <code>Internal</code>, so you will probably want to read <a href="api/Nickvision.MPVSharp.Client.html"><code>Client class</code></a> to find what methods you can use.</li>
+</ul>
+<p>Look at the <a href="#examples">examples</a> to get the basic idea how to use MPVSharp.</p>
+<p>There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpc, which is very well documented:</p>
+<ul>
+<li><a href="https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/client.h">client.h</a></li>
+<li><a href="https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render.h">render.h</a></li>
+<li><a href="https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render_gl.h">renger_gl.h</a></li>
+</ul>
+<p>Refer to MPV documentation to find the list of <a href="https://mpv.io/manual/master/#options">options</a>, <a href="https://mpv.io/manual/master/#list-of-input-commands">commands</a> and <a href="https://mpv.io/manual/master/#properties">properties</a>.</p>
+<h1 id="examples">Examples</h1>
+<p><img src="https://raw.githubusercontent.com/NickvisionApps/MPVSharp/main/Examples/GirCore/Screenshot.png" alt="GirCore Example"></p>
+<p><sub>GirCore example playing <a href="https://www.youtube.com/watch?v=UXqq0ZvbOnk">Charge</a> - Blender open movie, licensed under CC BY 4.0</sub></p>
+<ul>
+<li><a href="https://github.com/NickvisionApps/MPVSharp/tree/main/Examples/Simple">Simple</a> - basic program playing your file/link. If the file is video, a window will be created by MPV itself.</li>
+<li><a href="https://github.com/NickvisionApps/MPVSharp/tree/main/Examples/GirCore">GirCore</a> - GTK4 application playing a video from youtube. Made with <a href="https://github.com/gircore/gir.core">GirCore</a>. Requires GTK4 to be installed.</li>
+<li><a href="https://github.com/NickvisionApps/MPVSharp/tree/main/Examples/OpenGL">OpenGL</a> - <a href="https://opentk.net/index.html">OpenTK</a> application playing a video from youtube.</li>
+</ul>
+<h1 id="chat">Chat</h1>
+<p><a href='https://matrix.to/#/#nickvision:matrix.org'><img width='140' alt='Join our room' src='https://user-images.githubusercontent.com/17648453/196094077-c896527d-af6d-4b43-a5d8-e34a00ffd8f6.png'></a></p>
+<h1 id="dependencies">Dependencies</h1>
+<ul>
+<li><a href="https://dotnet.microsoft.com/en-us/">.NET 7</a></li>
+<li>libmpv</li>
+</ul>
+<h1 id="code-of-conduct">Code of Conduct</h1>
+<p>This project follows the <a href="https://wiki.gnome.org/Foundation/CodeOfConduct">GNOME Code of Conduct</a>.</p>
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/NickvisionApps/MPVSharp/blob/check/Docs/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

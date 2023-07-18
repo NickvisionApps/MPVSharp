@@ -1,0 +1,2100 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MPVClient
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MPVClient
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/new/check/apiSpec/new?filename=Nickvision_MPVSharp_Internal_MPVClient.md&amp;value=---%0Auid%3A%20Nickvision.MPVSharp.Internal.MPVClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Nickvision.MPVSharp.Internal.MPVClient">
+
+
+
+  <h1 id="Nickvision_MPVSharp_Internal_MPVClient" data-uid="Nickvision.MPVSharp.Internal.MPVClient" class="text-break">
+    Class MPVClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Nickvision.html">Nickvision</a>.<a class="xref" href="Nickvision.MPVSharp.html">MPVSharp</a>.<a class="xref" href="Nickvision.MPVSharp.Internal.html">Internal</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>MPV Client</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MPVClient : ICloneable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">MPVClient</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Nickvision.MPVSharp.Client.html">Client</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="Nickvision_MPVSharp_Internal_MPVClient_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This object implements functions from libmpv's client.h that accept mpvHandle</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient__ctor_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.#ctor*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient__ctor_System_Nullable_System_IntPtr__System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String)">
+  MPVClient(nint?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Construct MPVClient</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVClient(nint? handle = null, string? name = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a>?</dt>
+    <dd><p>Optional handle to create client for the same player core</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional unique client name</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if failed to create mpvHandle</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient__handle" data-uid="Nickvision.MPVSharp.Internal.MPVClient._handle">
+  _handle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly nint _handle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Id_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Id*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Id" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The ID of this client handle.
+Every client has its own unique ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Id { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Name_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Name*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Name" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The name of this client handle.
+Every client has its own unique name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_AbortAsyncCommand_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.AbortAsyncCommand*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_AbortAsyncCommand_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.AbortAsyncCommand(System.UInt64)">
+  AbortAsyncCommand(ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Signal to all async requests with the matching Id to abort.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AbortAsyncCommand(ulong replyUserdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Clone_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Clone*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Clone" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clone object, creating new MPVClient for the same player core</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>MPVClient as object</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Command_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Command*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Command_System_String___" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Command(System.String[])">
+  Command(string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a command to the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError Command(string[] command)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>A command to execute as array of strings</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_CommandAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandAsync_System_UInt64_System_String___" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandAsync(System.UInt64,System.String[])">
+  CommandAsync(ulong, string?[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Same as Command(), but run the command asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError CommandAsync(ulong replyUserdata, string?[] command)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>A command to execute as array of strings</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_CommandNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNode*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandNode_Nickvision_MPVSharp_Internal_MPVNode_Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNode(Nickvision.MPVSharp.Internal.MPVNode,Nickvision.MPVSharp.Internal.MPVNode@)">
+  CommandNode(MPVNode, out MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Same as CommandRet(), but allows passing structured data in any format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError CommandNode(MPVNode command, out MPVNode result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode with NodeList containing positional or named arguments.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode containing result on command success. Should be freed with MPVNode.FreeNodeContents().</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_CommandNodeAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNodeAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandNodeAsync_System_UInt64_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNodeAsync(System.UInt64,Nickvision.MPVSharp.Internal.MPVNode)">
+  CommandNodeAsync(ulong, MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Same as CommandNode(), but run the command asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError CommandNodeAsync(ulong replyUserdata, MPVNode command)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>command</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode with NodeList containing positional or named arguments</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_CommandRet_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandRet*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandRet_System_String___Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandRet(System.String[],Nickvision.MPVSharp.Internal.MPVNode@)">
+  CommandRet(string[], out MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a command to the player and return the result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError CommandRet(string[] command, out MPVNode node)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>A command to execute as array of strings</p>
+</dd>
+    <dt><code>node</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode containing result on command success.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_CommandString_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandString*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandString_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandString(System.String)">
+  CommandString(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send a command to the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError CommandString(string command)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A command string</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Destroy_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Destroy*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Destroy" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Destroy">
+  Destroy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L509"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnect and destroy the client</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Destroy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode@)">
+  GetProperty(string, out MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using Node format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetProperty(string name, out MPVNode data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Double__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Double@)">
+  GetProperty(string, out double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using Double format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetProperty(string name, out double data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Int32__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Int32@)">
+  GetProperty(string, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L385"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using Flag format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetProperty(string name, out int data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Int64__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Int64@)">
+  GetProperty(string, out long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using Int64 format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetProperty(string name, out long data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.String@)">
+  GetProperty(string, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using String format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetProperty(string name, out string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyAsync_System_UInt64_System_String_Nickvision_MPVSharp_Internal_MPVFormat_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyAsync(System.UInt64,System.String,Nickvision.MPVSharp.Internal.MPVFormat)">
+  GetPropertyAsync(ulong, string, MPVFormat)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property asynchroniously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetPropertyAsync(ulong replyUserdata, string name, MPVFormat format)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>format</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVFormat.html">MPVFormat</a></dt>
+    <dd><p>MPVFormat for returning data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyOSDString_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyOSDString*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyOSDString_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyOSDString(System.String,System.String@)">
+  GetPropertyOSDString(string, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using OSDString format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetPropertyOSDString(string name, out string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyString_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyString*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyString_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyString(System.String,System.String@)">
+  GetPropertyString(string, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get property using String format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError GetPropertyString(string name, out string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Object to write data to</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_GetTimeUs_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetTimeUs*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetTimeUs" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetTimeUs">
+  GetTimeUs()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get internal time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetTimeUs()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>Time in microseconds</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_HookAdd_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookAdd*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_HookAdd_System_UInt64_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookAdd(System.UInt64,System.String,System.Int32)">
+  HookAdd(ulong, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L497"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Register a hook handler.
+A hook is like a synchronous event that blocks the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError HookAdd(ulong replyUserdata, string name, int priority)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Hook name. This should be one of the documented names (see mpv manual).</p>
+</dd>
+    <dt><code>priority</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Hook priority</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_HookContinue_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookContinue*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_HookContinue_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookContinue(System.UInt64)">
+  HookContinue(ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L504"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Respond to a MPVEventHook event. You must call this after you have handled the event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError HookContinue(ulong id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>This must be the value of the MPVEventHook.Id field</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Initialize_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Initialize*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Initialize" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialize an uninitialized mpv instance.
+If the mpv instance is already running, an error is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError Initialize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Nickvision_MPVSharp_Internal_MPVClient_Initialize_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Some options are required to set before Initialize:
+config, config-dir, input-conf, load-scripts, script,
+player-operation-mode, input-app-events (OSX), all encoding mode options</p>
+</div>
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_LoadConfigFile_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.LoadConfigFile*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_LoadConfigFile_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.LoadConfigFile(System.String)">
+  LoadConfigFile(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load a config file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError LoadConfigFile(string path)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Absolute path to config</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_ObserveProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.ObserveProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_ObserveProperty_System_String_Nickvision_MPVSharp_Internal_MPVFormat_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.ObserveProperty(System.String,Nickvision.MPVSharp.Internal.MPVFormat,System.UInt64)">
+  ObserveProperty(string, MPVFormat, ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add property to watch using events</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError ObserveProperty(string name, MPVFormat format, ulong replyUserdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>format</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVFormat.html">MPVFormat</a></dt>
+    <dd><p>Property MPVFormat</p>
+</dd>
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Optional reply Id</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_RequestEvent_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestEvent*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_RequestEvent_Nickvision_MPVSharp_Internal_MPVEventId_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestEvent(Nickvision.MPVSharp.Internal.MPVEventId,System.Int32)">
+  RequestEvent(MPVEventId, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L482"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enable or disable the given event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError RequestEvent(MPVEventId eid, int enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eid</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVEventId.html">MPVEventId</a></dt>
+    <dd><p>Event Id</p>
+</dd>
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Whether the event should be enabled (1) or not (0)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Nickvision_MPVSharp_Internal_MPVClient_RequestEvent_Nickvision_MPVSharp_Internal_MPVEventId_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>All event are enabled by default</p>
+</div>
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_RequestLogMessages_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestLogMessages*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_RequestLogMessages_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestLogMessages(System.String)">
+  RequestLogMessages(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L471"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Request log messages with specified minimum log level</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError RequestLogMessages(string logLevel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Log level as string</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetOption_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOption*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetOption_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOption(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
+  SetOption(string, MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set option using MPVNode format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetOption(string name, MPVNode data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Option name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode with data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Nickvision_MPVSharp_Internal_MPVClient_SetOption_System_String_Nickvision_MPVSharp_Internal_MPVNode__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>You can't normally set options during runtime.</p>
+</div>
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetOptionString_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOptionString*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetOptionString_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOptionString(System.String,System.String)">
+  SetOptionString(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L464"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set option using String format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetOptionString(string name, string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Option name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Nickvision_MPVSharp_Internal_MPVClient_SetOptionString_System_String_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>You can't normally set options during runtime.</p>
+</div>
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
+  SetProperty(string, MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Node format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetProperty(string name, MPVNode data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode with data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Double)">
+  SetProperty(string, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Double format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetProperty(string name, double data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Double data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Int32)">
+  SetProperty(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Flag format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetProperty(string name, int data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Flag data (0 or 1)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Int64)">
+  SetProperty(string, long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Int64 format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetProperty(string name, long data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>Long int data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.String)">
+  SetProperty(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using String format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetProperty(string name, string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,Nickvision.MPVSharp.Internal.MPVNode)">
+  SetPropertyAsync(ulong, string, MPVNode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L377"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using MPVNode format asynchronously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyAsync(ulong replyUserdata, string name, MPVNode data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
+    <dd><p>MPVNode containing data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Double)">
+  SetPropertyAsync(ulong, string, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Double format asynchronously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyAsync(ulong replyUserdata, string name, double data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Double data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Int32)">
+  SetPropertyAsync(ulong, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Flag format asynchronously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyAsync(ulong replyUserdata, string name, int data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Flag data (0 or 1)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Int64)">
+  SetPropertyAsync(ulong, string, long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Int64 format asynchronously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyAsync(ulong replyUserdata, string name, long data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>Long Int data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.String)">
+  SetPropertyAsync(ulong, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L368"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using String format asynchronously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyAsync(ulong replyUserdata, string name, string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyString_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyString*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyString_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyString(System.String,System.String)">
+  SetPropertyString(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using String format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVError SetPropertyString(string name, string data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>String data</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVError.html">MPVError</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_SetWakeUpCallback_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetWakeUpCallback*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetWakeUpCallback_Nickvision_MPVSharp_Internal_MPVClient_WakeUpCallback_System_IntPtr_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetWakeUpCallback(Nickvision.MPVSharp.Internal.MPVClient.WakeUpCallback,System.IntPtr)">
+  SetWakeUpCallback(WakeUpCallback, nint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set a custom function that should be called when there are new events</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetWakeUpCallback(MPVClient.WakeUpCallback callback, nint data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>callback</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVClient.html">MPVClient</a>.<a class="xref" href="Nickvision.MPVSharp.Internal.MPVClient.WakeUpCallback.html">WakeUpCallback</a></dt>
+    <dd><p>Callback function</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd><p>Pointer to arbitrary data to pass to callback</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_TerminateDestroy_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.TerminateDestroy*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_TerminateDestroy" data-uid="Nickvision.MPVSharp.Internal.MPVClient.TerminateDestroy">
+  TerminateDestroy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L514"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Bring down the player and all its clients</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TerminateDestroy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_UnobserveProperty_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.UnobserveProperty*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_UnobserveProperty_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.UnobserveProperty(System.UInt64)">
+  UnobserveProperty(ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Undo all ObserveProperty() for given reply Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UnobserveProperty(ulong replyUserdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of properties to unobserve or error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_WaitAsyncRequests_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitAsyncRequests*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WaitAsyncRequests" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitAsyncRequests">
+  WaitAsyncRequests()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L487"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Block until all asynchronous requests are done</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaitAsyncRequests()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_WaitEvent_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitEvent*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WaitEvent_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitEvent(System.Double)">
+  WaitEvent(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wait for an event or until timeout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MPVEvent WaitEvent(double eventTimeout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventTimeout</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Timeout in seconds</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.Internal.MPVEvent.html">MPVEvent</a></dt>
+    <dd><p>Error code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_WakeUp_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WakeUp*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WakeUp" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WakeUp">
+  WakeUp()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Interrupt the current WaitEvent() call</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WakeUp()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Internal/MPVClient.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
