@@ -1,0 +1,44 @@
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+        types: [ "review_requested", "ready_for_review" ]
+    workflow_dispatch:
+name: CI
+permissions:
+    id-token: write
+    contents: read
+jobs:
+    mpvsharp:
+        name: "Build Nickvision.MPVSharp"
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                dotnet-version: [ '7.0.x' ]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+              uses: actions/setup-dotnet@v3
+              with:
+                  dotnet-version: ${{ matrix.dotnet-version }}
+            - name: Install dependencies
+              run: dotnet restore Nickvision.MPVSharp/Nickvision.MPVSharp.csproj
+            - name: Build
+              run: dotnet build Nickvision.MPVSharp/Nickvision.MPVSharp.csproj --configuration Release --no-restore
+    simple:
+        name: "Build Example/Simple"
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                dotnet-version: [ '7.0.x' ]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+              uses: actions/setup-dotnet@v3
+              with:
+                  dotnet-version: ${{ matrix.dotnet-version }}
+            - name: Install dependencies
+              run: dotnet restore Examples/Simple.csproj
+            - name: Build
+              run: dotnet build Examples/Simple.csproj --configuration Release --no-restore
