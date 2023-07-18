@@ -39,7 +39,7 @@ public struct MPVEventProperty
     }
 
     /// <summary>
-    /// Covnert from pointer to double
+    /// Convert from pointer to double
     /// </summary>
     /// <param name="ptr">Pointer to data</param>
     /// <returns>Double object</returns>
