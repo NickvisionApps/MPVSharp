@@ -129,12 +129,14 @@ public class Client : MPVClient, IDisposable
     /// Execute command list
     /// </summary>
     /// <param name="command">A command to execute as list of strings</param>
+    /// <remarks>Alias for Command(string[])</remarks>
     public void Command(List<string> command) => Command(command.ToArray());
 
     /// <summary>
     /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
+    /// <remarks>Alias for CommandString(string)</remarks>
     public void Command(string command) => CommandString(command);
 
     /// <summary>
