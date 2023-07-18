@@ -151,7 +151,7 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs__ctor_Nickvision_MPVSharp_Internal_MPVEndFileReason_Nickvision_MPVSharp_Internal_MPVError_System_Int64_System_Int64_System_Int32_" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.#ctor(Nickvision.MPVSharp.Internal.MPVEndFileReason,Nickvision.MPVSharp.Internal.MPVError,System.Int64,System.Int64,System.Int32)">
   FileEndedEventArgs(MPVEndFileReason, MPVError, long, long, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create args for EndFile event</p>
@@ -171,7 +171,7 @@
     <dd><p>Error code for error reason</p>
 </dd>
     <dt><code>playlistEntryId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd><p>Index of file in playlist</p>
+    <dd><p>Playlist entry Id of the file that was being played</p>
 </dd>
     <dt><code>playlistInsertId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
     <dd><p>Playlist entry Id of first inserted item</p>
@@ -200,10 +200,11 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs_Error" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.Error">
   Error
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Contains error code if reason is MPVEndFileReason.Error, or 0</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -231,10 +232,11 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs_PlaylistEntryId" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.PlaylistEntryId">
   PlaylistEntryId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Playlist entry Id of the file that was being played</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -262,10 +264,13 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs_PlaylistInsertId" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.PlaylistInsertId">
   PlaylistInsertId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>If loading ended, because the playlist entry to be played was for example
+a playlist, and the current playlist entry is replaced with a number of
+other entries, this will be set to the playlist entry Id of the first inserted entry</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -293,10 +298,13 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs_PlaylistInsertNumEntries" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.PlaylistInsertNumEntries">
   PlaylistInsertNumEntries
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>If loading ended, because the playlist entry to be played was for example
+a playlist, and the current playlist entry is replaced with a number of
+other entries, this will be set to the total number of inserted playlist entries</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -324,10 +332,11 @@
 
   <h3 id="Nickvision_MPVSharp_FileEndedEventArgs_Reason" data-uid="Nickvision.MPVSharp.FileEndedEventArgs.Reason">
   Reason
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/FileEndedEventArgs.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>File ending reason</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

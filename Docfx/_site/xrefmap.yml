@@ -515,6 +515,15 @@ references:
   fullName.vb: Nickvision.MPVSharp.Client.SetPropertyAsync(ULong, String, Nickvision.MPVSharp.Internal.MPVNode)
   nameWithType: Client.SetPropertyAsync(ulong, string, MPVNode)
   nameWithType.vb: Client.SetPropertyAsync(ULong, String, MPVNode)
+- uid: Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Boolean)
+  name: SetPropertyAsync(ulong, string, bool)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Boolean_
+  commentId: M:Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Boolean)
+  name.vb: SetPropertyAsync(ULong, String, Boolean)
+  fullName: Nickvision.MPVSharp.Client.SetPropertyAsync(ulong, string, bool)
+  fullName.vb: Nickvision.MPVSharp.Client.SetPropertyAsync(ULong, String, Boolean)
+  nameWithType: Client.SetPropertyAsync(ulong, string, bool)
+  nameWithType.vb: Client.SetPropertyAsync(ULong, String, Boolean)
 - uid: Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Double)
   name: SetPropertyAsync(ulong, string, double)
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Double_
@@ -524,15 +533,6 @@ references:
   fullName.vb: Nickvision.MPVSharp.Client.SetPropertyAsync(ULong, String, Double)
   nameWithType: Client.SetPropertyAsync(ulong, string, double)
   nameWithType.vb: Client.SetPropertyAsync(ULong, String, Double)
-- uid: Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Int32)
-  name: SetPropertyAsync(ulong, string, int)
-  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Int32_
-  commentId: M:Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Int32)
-  name.vb: SetPropertyAsync(ULong, String, Integer)
-  fullName: Nickvision.MPVSharp.Client.SetPropertyAsync(ulong, string, int)
-  fullName.vb: Nickvision.MPVSharp.Client.SetPropertyAsync(ULong, String, Integer)
-  nameWithType: Client.SetPropertyAsync(ulong, string, int)
-  nameWithType.vb: Client.SetPropertyAsync(ULong, String, Integer)
 - uid: Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Int64)
   name: SetPropertyAsync(ulong, string, long)
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Int64_

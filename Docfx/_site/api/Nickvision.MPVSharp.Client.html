@@ -171,6 +171,9 @@
       <a class="xref" href="Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_SetPropertyString_System_String_System_String_">MPVClient.SetPropertyString(string, string)</a>
     </div>
     <div>
+      <a class="xref" href="Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Int32_">MPVClient.SetPropertyAsync(ulong, string, int)</a>
+    </div>
+    <div>
       <a class="xref" href="Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Int32__">MPVClient.GetProperty(string, out int)</a>
     </div>
     <div>
@@ -270,7 +273,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_Command_System_Collections_Generic_List_System_String__" data-uid="Nickvision.MPVSharp.Client.Command(System.Collections.Generic.List{System.String})">
   Command(List&lt;string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L132"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute command list</p>
@@ -303,7 +306,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_Command_System_String_" data-uid="Nickvision.MPVSharp.Client.Command(System.String)">
   Command(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute command string</p>
@@ -336,7 +339,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_Command_System_String___" data-uid="Nickvision.MPVSharp.Client.Command(System.String[])">
   Command(string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute command array</p>
@@ -362,6 +365,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if command was not successful</p>
+</dd>
+  </dl>
 
 
 
@@ -369,10 +378,11 @@
 
   <h3 id="Nickvision_MPVSharp_Client_CommandString_System_String_" data-uid="Nickvision.MPVSharp.Client.CommandString(System.String)">
   CommandString(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Execute command string</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -382,7 +392,8 @@
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>A command string</p>
+</dd>
   </dl>
 
 
@@ -393,6 +404,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if command was not successful</p>
+</dd>
+  </dl>
 
 
 
@@ -400,7 +417,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_CreateRenderContext" data-uid="Nickvision.MPVSharp.Client.CreateRenderContext">
   CreateRenderContext()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L488"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L545"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create OpenGLRenderContext</p>
@@ -433,7 +450,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_CyclePause" data-uid="Nickvision.MPVSharp.Client.CyclePause">
   CyclePause()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L493"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L550"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Toggle paused state</p>
@@ -546,7 +563,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Client.GetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode@)">
   GetProperty(string, out MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L400"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L448"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Node format</p>
@@ -575,6 +592,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -582,7 +605,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetProperty_System_String_System_Boolean__" data-uid="Nickvision.MPVSharp.Client.GetProperty(System.String,System.Boolean@)">
   GetProperty(string, out bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L357"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L402"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Flag format</p>
@@ -611,6 +634,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -618,7 +647,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetProperty_System_String_System_Double__" data-uid="Nickvision.MPVSharp.Client.GetProperty(System.String,System.Double@)">
   GetProperty(string, out double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L386"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L433"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Double format</p>
@@ -647,6 +676,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -654,7 +689,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetProperty_System_String_System_Int64__" data-uid="Nickvision.MPVSharp.Client.GetProperty(System.String,System.Int64@)">
   GetProperty(string, out long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L372"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L418"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Long format</p>
@@ -683,6 +718,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -690,7 +731,7 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetProperty_System_String_System_String__" data-uid="Nickvision.MPVSharp.Client.GetProperty(System.String,System.String@)">
   GetProperty(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L343"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L387"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using String format</p>
@@ -719,6 +760,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -726,10 +773,11 @@
 
   <h3 id="Nickvision_MPVSharp_Client_GetPropertyAsync_System_UInt64_System_String_" data-uid="Nickvision.MPVSharp.Client.GetPropertyAsync(System.UInt64,System.String)">
   GetPropertyAsync(ulong, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L463"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get property using Node format asynchroniously</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -739,9 +787,11 @@
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Reply Id</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Property name</p>
+</dd>
   </dl>
 
 
@@ -752,6 +802,12 @@
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't get property</p>
+</dd>
+  </dl>
 
 
 
@@ -798,7 +854,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_LoadFile_System_String_System_String_" data-uid="Nickvision.MPVSharp.Client.LoadFile(System.String,System.String)">
   LoadFile(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L514"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L571"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Load a file from path or URL</p>
@@ -834,7 +890,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_ObserveProperty_System_String_System_UInt64_" data-uid="Nickvision.MPVSharp.Client.ObserveProperty(System.String,System.UInt64)">
   ObserveProperty(string, ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L214"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L217"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add property to watch in event loop</p>
@@ -863,6 +919,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't observe property</p>
+</dd>
+  </dl>
 
 
 
@@ -870,7 +932,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_PlaylistNext_System_Boolean_" data-uid="Nickvision.MPVSharp.Client.PlaylistNext(System.Boolean)">
   PlaylistNext(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L520"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L577"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Play next file in playlist</p>
@@ -903,7 +965,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_PlaylistPlayIndex_System_UInt32_" data-uid="Nickvision.MPVSharp.Client.PlaylistPlayIndex(System.UInt32)">
   PlaylistPlayIndex(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L532"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L589"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start (or restart) playback of the given playlist index</p>
@@ -936,7 +998,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_PlaylistPrev_System_Boolean_" data-uid="Nickvision.MPVSharp.Client.PlaylistPrev(System.Boolean)">
   PlaylistPrev(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L526"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L583"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Play previous file in playlist</p>
@@ -969,7 +1031,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_RequestLogMessages_Nickvision_MPVSharp_Internal_MPVLogLevel_" data-uid="Nickvision.MPVSharp.Client.RequestLogMessages(Nickvision.MPVSharp.Internal.MPVLogLevel)">
   RequestLogMessages(MPVLogLevel)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L469"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L526"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request log messages with specified minimum log level</p>
@@ -1002,7 +1064,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_RequestLogMessages_System_String_" data-uid="Nickvision.MPVSharp.Client.RequestLogMessages(System.String)">
   RequestLogMessages(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L513"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request log messages with specified minimum log level</p>
@@ -1028,6 +1090,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if failed to request messages</p>
+</dd>
+  </dl>
 
 
 
@@ -1035,7 +1103,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_Seek_System_Double_System_String_" data-uid="Nickvision.MPVSharp.Client.Seek(System.Double,System.String)">
   Seek(double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L500"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L557"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Seek command</p>
@@ -1071,7 +1139,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetOption_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Client.SetOption(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetOption(string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L426"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L481"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set option using Node format</p>
@@ -1103,6 +1171,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <div class="markdown level1 remarks"><p>You can't normally set options during runtime.</p>
 </div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set option</p>
+</dd>
+  </dl>
 
 
 
@@ -1110,7 +1184,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetOption_System_String_System_String_" data-uid="Nickvision.MPVSharp.Client.SetOption(System.String,System.String)">
   SetOption(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L443"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L499"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set option using String format</p>
@@ -1142,6 +1216,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <div class="markdown level1 remarks"><p>You can't normally set options during runtime.</p>
 </div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set option</p>
+</dd>
+  </dl>
 
 
 
@@ -1149,7 +1229,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Client.SetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetProperty(string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L292"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Node format</p>
@@ -1178,6 +1258,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1185,7 +1271,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetProperty_System_String_System_Boolean_" data-uid="Nickvision.MPVSharp.Client.SetProperty(System.String,System.Boolean)">
   SetProperty(string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Flag format</p>
@@ -1214,6 +1300,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1221,7 +1313,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetProperty_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Client.SetProperty(System.String,System.Double)">
   SetProperty(string, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L270"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L277"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Double format</p>
@@ -1250,6 +1342,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1257,7 +1355,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetProperty_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Client.SetProperty(System.String,System.Int64)">
   SetProperty(string, long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L262"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Int64 format</p>
@@ -1286,6 +1384,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1293,7 +1397,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetProperty_System_String_System_String_" data-uid="Nickvision.MPVSharp.Client.SetProperty(System.String,System.String)">
   SetProperty(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L232"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using String format</p>
@@ -1322,6 +1426,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1329,10 +1439,11 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetPropertyAsync(ulong, string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L372"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set property using Node format asynchroniously</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1342,11 +1453,14 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Reply Id</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Property name</p>
+</dd>
     <dt><code>data</code> <a class="xref" href="Nickvision.MPVSharp.Internal.MPVNode.html">MPVNode</a></dt>
-    <dd></dd>
+    <dd><p>MPVNode with data</p>
+</dd>
   </dl>
 
 
@@ -1357,6 +1471,57 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Nickvision_MPVSharp_Client_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync*"></a>
+
+  <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Boolean_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Boolean)">
+  SetPropertyAsync(ulong, string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set property using Flag format asynchroniously</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPropertyAsync(ulong replyUserdata, string name, bool data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Reply Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Property name</p>
+</dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Bool data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1364,10 +1529,11 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Double)">
   SetPropertyAsync(ulong, string, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L340"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set property using Double format asynchroniously</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1377,11 +1543,14 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Reply Id</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Property name</p>
+</dd>
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>Double data</p>
+</dd>
   </dl>
 
 
@@ -1392,41 +1561,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
-
-
-
-  <a id="Nickvision_MPVSharp_Client_SetPropertyAsync_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync*"></a>
-
-  <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Int32)">
-  SetPropertyAsync(ulong, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L293"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetPropertyAsync(ulong replyUserdata, string name, int data)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
+  <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1434,10 +1574,11 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.Int64)">
   SetPropertyAsync(ulong, string, long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L302"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L324"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set property using Int64 format asynchroniously</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1447,11 +1588,14 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Reply Id</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Property name</p>
+</dd>
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd></dd>
+    <dd><p>Long int data</p>
+</dd>
   </dl>
 
 
@@ -1462,6 +1606,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
@@ -1469,10 +1619,11 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Client_SetPropertyAsync_System_UInt64_System_String_System_String_" data-uid="Nickvision.MPVSharp.Client.SetPropertyAsync(System.UInt64,System.String,System.String)">
   SetPropertyAsync(ulong, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L320"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/check/Nickvision.MPVSharp/Client.cs/#L356"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set property using String format asynchroniously</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1482,11 +1633,14 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>replyUserdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
+    <dd><p>Reply Id</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Property name</p>
+</dd>
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>String data</p>
+</dd>
   </dl>
 
 
@@ -1497,6 +1651,12 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Nickvision.MPVSharp.ClientException.html">ClientException</a></dt>
+    <dd><p>Thrown if can't set property</p>
+</dd>
+  </dl>
 
 
 
