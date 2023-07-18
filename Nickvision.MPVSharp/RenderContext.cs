@@ -9,7 +9,7 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class RenderContext : MPVRenderContext, IDisposable
 {
-    private const int GL_DRAW_FRAME_BUFFER_BINDING = 0x8CA6;
+    private const int GL_DRAW_FRAMEBUFFER_BINDING = 0x8CA6;
 
     private bool _disposed;
     private readonly nint _clientHandle;
@@ -96,7 +96,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     /// <param name="height">Rendering area width</param>
     public void RenderGL(int width, int height)
     {
-        OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAME_BUFFER_BINDING, out int fboInt);
+        OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out int fboInt);
         var fbo = new MPVOpenGLFBO
         {
             FBO = fboInt,
