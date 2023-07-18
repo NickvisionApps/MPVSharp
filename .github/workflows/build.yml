@@ -39,6 +39,6 @@ jobs:
               with:
                   dotnet-version: ${{ matrix.dotnet-version }}
             - name: Install dependencies
-              run: dotnet restore Examples/Simple.csproj
+              run: dotnet restore Examples/Simple/Simple.csproj
             - name: Build
-              run: dotnet build Examples/Simple.csproj --configuration Release --no-restore
+              run: dotnet build Examples/Simple/Simple.csproj --configuration Release --no-restore
