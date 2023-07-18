@@ -305,7 +305,7 @@ public class Client : MPVClient, IDisposable
     /// <param name="name">Property name</param>
     /// <param name="data">Bool data</param>
     /// <exception cref="ClientException">Thrown if can't set property</exception>
-    public new void SetPropertyAsync(ulong replyUserdata, string name, bool data)
+    public void SetPropertyAsync(ulong replyUserdata, string name, bool data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data ? 1 : 0);
         if (success < MPVError.Success)
