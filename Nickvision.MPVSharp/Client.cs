@@ -101,6 +101,7 @@ public class Client : MPVClient, IDisposable
     /// Execute command array
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
+    /// <exception cref="ClientException">Thrown if command was not successful</exception>
     public new void Command(string[] command)
     {
         var success = base.Command(command);
@@ -110,10 +111,11 @@ public class Client : MPVClient, IDisposable
         }
     }
     
-    // <summary>
+    /// <summary>
     /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
+    /// <exception cref="ClientException">Thrown if command was not successful</exception>
     public new void CommandString(string command)
     {
         var success = base.CommandString(command);
@@ -211,6 +213,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="replyUserdata">Optional reply Id</param>
+    /// <exception cref="ClientException">Thrown if can't observe property</exception>
     public void ObserveProperty(string name, ulong replyUserdata = 0)
     {
         var success = ObserveProperty(name, MPVFormat.Node, replyUserdata);
@@ -225,6 +228,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, string data)
     {
         var success = base.SetProperty(name, data);
@@ -239,6 +243,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Bool data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public void SetProperty(string name, bool data)
     {
         var success = base.SetProperty(name, data ? 1 : 0);
@@ -253,6 +258,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, long data)
     {
         var success = base.SetProperty(name, data);
@@ -267,6 +273,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, double data)
     {
         var success = base.SetProperty(name, data);
@@ -281,6 +288,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetProperty(string name, MPVNode data)
     {
         var success = base.SetProperty(name, data);
@@ -290,15 +298,29 @@ public class Client : MPVClient, IDisposable
         }
     }
 
-    public new void SetPropertyAsync(ulong replyUserdata, string name, int data)
+    /// <summary>
+    /// Set property using Flag format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Bool data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
+    public new void SetPropertyAsync(ulong replyUserdata, string name, bool data)
     {
-        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        var success = base.SetPropertyAsync(replyUserdata, name, data ? 1 : 0);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
     }
 
+    /// <summary>
+    /// Set property using Int64 format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, long data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -308,6 +330,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using Double format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, double data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -317,6 +346,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using String format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, string data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -326,6 +362,13 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Set property using Node format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't set property</exception>
     public new void SetPropertyAsync(ulong replyUserdata, string name, MPVNode data)
     {
         var success = base.SetPropertyAsync(replyUserdata, name, data);
@@ -340,6 +383,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out string data)
     {
         var success = base.GetProperty(name, out data);
@@ -354,6 +398,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public void GetProperty(string name, out bool data)
     {
         var success = base.GetProperty(name, out int flag);
@@ -369,6 +414,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out long data)
     {
         var success = base.GetProperty(name, out data);
@@ -383,6 +429,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out double data)
     {
         var success = base.GetProperty(name, out data);
@@ -397,6 +444,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">MPVNode with data</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public new void GetProperty(string name, out MPVNode data)
     {
         var success = base.GetProperty(name, out data);
@@ -406,6 +454,12 @@ public class Client : MPVClient, IDisposable
         }
     }
 
+    /// <summary>
+    /// Get property using Node format asynchroniously
+    /// </summary>
+    /// <param name="replyUserdata">Reply Id</param>
+    /// <param name="name">Property name</param>
+    /// <exception cref="ClientException">Thrown if can't get property</exception>
     public void GetPropertyAsync(ulong replyUserdata, string name)
     {
         var success = base.GetPropertyAsync(replyUserdata, name, MPVFormat.Node);
@@ -423,6 +477,7 @@ public class Client : MPVClient, IDisposable
     /// <remarks>
     /// You can't normally set options during runtime.
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if can't set option</exception>
     public new void SetOption(string name, MPVNode data)
     {
         var success = base.SetOption(name, data);
@@ -440,6 +495,7 @@ public class Client : MPVClient, IDisposable
     /// <remarks>
     /// You can't normally set options during runtime.
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if can't set option</exception>
     public void SetOption(string name, string data)
     {
         var success = base.SetOptionString(name, data);
@@ -453,6 +509,7 @@ public class Client : MPVClient, IDisposable
     /// Request log messages with specified minimum log level
     /// </summary>
     /// <param name="logLevel">Log level as string</param>
+    /// <exception cref="ClientException">Thrown if failed to request messages</exception>
     public new void RequestLogMessages(string logLevel)
     {
         var success = base.RequestLogMessages(logLevel);
