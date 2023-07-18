@@ -2,6 +2,9 @@ using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
 
+/// <summary>
+/// Data for PropertyChange and GetPropertyReply events
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVEventProperty
 {
