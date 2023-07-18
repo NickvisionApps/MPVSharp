@@ -11,15 +11,15 @@ public class GetPropertyReplyReceivedEventArgs : EventArgs
     /// <summary>
     /// Reply userdata
     /// </summary>
-    public ulong ReplyUserdata;
+    public ulong ReplyUserdata { get; init; }
     /// <summary>
     /// Property name
     /// </summary>
-    public string Name;
+    public string Name { get; init; }
     /// <summary>
     /// MPVNode holding data
     /// </summary>
-    public MPVNode? Node;
+    public MPVNode? Node { get; init; }
 
     /// <summary>
     /// Create args for GetPropertyReply event

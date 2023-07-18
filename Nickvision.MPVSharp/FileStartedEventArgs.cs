@@ -7,7 +7,7 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class FileStartedEventArgs : EventArgs
 {
-    public long PlaylistEntryId;
+    public long PlaylistEntryId { get; init; }
 
     /// <summary>
     /// Create args for StartFile event

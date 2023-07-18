@@ -11,7 +11,7 @@ public class ClientException : Exception
     /// <summary>
     /// MPV Error code
     /// </summary>
-    public MPVError Error;
+    public MPVError Error { get; init; }
 
     /// <summary>
     /// Construct Client Exception

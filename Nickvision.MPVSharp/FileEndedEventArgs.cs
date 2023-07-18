@@ -8,11 +8,11 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class FileEndedEventArgs : EventArgs
 {
-    public MPVEndFileReason Reason;
-    public MPVError Error;
-    public long PlaylistEntryId;
-    public long PlaylistInsertId;
-    public int PlaylistInsertNumEntries;
+    public MPVEndFileReason Reason { get; init; }
+    public MPVError Error { get; init; }
+    public long PlaylistEntryId { get; init; }
+    public long PlaylistInsertId { get; init; }
+    public int PlaylistInsertNumEntries { get; init; }
 
     /// <summary>
     /// Create args for EndFile event

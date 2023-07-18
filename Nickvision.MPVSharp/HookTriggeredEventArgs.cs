@@ -10,11 +10,11 @@ public class HookTriggeredEventArgs : EventArgs
     /// <summary>
     /// The hook name as passed to MPVClient.HookAdd()
     /// </summary>
-    public string Name;
+    public string Name { get; init; }
     /// <summary>
     /// Internal ID that must be passed to MPVClient.HookContinue()
     /// </summary>
-    public ulong Id;
+    public ulong Id { get; init; }
 
     /// <summary>
     /// Create args for Hook event

@@ -40,15 +40,45 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
+    /// Finalizes the Client
+    /// </summary>
+    ~Client() => Dispose(false);
+
+    /// <summary>
+    /// Frees resources used by the Client object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the Client object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            Destroy();
+        }
+        _disposed = true;
+    }
+
+    /// <summary>
     /// Initialize an uninitialized mpv instance.
     /// If the mpv instance is already running, an error is returned.
     /// </summary>
-    /// <returns>Error code</returns>
     /// <remarks>
     /// Some options are required to set before Initialize:
     /// config, config-dir, input-conf, load-scripts, script,
     /// player-operation-mode, input-app-events (OSX), all encoding mode options
     /// </remarks>
+    /// <exception cref="ClientException">Thrown if initialization was not successful</exception>
     public new void Initialize()
     {
         var success = base.Initialize();
@@ -64,11 +94,8 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="callback">Callback function</param>
     /// <param name="data">Pointer to arbitrary data to pass to callback</param>
-    public new void SetWakeUpCallback(WakeUpCallback callback, nint data)
-    {
-        Console.WriteLine("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because event loop is already running.");
-        Environment.Exit((int)MPVError.Unsupported);
-    }
+    /// <exception cref="InvalidOperationException">Thrown if method is called as operation unsupported</exception>
+    public new void SetWakeUpCallback(WakeUpCallback callback, nint data) => throw new InvalidOperationException("[MPVSharp] Setting wake up callback is not allowed when using MPVSharp.Client class, because event loop is already running.");
 
     /// <summary>
     /// Execute command array
@@ -83,6 +110,19 @@ public class Client : MPVClient, IDisposable
         }
     }
     
+    // <summary>
+    /// Execute command string
+    /// </summary>
+    /// <param name="command">A command string</param>
+    public new void CommandString(string command)
+    {
+        var success = base.CommandString(command);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
+
     /// <summary>
     /// Execute command list
     /// </summary>
@@ -93,14 +133,7 @@ public class Client : MPVClient, IDisposable
     /// Execute command string
     /// </summary>
     /// <param name="command">A command string</param>
-    public void Command(string command)
-    {
-        var success = CommandString(command);
-        if (success < MPVError.Success)
-        {
-            throw new ClientException(success);
-        }
-    }
+    public void Command(string command) => CommandString(command);
 
     /// <summary>
     /// MPV events loop
@@ -435,7 +468,7 @@ public class Client : MPVClient, IDisposable
     /// <param name="logLevel">Log level as MPVLogLevel</param>
     public void RequestLogMessages(MPVLogLevel logLevel)
     {
-        var level = logLevel switch
+        RequestLogMessages(logLevel switch
         {
             MPVLogLevel.Fatal => "fatal",
             MPVLogLevel.Error => "error",
@@ -445,8 +478,7 @@ public class Client : MPVClient, IDisposable
             MPVLogLevel.Debug => "debug",
             MPVLogLevel.Trace => "trace",
             _ => "no"
-        };
-        RequestLogMessages(level);
+        });
     }
 
     /// <summary>
@@ -498,34 +530,4 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="index">0-based index</param>
     public void PlaylistPlayIndex(uint index) => Command(new []{"playlist-play-index", index.ToString()});
-
-    /// <summary>
-    /// Finalizes the Client
-    /// </summary>
-    ~Client() => Dispose(false);
-
-    /// <summary>
-    /// Frees resources used by the Client object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the Client object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            Destroy();
-        }
-        _disposed = true;
-    }
 }

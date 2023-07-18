@@ -11,15 +11,15 @@ public class LogMessageReceivedEventArgs : EventArgs
     /// <summary>
     /// Module prefix, sender of the message
     /// </summary>
-    public string Prefix;
+    public string Prefix { get; init; }
     /// <summary>
     /// Log message, ends with newline char
     /// </summary>
-    public string Text;
+    public string Text { get; init; }
     /// <summary>
     /// Message log level
     /// </summary>
-    public MPVLogLevel LogLevel;
+    public MPVLogLevel LogLevel { get; init; }
     
     /// <summary>
     /// Create args for LogMessage event

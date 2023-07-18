@@ -11,15 +11,15 @@ public class CommandReplyReceivedEventArgs : EventArgs
     /// <summary>
     /// Reply userdata
     /// </summary>
-    public ulong ReplyUserdata;
+    public ulong ReplyUserdata { get; init; }
     /// <summary>
     /// Error code
     /// </summary>
-    public int Error;
+    public int Error { get; init; }
     /// <summary>
     /// Command result
     /// </summary>
-    public MPVNode Result;
+    public MPVNode Result { get; init; }
 
     /// <summary>
     /// Create args for CommandReply event
