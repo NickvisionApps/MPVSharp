@@ -123,7 +123,7 @@ public partial class MPVClient : ICloneable
     /// </summary>
     public string Name => mpv_client_name(_handle);
     /// <summary>
-    /// Tthe ID of this client handle.
+    /// The ID of this client handle.
     /// Every client has its own unique ID.
     /// </summary>
     public long Id => mpv_client_id(_handle);
