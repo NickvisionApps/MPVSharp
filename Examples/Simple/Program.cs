@@ -1,4 +1,4 @@
-﻿using Nickvision.MPVSharp.Examples.Simple;
+﻿namespace Nickvision.MPVSharp.Examples.Simple;
 
 public class Program
 {
