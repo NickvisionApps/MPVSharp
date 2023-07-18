@@ -7,6 +7,9 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class FileStartedEventArgs : EventArgs
 {
+    /// <summary>
+    /// Index of file in playlist
+    /// </summary>
     public long PlaylistEntryId { get; init; }
 
     /// <summary>

@@ -7,6 +7,9 @@ namespace Nickvision.MPVSharp;
 /// </summary>
 public class ClientMessageReceivedEventArgs : EventArgs
 {
+    /// <summary>
+    /// String array with client message arguments
+    /// </summary>
     public string[] Args { get; init; }
 
     /// <summary>
