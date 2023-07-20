@@ -1,5 +1,4 @@
 using Nickvision.MPVSharp;
-using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Examples.GirCore;
 
@@ -8,13 +7,11 @@ namespace Nickvision.MPVSharp.Examples.GirCore;
 /// </summary>
 public partial class MainWindow : Gtk.ApplicationWindow
 {
-    private delegate bool GSourceFunc(nint data);
-    
-    [LibraryImport("libglib-2.0.so")]
-    private static partial uint g_idle_add(GSourceFunc function, nint data);
-    
+    private const uint GDK_KEY_Left = 0xff51;
+    private const uint GDK_KEY_Right =  0xff53;
+    private const uint GDK_KEY_space = 0x020;
+
     private readonly Gtk.GLArea _glArea;
-    private readonly GSourceFunc _queueRender;
     private readonly Client _player;
     private RenderContext? _ctx;
     
@@ -57,23 +54,15 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _player.ObserveProperty("media-title");
         pauseButton.OnClicked += (sender, e) => _player.CyclePause();
         // Setup rendering
-        _queueRender = (x) =>
-        {
-            _glArea.QueueDraw();
-            return false;
-        };
         _glArea.OnRealize += OnRealizeGLArea;
         _glArea.OnUnrealize += OnUnrealizeGLArea;
         _glArea.OnRender += OnRenderGLArea;
         // Keyboard shortcuts
-        var actSeekLeft = Gio.SimpleAction.New("seek-left", null);
-        actSeekLeft.OnActivate += (sender, e) => _player.Seek(-1);
-        AddAction(actSeekLeft);
-        application.SetAccelsForAction("win.seek-left", new []{"a"});
-        var actSeekRight = Gio.SimpleAction.New("seek-right", null);
-        actSeekRight.OnActivate += (sender, e) => _player.Seek(1);
-        AddAction(actSeekRight);
-        application.SetAccelsForAction("win.seek-right", new []{"d"});
+        var keyboardController = Gtk.EventControllerKey.New();
+        keyboardController.SetPropagationPhase(Gtk.PropagationPhase.Capture);
+        keyboardController.OnKeyPressed += OnKeyPressed;
+        keyboardController.OnKeyReleased += OnKeyReleased;
+        AddController(keyboardController);
     }
 
     /// <summary>
@@ -88,7 +77,11 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _ctx = _player.CreateRenderContext();
         // We create callback for MPV to call every time the screen needs to be redrawn,
         // the callback calls GtkGLArea.QueueDraw which in turn makes RenderContext draw image
-        _ctx.SetupGL((x) => g_idle_add(_queueRender, IntPtr.Zero)); // QueueDraw must be called from GTK thread
+        _ctx.SetupGL((x) => GLib.Functions.IdleAdd(0, () =>
+        {
+            _glArea.QueueDraw(); // QueueDraw must be called from GTK thread
+            return false;
+        }));
         _player.Command("loadfile https://www.youtube.com/watch?v=UXqq0ZvbOnk append-play");
     }
 
@@ -113,5 +106,38 @@ public partial class MainWindow : Gtk.ApplicationWindow
     {
         _ctx?.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());
         return false;
+    }
+
+    /// <summary>
+    /// Occurs when a key was pressed
+    /// </summary>
+    /// <param name="sender">Key controller</param>
+    /// <param name="e">Event args</param>
+    /// <returns>Whether the key press was handled or not</returns>
+    private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
+    {
+        switch (e.Keyval)
+        {
+            case GDK_KEY_Left:
+                _player.Seek(-1);
+                break;
+            case GDK_KEY_Right:
+                _player.Seek(1);
+                break;
+        };
+        return true;
+    }
+
+    /// <summary>
+    /// Occurs when a key was released
+    /// </summary>
+    /// <param name="sender">Key controller</param>
+    /// <param name="e">Event args</param>
+    private void OnKeyReleased(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyReleasedSignalArgs e)
+    {
+        if (e.Keyval == GDK_KEY_space)
+        {
+            _player.CyclePause();
+        }
     }
 }

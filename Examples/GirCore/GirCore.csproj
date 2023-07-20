@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GirCore.Gtk-4.0" Version="0.3.0" />
+    <PackageReference Include="GirCore.Gtk-4.0" Version="0.4.0" />
     <ProjectReference Include="..\..\Nickvision.MPVSharp\Nickvision.MPVSharp.csproj" />
   </ItemGroup>
 

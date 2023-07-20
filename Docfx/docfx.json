@@ -44,6 +44,10 @@
     ],
     "output": "_site",
     "globalMetadataFiles": [],
+    "globalMetadata":
+    {
+      "_disableContribution": true
+    },
     "fileMetadataFiles": [],
     "template": [
       "default",
