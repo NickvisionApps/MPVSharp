@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/new/gircore/apiSpec/new?filename=Nickvision_MPVSharp_Internal_MPVClient.md&amp;value=---%0Auid%3A%20Nickvision.MPVSharp.Internal.MPVClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/new/main/apiSpec/new?filename=Nickvision_MPVSharp_Internal_MPVClient.md&amp;value=---%0Auid%3A%20Nickvision.MPVSharp.Internal.MPVClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
 
   <script type="module">
@@ -79,7 +79,7 @@
 
   <h1 id="Nickvision_MPVSharp_Internal_MPVClient" data-uid="Nickvision.MPVSharp.Internal.MPVClient" class="text-break">
     Class MPVClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -160,9 +160,9 @@
 
   <a id="Nickvision_MPVSharp_Internal_MPVClient__ctor_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.#ctor*"></a>
 
-  <h3 id="Nickvision_MPVSharp_Internal_MPVClient__ctor_System_Nullable_System_IntPtr__System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String)">
-  MPVClient(nint?, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient__ctor_System_Nullable_System_IntPtr__System_String_System_Boolean_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String,System.Boolean)">
+  MPVClient(nint?, string?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Construct MPVClient</p>
@@ -170,7 +170,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MPVClient(nint? handle = null, string? name = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public MPVClient(nint? handle = null, string? name = null, bool weak = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -180,6 +180,11 @@
 </dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Optional unique client name</p>
+</dd>
+    <dt><code>weak</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether the new client should be weak or not.
+If true, the created handle is treated as a weak reference. If all handles
+referencing a core are weak references, the core is automatically destroyed.</p>
 </dd>
   </dl>
 
@@ -200,27 +205,30 @@
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="Nickvision_MPVSharp_Internal_MPVClient_Handle_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Handle*"></a>
 
-  <h3 id="Nickvision_MPVSharp_Internal_MPVClient__handle" data-uid="Nickvision.MPVSharp.Internal.MPVClient._handle">
-  _handle
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Handle" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Handle">
+  Handle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>MPV client handle</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected readonly nint _handle</code></pre>
+    <pre><code class="lang-csharp hljs">public nint Handle { get; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
     <dd></dd>
@@ -233,16 +241,11 @@
 
 
 
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
   <a id="Nickvision_MPVSharp_Internal_MPVClient_Id_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Id*"></a>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Id" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Id">
   Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The ID of this client handle.
@@ -275,7 +278,7 @@ Every client has its own unique ID.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Name" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The name of this client handle.
@@ -312,7 +315,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_AbortAsyncCommand_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.AbortAsyncCommand(System.UInt64)">
   AbortAsyncCommand(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L256"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Signal to all async requests with the matching Id to abort.</p>
@@ -345,7 +348,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Clone" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Clone">
   Clone()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Clone object, creating new MPVClient for the same player core</p>
@@ -378,7 +381,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Command_System_String___" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Command(System.String[])">
   Command(string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a command to the player.</p>
@@ -417,7 +420,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandAsync_System_UInt64_System_String___" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandAsync(System.UInt64,System.String[])">
   CommandAsync(ulong, string?[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L236"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Same as Command(), but run the command asynchronously.</p>
@@ -459,7 +462,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandNode_Nickvision_MPVSharp_Internal_MPVNode_Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNode(Nickvision.MPVSharp.Internal.MPVNode,Nickvision.MPVSharp.Internal.MPVNode@)">
   CommandNode(MPVNode, out MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L207"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Same as CommandRet(), but allows passing structured data in any format.</p>
@@ -501,7 +504,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandNodeAsync_System_UInt64_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandNodeAsync(System.UInt64,Nickvision.MPVSharp.Internal.MPVNode)">
   CommandNodeAsync(ulong, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L250"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Same as CommandNode(), but run the command asynchronously.</p>
@@ -543,7 +546,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandRet_System_String___Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandRet(System.String[],Nickvision.MPVSharp.Internal.MPVNode@)">
   CommandRet(string[], out MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L215"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a command to the player and return the result.</p>
@@ -585,7 +588,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_CommandString_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.CommandString(System.String)">
   CommandString(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L228"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a command to the player.</p>
@@ -624,7 +627,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Destroy" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Destroy">
   Destroy()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L509"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L516"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disconnect and destroy the client</p>
@@ -651,7 +654,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode@)">
   GetProperty(string, out MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L424"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Node format</p>
@@ -693,7 +696,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Double__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Double@)">
   GetProperty(string, out double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L408"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Double format</p>
@@ -735,7 +738,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Int32__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Int32@)">
   GetProperty(string, out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L385"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L392"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Flag format</p>
@@ -777,7 +780,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_Int64__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.Int64@)">
   GetProperty(string, out long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L400"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using Int64 format</p>
@@ -819,7 +822,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetProperty_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetProperty(System.String,System.String@)">
   GetProperty(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L416"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using String format</p>
@@ -861,7 +864,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyAsync_System_UInt64_System_String_Nickvision_MPVSharp_Internal_MPVFormat_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyAsync(System.UInt64,System.String,Nickvision.MPVSharp.Internal.MPVFormat)">
   GetPropertyAsync(ulong, string, MPVFormat)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L449"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property asynchroniously</p>
@@ -906,7 +909,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyOSDString_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyOSDString(System.String,System.String@)">
   GetPropertyOSDString(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L440"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using OSDString format</p>
@@ -948,7 +951,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetPropertyString_System_String_System_String__" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetPropertyString(System.String,System.String@)">
   GetPropertyString(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L432"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get property using String format</p>
@@ -990,7 +993,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_GetTimeUs" data-uid="Nickvision.MPVSharp.Internal.MPVClient.GetTimeUs">
   GetTimeUs()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L174"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get internal time</p>
@@ -1023,7 +1026,7 @@ Every client has its own unique name.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_HookAdd_System_UInt64_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookAdd(System.UInt64,System.String,System.Int32)">
   HookAdd(ulong, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L497"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L504"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Register a hook handler.
@@ -1069,7 +1072,7 @@ A hook is like a synchronous event that blocks the player.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_HookContinue_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.HookContinue(System.UInt64)">
   HookContinue(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L504"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L511"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Respond to a MPVEventHook event. You must call this after you have handled the event.</p>
@@ -1108,7 +1111,7 @@ A hook is like a synchronous event that blocks the player.</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_Initialize" data-uid="Nickvision.MPVSharp.Internal.MPVClient.Initialize">
   Initialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize an uninitialized mpv instance.
@@ -1147,7 +1150,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_LoadConfigFile_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.LoadConfigFile(System.String)">
   LoadConfigFile(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Load a config file</p>
@@ -1186,7 +1189,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_ObserveProperty_System_String_Nickvision_MPVSharp_Internal_MPVFormat_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.ObserveProperty(System.String,Nickvision.MPVSharp.Internal.MPVFormat,System.UInt64)">
   ObserveProperty(string, MPVFormat, ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L284"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add property to watch using events</p>
@@ -1231,7 +1234,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_RequestEvent_Nickvision_MPVSharp_Internal_MPVEventId_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestEvent(Nickvision.MPVSharp.Internal.MPVEventId,System.Int32)">
   RequestEvent(MPVEventId, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L482"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L489"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Enable or disable the given event</p>
@@ -1276,7 +1279,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_RequestLogMessages_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.RequestLogMessages(System.String)">
   RequestLogMessages(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L471"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L478"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request log messages with specified minimum log level</p>
@@ -1315,7 +1318,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetOption_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOption(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetOption(string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L460"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set option using MPVNode format</p>
@@ -1360,7 +1363,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetOptionString_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetOptionString(System.String,System.String)">
   SetOptionString(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L464"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L471"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set option using String format</p>
@@ -1405,7 +1408,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetProperty(string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L331"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Node format</p>
@@ -1447,7 +1450,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Double)">
   SetProperty(string, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L323"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Double format</p>
@@ -1489,7 +1492,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Int32)">
   SetProperty(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L307"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Flag format</p>
@@ -1531,7 +1534,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.Int64)">
   SetProperty(string, long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L315"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Int64 format</p>
@@ -1573,7 +1576,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetProperty_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetProperty(System.String,System.String)">
   SetProperty(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L299"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using String format</p>
@@ -1615,7 +1618,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_Nickvision_MPVSharp_Internal_MPVNode_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,Nickvision.MPVSharp.Internal.MPVNode)">
   SetPropertyAsync(ulong, string, MPVNode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L377"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L384"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using MPVNode format asynchronously</p>
@@ -1660,7 +1663,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Double)">
   SetPropertyAsync(ulong, string, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L366"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Double format asynchronously</p>
@@ -1705,7 +1708,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Int32_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Int32)">
   SetPropertyAsync(ulong, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L348"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Flag format asynchronously</p>
@@ -1750,7 +1753,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_Int64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.Int64)">
   SetPropertyAsync(ulong, string, long)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L357"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using Int64 format asynchronously</p>
@@ -1795,7 +1798,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyAsync_System_UInt64_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyAsync(System.UInt64,System.String,System.String)">
   SetPropertyAsync(ulong, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L368"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L375"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using String format asynchronously</p>
@@ -1840,7 +1843,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetPropertyString_System_String_System_String_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetPropertyString(System.String,System.String)">
   SetPropertyString(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L339"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set property using String format</p>
@@ -1882,7 +1885,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_SetWakeUpCallback_Nickvision_MPVSharp_Internal_MPVClient_WakeUpCallback_System_IntPtr_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.SetWakeUpCallback(Nickvision.MPVSharp.Internal.MPVClient.WakeUpCallback,System.IntPtr)">
   SetWakeUpCallback(WakeUpCallback, nint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L275"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set a custom function that should be called when there are new events</p>
@@ -1918,7 +1921,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_TerminateDestroy" data-uid="Nickvision.MPVSharp.Internal.MPVClient.TerminateDestroy">
   TerminateDestroy()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L514"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L521"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bring down the player and all its clients</p>
@@ -1945,7 +1948,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_UnobserveProperty_System_UInt64_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.UnobserveProperty(System.UInt64)">
   UnobserveProperty(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Undo all ObserveProperty() for given reply Id</p>
@@ -1984,7 +1987,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WaitAsyncRequests" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitAsyncRequests">
   WaitAsyncRequests()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L487"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L494"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Block until all asynchronous requests are done</p>
@@ -2011,7 +2014,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WaitEvent_System_Double_" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WaitEvent(System.Double)">
   WaitEvent(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L263"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wait for an event or until timeout</p>
@@ -2050,7 +2053,7 @@ player-operation-mode, input-app-events (OSX), all encoding mode options</p>
 
   <h3 id="Nickvision_MPVSharp_Internal_MPVClient_WakeUp" data-uid="Nickvision.MPVSharp.Internal.MPVClient.WakeUp">
   WakeUp()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/gircore/Nickvision.MPVSharp/Internal/MPVClient.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/NickvisionApps/MPVSharp/blob/main/Nickvision.MPVSharp/Internal/MPVClient.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Interrupt the current WaitEvent() call</p>
