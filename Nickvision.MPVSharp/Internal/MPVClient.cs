@@ -120,7 +120,7 @@ public partial class MPVClient : ICloneable
     /// <summary>
     /// MPV client handle
     /// </summary>
-    public nint Handle { get; }
+    public nint Handle { get; init; }
     /// <summary>
     /// The name of this client handle.
     /// Every client has its own unique name.
