@@ -544,7 +544,7 @@ public class Client : MPVClient, IDisposable
     /// Create OpenGLRenderContext
     /// </summary>
     /// <returns>New render context</returns>
-    public RenderContext CreateRenderContext() => new RenderContext(_handle);
+    public RenderContext CreateRenderContext() => new RenderContext(Handle);
 
     /// <summary>
     /// Toggle paused state
