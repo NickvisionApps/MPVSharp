@@ -556,11 +556,15 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="target">Time in seconds</param>
     /// <param name="flags">Seek flags</param>
-    public void Seek(double target, string flags = "relative")
+    public void Seek(double target, SeekFlags flags = SeekFlags.Relative | SeekFlags.Keyframes)
     {
+        if ((flags.HasFlag(SeekFlags.Relative) && flags.HasFlag(SeekFlags.Absolute)) || (flags.HasFlag(SeekFlags.Keyframes) && flags.HasFlag(SeekFlags.Exact)))
+        {
+            throw new ClientException(MPVError.InvalidParameter);
+        }
         try
         {
-            Command(new []{"seek", target.ToString(CultureInfo.InvariantCulture), flags});
+            Command(new []{"seek", target.ToString(CultureInfo.InvariantCulture), flags.FlagsToString()});
         }
         catch (ClientException) { } // Seek fails if nothing is playing, we don't want a crash
     }
