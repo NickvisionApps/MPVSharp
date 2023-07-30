@@ -281,15 +281,15 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Client.Initialize
   nameWithType: Client.Initialize
-- uid: Nickvision.MPVSharp.Client.LoadFile(System.String,System.String)
-  name: LoadFile(string, string)
-  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LoadFile_System_String_System_String_
-  commentId: M:Nickvision.MPVSharp.Client.LoadFile(System.String,System.String)
-  name.vb: LoadFile(String, String)
-  fullName: Nickvision.MPVSharp.Client.LoadFile(string, string)
-  fullName.vb: Nickvision.MPVSharp.Client.LoadFile(String, String)
-  nameWithType: Client.LoadFile(string, string)
-  nameWithType.vb: Client.LoadFile(String, String)
+- uid: Nickvision.MPVSharp.Client.LoadFile(System.String,Nickvision.MPVSharp.LoadFlags)
+  name: LoadFile(string, LoadFlags)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LoadFile_System_String_Nickvision_MPVSharp_LoadFlags_
+  commentId: M:Nickvision.MPVSharp.Client.LoadFile(System.String,Nickvision.MPVSharp.LoadFlags)
+  name.vb: LoadFile(String, LoadFlags)
+  fullName: Nickvision.MPVSharp.Client.LoadFile(string, Nickvision.MPVSharp.LoadFlags)
+  fullName.vb: Nickvision.MPVSharp.Client.LoadFile(String, Nickvision.MPVSharp.LoadFlags)
+  nameWithType: Client.LoadFile(string, LoadFlags)
+  nameWithType.vb: Client.LoadFile(String, LoadFlags)
 - uid: Nickvision.MPVSharp.Client.LoadFile*
   name: LoadFile
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LoadFile_
@@ -297,6 +297,22 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Client.LoadFile
   nameWithType: Client.LoadFile
+- uid: Nickvision.MPVSharp.Client.LoadList(System.String,Nickvision.MPVSharp.LoadFlags)
+  name: LoadList(string, LoadFlags)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LoadList_System_String_Nickvision_MPVSharp_LoadFlags_
+  commentId: M:Nickvision.MPVSharp.Client.LoadList(System.String,Nickvision.MPVSharp.LoadFlags)
+  name.vb: LoadList(String, LoadFlags)
+  fullName: Nickvision.MPVSharp.Client.LoadList(string, Nickvision.MPVSharp.LoadFlags)
+  fullName.vb: Nickvision.MPVSharp.Client.LoadList(String, Nickvision.MPVSharp.LoadFlags)
+  nameWithType: Client.LoadList(string, LoadFlags)
+  nameWithType.vb: Client.LoadList(String, LoadFlags)
+- uid: Nickvision.MPVSharp.Client.LoadList*
+  name: LoadList
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LoadList_
+  commentId: Overload:Nickvision.MPVSharp.Client.LoadList
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Client.LoadList
+  nameWithType: Client.LoadList
 - uid: Nickvision.MPVSharp.Client.LogMessageReceived
   name: LogMessageReceived
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_LogMessageReceived
@@ -407,15 +423,15 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Client.RequestLogMessages
   nameWithType: Client.RequestLogMessages
-- uid: Nickvision.MPVSharp.Client.Seek(System.Double,System.String)
-  name: Seek(double, string)
-  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_Seek_System_Double_System_String_
-  commentId: M:Nickvision.MPVSharp.Client.Seek(System.Double,System.String)
-  name.vb: Seek(Double, String)
-  fullName: Nickvision.MPVSharp.Client.Seek(double, string)
-  fullName.vb: Nickvision.MPVSharp.Client.Seek(Double, String)
-  nameWithType: Client.Seek(double, string)
-  nameWithType.vb: Client.Seek(Double, String)
+- uid: Nickvision.MPVSharp.Client.Seek(System.Double,Nickvision.MPVSharp.SeekFlags)
+  name: Seek(double, SeekFlags)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_Seek_System_Double_Nickvision_MPVSharp_SeekFlags_
+  commentId: M:Nickvision.MPVSharp.Client.Seek(System.Double,Nickvision.MPVSharp.SeekFlags)
+  name.vb: Seek(Double, SeekFlags)
+  fullName: Nickvision.MPVSharp.Client.Seek(double, Nickvision.MPVSharp.SeekFlags)
+  fullName.vb: Nickvision.MPVSharp.Client.Seek(Double, Nickvision.MPVSharp.SeekFlags)
+  nameWithType: Client.Seek(double, SeekFlags)
+  nameWithType.vb: Client.Seek(Double, SeekFlags)
 - uid: Nickvision.MPVSharp.Client.Seek*
   name: Seek
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_Seek_
@@ -1047,21 +1063,15 @@ references:
   commentId: T:Nickvision.MPVSharp.Internal.MPVClient
   fullName: Nickvision.MPVSharp.Internal.MPVClient
   nameWithType: MPVClient
-- uid: Nickvision.MPVSharp.Internal.MPVClient._handle
-  name: _handle
-  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient__handle
-  commentId: F:Nickvision.MPVSharp.Internal.MPVClient._handle
-  fullName: Nickvision.MPVSharp.Internal.MPVClient._handle
-  nameWithType: MPVClient._handle
-- uid: Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String)
-  name: MPVClient(nint?, string?)
-  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient__ctor_System_Nullable_System_IntPtr__System_String_
-  commentId: M:Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String)
-  name.vb: New(IntPtr?, String)
-  fullName: Nickvision.MPVSharp.Internal.MPVClient.MPVClient(nint?, string?)
-  fullName.vb: Nickvision.MPVSharp.Internal.MPVClient.New(System.IntPtr?, String)
-  nameWithType: MPVClient.MPVClient(nint?, string?)
-  nameWithType.vb: MPVClient.New(IntPtr?, String)
+- uid: Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String,System.Boolean)
+  name: MPVClient(nint?, string?, bool)
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient__ctor_System_Nullable_System_IntPtr__System_String_System_Boolean_
+  commentId: M:Nickvision.MPVSharp.Internal.MPVClient.#ctor(System.Nullable{System.IntPtr},System.String,System.Boolean)
+  name.vb: New(IntPtr?, String, Boolean)
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.MPVClient(nint?, string?, bool)
+  fullName.vb: Nickvision.MPVSharp.Internal.MPVClient.New(System.IntPtr?, String, Boolean)
+  nameWithType: MPVClient.MPVClient(nint?, string?, bool)
+  nameWithType.vb: MPVClient.New(IntPtr?, String, Boolean)
 - uid: Nickvision.MPVSharp.Internal.MPVClient.#ctor*
   name: MPVClient
   href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient__ctor_
@@ -1323,6 +1333,19 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.MPVClient.GetTimeUs
   nameWithType: MPVClient.GetTimeUs
+- uid: Nickvision.MPVSharp.Internal.MPVClient.Handle
+  name: Handle
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_Handle
+  commentId: P:Nickvision.MPVSharp.Internal.MPVClient.Handle
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.Handle
+  nameWithType: MPVClient.Handle
+- uid: Nickvision.MPVSharp.Internal.MPVClient.Handle*
+  name: Handle
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_Handle_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVClient.Handle
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.Handle
+  nameWithType: MPVClient.Handle
 - uid: Nickvision.MPVSharp.Internal.MPVClient.HookAdd(System.UInt64,System.String,System.Int32)
   name: HookAdd(ulong, string, int)
   href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_HookAdd_System_UInt64_System_String_System_Int32_
@@ -3129,6 +3152,49 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.GLGetIntegerV
   nameWithType: OpenGLHelpers.GLGetIntegerV
+- uid: Nickvision.MPVSharp.LoadFlags
+  name: LoadFlags
+  href: api/Nickvision.MPVSharp.LoadFlags.html
+  commentId: T:Nickvision.MPVSharp.LoadFlags
+  fullName: Nickvision.MPVSharp.LoadFlags
+  nameWithType: LoadFlags
+- uid: Nickvision.MPVSharp.LoadFlags.Append
+  name: Append
+  href: api/Nickvision.MPVSharp.LoadFlags.html#Nickvision_MPVSharp_LoadFlags_Append
+  commentId: F:Nickvision.MPVSharp.LoadFlags.Append
+  fullName: Nickvision.MPVSharp.LoadFlags.Append
+  nameWithType: LoadFlags.Append
+- uid: Nickvision.MPVSharp.LoadFlags.AppendPlay
+  name: AppendPlay
+  href: api/Nickvision.MPVSharp.LoadFlags.html#Nickvision_MPVSharp_LoadFlags_AppendPlay
+  commentId: F:Nickvision.MPVSharp.LoadFlags.AppendPlay
+  fullName: Nickvision.MPVSharp.LoadFlags.AppendPlay
+  nameWithType: LoadFlags.AppendPlay
+- uid: Nickvision.MPVSharp.LoadFlags.Replace
+  name: Replace
+  href: api/Nickvision.MPVSharp.LoadFlags.html#Nickvision_MPVSharp_LoadFlags_Replace
+  commentId: F:Nickvision.MPVSharp.LoadFlags.Replace
+  fullName: Nickvision.MPVSharp.LoadFlags.Replace
+  nameWithType: LoadFlags.Replace
+- uid: Nickvision.MPVSharp.LoadFlagsExtensions
+  name: LoadFlagsExtensions
+  href: api/Nickvision.MPVSharp.LoadFlagsExtensions.html
+  commentId: T:Nickvision.MPVSharp.LoadFlagsExtensions
+  fullName: Nickvision.MPVSharp.LoadFlagsExtensions
+  nameWithType: LoadFlagsExtensions
+- uid: Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString(Nickvision.MPVSharp.LoadFlags)
+  name: FlagsToString(LoadFlags)
+  href: api/Nickvision.MPVSharp.LoadFlagsExtensions.html#Nickvision_MPVSharp_LoadFlagsExtensions_FlagsToString_Nickvision_MPVSharp_LoadFlags_
+  commentId: M:Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString(Nickvision.MPVSharp.LoadFlags)
+  fullName: Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString(Nickvision.MPVSharp.LoadFlags)
+  nameWithType: LoadFlagsExtensions.FlagsToString(LoadFlags)
+- uid: Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString*
+  name: FlagsToString
+  href: api/Nickvision.MPVSharp.LoadFlagsExtensions.html#Nickvision_MPVSharp_LoadFlagsExtensions_FlagsToString_
+  commentId: Overload:Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.LoadFlagsExtensions.FlagsToString
+  nameWithType: LoadFlagsExtensions.FlagsToString
 - uid: Nickvision.MPVSharp.LogMessageReceivedEventArgs
   name: LogMessageReceivedEventArgs
   href: api/Nickvision.MPVSharp.LogMessageReceivedEventArgs.html
@@ -3339,6 +3405,61 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.RenderContext.SetupGL
   nameWithType: RenderContext.SetupGL
+- uid: Nickvision.MPVSharp.SeekFlags
+  name: SeekFlags
+  href: api/Nickvision.MPVSharp.SeekFlags.html
+  commentId: T:Nickvision.MPVSharp.SeekFlags
+  fullName: Nickvision.MPVSharp.SeekFlags
+  nameWithType: SeekFlags
+- uid: Nickvision.MPVSharp.SeekFlags.Absolute
+  name: Absolute
+  href: api/Nickvision.MPVSharp.SeekFlags.html#Nickvision_MPVSharp_SeekFlags_Absolute
+  commentId: F:Nickvision.MPVSharp.SeekFlags.Absolute
+  fullName: Nickvision.MPVSharp.SeekFlags.Absolute
+  nameWithType: SeekFlags.Absolute
+- uid: Nickvision.MPVSharp.SeekFlags.Exact
+  name: Exact
+  href: api/Nickvision.MPVSharp.SeekFlags.html#Nickvision_MPVSharp_SeekFlags_Exact
+  commentId: F:Nickvision.MPVSharp.SeekFlags.Exact
+  fullName: Nickvision.MPVSharp.SeekFlags.Exact
+  nameWithType: SeekFlags.Exact
+- uid: Nickvision.MPVSharp.SeekFlags.Keyframes
+  name: Keyframes
+  href: api/Nickvision.MPVSharp.SeekFlags.html#Nickvision_MPVSharp_SeekFlags_Keyframes
+  commentId: F:Nickvision.MPVSharp.SeekFlags.Keyframes
+  fullName: Nickvision.MPVSharp.SeekFlags.Keyframes
+  nameWithType: SeekFlags.Keyframes
+- uid: Nickvision.MPVSharp.SeekFlags.Percent
+  name: Percent
+  href: api/Nickvision.MPVSharp.SeekFlags.html#Nickvision_MPVSharp_SeekFlags_Percent
+  commentId: F:Nickvision.MPVSharp.SeekFlags.Percent
+  fullName: Nickvision.MPVSharp.SeekFlags.Percent
+  nameWithType: SeekFlags.Percent
+- uid: Nickvision.MPVSharp.SeekFlags.Relative
+  name: Relative
+  href: api/Nickvision.MPVSharp.SeekFlags.html#Nickvision_MPVSharp_SeekFlags_Relative
+  commentId: F:Nickvision.MPVSharp.SeekFlags.Relative
+  fullName: Nickvision.MPVSharp.SeekFlags.Relative
+  nameWithType: SeekFlags.Relative
+- uid: Nickvision.MPVSharp.SeekFlagsExtensions
+  name: SeekFlagsExtensions
+  href: api/Nickvision.MPVSharp.SeekFlagsExtensions.html
+  commentId: T:Nickvision.MPVSharp.SeekFlagsExtensions
+  fullName: Nickvision.MPVSharp.SeekFlagsExtensions
+  nameWithType: SeekFlagsExtensions
+- uid: Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString(Nickvision.MPVSharp.SeekFlags)
+  name: FlagsToString(SeekFlags)
+  href: api/Nickvision.MPVSharp.SeekFlagsExtensions.html#Nickvision_MPVSharp_SeekFlagsExtensions_FlagsToString_Nickvision_MPVSharp_SeekFlags_
+  commentId: M:Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString(Nickvision.MPVSharp.SeekFlags)
+  fullName: Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString(Nickvision.MPVSharp.SeekFlags)
+  nameWithType: SeekFlagsExtensions.FlagsToString(SeekFlags)
+- uid: Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString*
+  name: FlagsToString
+  href: api/Nickvision.MPVSharp.SeekFlagsExtensions.html#Nickvision_MPVSharp_SeekFlagsExtensions_FlagsToString_
+  commentId: Overload:Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.SeekFlagsExtensions.FlagsToString
+  nameWithType: SeekFlagsExtensions.FlagsToString
 - uid: Nickvision.MPVSharp.SetPropertyReplyReceivedEventArgs
   name: SetPropertyReplyReceivedEventArgs
   href: api/Nickvision.MPVSharp.SetPropertyReplyReceivedEventArgs.html

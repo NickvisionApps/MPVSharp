@@ -544,7 +544,7 @@ public class Client : MPVClient, IDisposable
     /// Create OpenGLRenderContext
     /// </summary>
     /// <returns>New render context</returns>
-    public RenderContext CreateRenderContext() => new RenderContext(_handle);
+    public RenderContext CreateRenderContext() => new RenderContext(Handle);
 
     /// <summary>
     /// Toggle paused state
@@ -556,11 +556,15 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     /// <param name="target">Time in seconds</param>
     /// <param name="flags">Seek flags</param>
-    public void Seek(double target, string flags = "relative")
+    public void Seek(double target, SeekFlags flags = SeekFlags.Relative | SeekFlags.Keyframes)
     {
+        if ((flags.HasFlag(SeekFlags.Relative) && flags.HasFlag(SeekFlags.Absolute)) || (flags.HasFlag(SeekFlags.Keyframes) && flags.HasFlag(SeekFlags.Exact)))
+        {
+            throw new ClientException(MPVError.InvalidParameter);
+        }
         try
         {
-            Command(new []{"seek", target.ToString(CultureInfo.InvariantCulture), flags});
+            Command(new []{"seek", target.ToString(CultureInfo.InvariantCulture), flags.FlagsToString()});
         }
         catch (ClientException) { } // Seek fails if nothing is playing, we don't want a crash
     }
@@ -569,8 +573,15 @@ public class Client : MPVClient, IDisposable
     /// Load a file from path or URL
     /// </summary>
     /// <param name="url">File path or URL</param>
-    /// <param name="flags">Loadfile flags</param>
-    public void LoadFile(string url, string flags = "replace") => Command(new []{"loadfile", url, flags});
+    /// <param name="flags">Load flags</param>
+    public void LoadFile(string url, LoadFlags flags = LoadFlags.Replace) => Command(new []{"loadfile", url, flags.FlagsToString()});
+
+    /// <summary>
+    /// Load a playlist from path or URL
+    /// </summary>
+    /// <param name="url">Playlist path or URL</param>
+    /// <param name="flags">Load flags</param>
+    public void LoadList(string url, LoadFlags flags = LoadFlags.Replace) => Command(new []{"loadlist", url, flags.FlagsToString()});
 
     /// <summary>
     /// Play next file in playlist
