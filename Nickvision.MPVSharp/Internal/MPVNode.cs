@@ -8,7 +8,7 @@ namespace Nickvision.MPVSharp.Internal;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct MPVNode
 {
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_free_node_contents(ref MPVNode node);
 
     [FieldOffset(0)]

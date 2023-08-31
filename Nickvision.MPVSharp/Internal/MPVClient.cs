@@ -16,103 +16,103 @@ public partial class MPVClient : ICloneable
     [LibraryImport("libc.so.6", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint setlocale(int category, string value);
     // Create client
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint mpv_create_client(nint handle, string? name);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint mpv_create_weak_client(nint handle, string? name);
     // Init client
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_initialize(nint handle);
     // Execute command
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command(nint handle, string?[] command);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_string(nint handle, string command);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_command_node(nint handle, ref MPVNode command, out MPVNode result);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_ret(nint handle, string?[] command, out MPVNode node);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_command_async(nint handle, ulong replyUserdata, string?[] command);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_command_node_async(nint handle, ulong replyUserdata, ref MPVNode command);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_abort_async_command(nint handle, ulong replyUserdata);
     // Events
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial nint mpv_wait_event(nint handle, double timeout);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_wakeup(nint handle);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_set_wakeup_callback(nint handle, WakeUpCallback callback, nint data);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_request_event(nint handle, MPVEventId eid, int enable);
     // Observe property
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_observe_property(nint handle, ulong replyUserdata, string name, MPVFormat format);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial int mpv_unobserve_property(nint handle, ulong replyUserdata);
     // Set property
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref int data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref long data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref double data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref string data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property(nint handle, string name, MPVFormat format, ref MPVNode data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref int data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref long data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref double data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref string data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format, ref MPVNode data);
     // Get property
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out int data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out long data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out double data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out string data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out MPVNode data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format);
     // Set option
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref MPVNode data);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_option_string(nint handle, string name, string data);
     // Hook
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_hook_add(nint handle, ulong replyUserdata, string name, int priority);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_hook_continue(nint handle, ulong id);
     // Other
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string mpv_client_name(nint handle);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial long mpv_client_id(nint handle);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_load_config_file(nint handle, string path);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial long mpv_get_time_us(nint handle);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_request_log_messages(nint handle, string logLevel);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_wait_async_requests(nint handle);
     // Destroy client
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_destroy(nint handle);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_terminate_destroy(nint handle);
 
     private const int LC_NUMERIC = 1;
@@ -143,6 +143,7 @@ public partial class MPVClient : ICloneable
     /// <exception cref="Exception">Thrown if failed to create mpvHandle</exception>
     public MPVClient(nint? handle = null, string? name = null, bool weak = false)
     {
+        Resolver.SetResolver();
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
             setlocale(LC_NUMERIC, "C");

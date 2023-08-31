@@ -8,9 +8,9 @@ namespace Nickvision.MPVSharp.Internal;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct MPVEvent
 {
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string mpv_event_name(MPVEventId id);
-    [LibraryImport("libmpv.so.2", StringMarshalling = StringMarshalling.Utf8)]
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_event_to_node(out MPVNode node, ref MPVEvent e);
 
     /// <summary>

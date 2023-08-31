@@ -95,7 +95,7 @@ public enum MPVError
 
 public static partial class MPVErrorExtensions
 {
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial nint mpv_error_string(MPVError error);
 
     /// <summary>
