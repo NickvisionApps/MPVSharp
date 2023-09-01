@@ -15,7 +15,7 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
-    <PackageReleaseNotes>- Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>- Initial Release (uses libmpv build 20230901)</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 

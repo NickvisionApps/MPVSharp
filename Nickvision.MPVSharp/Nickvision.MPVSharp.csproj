@@ -14,7 +14,8 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
-    <PackageReleaseNotes>- Added Windows support</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added Windows support
+      - Added MPVClient.DelProperty method</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 
