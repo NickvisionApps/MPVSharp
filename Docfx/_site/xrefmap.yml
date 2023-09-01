@@ -126,6 +126,22 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Client.CyclePause
   nameWithType: Client.CyclePause
+- uid: Nickvision.MPVSharp.Client.DelProperty(System.String)
+  name: DelProperty(string)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_DelProperty_System_String_
+  commentId: M:Nickvision.MPVSharp.Client.DelProperty(System.String)
+  name.vb: DelProperty(String)
+  fullName: Nickvision.MPVSharp.Client.DelProperty(string)
+  fullName.vb: Nickvision.MPVSharp.Client.DelProperty(String)
+  nameWithType: Client.DelProperty(string)
+  nameWithType.vb: Client.DelProperty(String)
+- uid: Nickvision.MPVSharp.Client.DelProperty*
+  name: DelProperty
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_DelProperty_
+  commentId: Overload:Nickvision.MPVSharp.Client.DelProperty
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Client.DelProperty
+  nameWithType: Client.DelProperty
 - uid: Nickvision.MPVSharp.Client.Destroyed
   name: Destroyed
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_Destroyed
@@ -1207,6 +1223,22 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.MPVClient.CommandString
   nameWithType: MPVClient.CommandString
+- uid: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(System.String)
+  name: DelProperty(string)
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_DelProperty_System_String_
+  commentId: M:Nickvision.MPVSharp.Internal.MPVClient.DelProperty(System.String)
+  name.vb: DelProperty(String)
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(string)
+  fullName.vb: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(String)
+  nameWithType: MPVClient.DelProperty(string)
+  nameWithType.vb: MPVClient.DelProperty(String)
+- uid: Nickvision.MPVSharp.Internal.MPVClient.DelProperty*
+  name: DelProperty
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_DelProperty_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVClient.DelProperty
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.DelProperty
+  nameWithType: MPVClient.DelProperty
 - uid: Nickvision.MPVSharp.Internal.MPVClient.Destroy
   name: Destroy()
   href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_Destroy
