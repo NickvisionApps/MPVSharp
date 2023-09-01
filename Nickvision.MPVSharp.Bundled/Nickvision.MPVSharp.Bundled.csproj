@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PackageId>Nickvision.MPVSharp.Bundled</PackageId>
+    <Version>2023.7.2</Version>
+    <Company>Nickvision</Company>
+    <Authors>Nickvision</Authors>
+    <Description>Use MPV in your C# apps</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
+    <Copyright>(c) Nickvision 2021-2023</Copyright>
+    <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
+    <PackageReleaseNotes>- Initial Release</PackageReleaseNotes>
+    <PackageIcon>logo-r.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nickvision.MPVSharp" Version="2023.7.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\Nickvision.MPVSharp\Resources\logo-r.png" Pack="true" PackagePath="\" />
+    <Content Include="runtimes\win-x64\native\libmpv-2.dll" CopyToOutputDirectory="Always" Pack="true" Link="runtimes\win-x64\native\libmpv-2.dll" PackagePath="runtimes\win-x64\native\" />
+  </ItemGroup>
+  
+</Project>
