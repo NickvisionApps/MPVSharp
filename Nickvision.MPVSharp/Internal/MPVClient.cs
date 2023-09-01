@@ -86,6 +86,9 @@ public partial class MPVClient : ICloneable
     private static partial MPVError mpv_get_property(nint handle, string name, MPVFormat format, out MPVNode data);
     [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_get_property_async(nint handle, ulong replyUserdata, string name, MPVFormat format);
+    // Delete property
+    [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial MPVError mpv_del_property(nint handle, string name);
     // Set option
     [LibraryImport("mpv", StringMarshalling = StringMarshalling.Utf8)]
     private static partial MPVError mpv_set_option(nint handle, string name, MPVFormat format, ref MPVNode data);
@@ -449,6 +452,13 @@ public partial class MPVClient : ICloneable
     /// <returns>Error code</returns>
     public MPVError GetPropertyAsync(ulong replyUserdata, string name, MPVFormat format) => mpv_get_property_async(Handle, replyUserdata, name, format);
 
+    /// <summary>
+    /// Delete property
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <returns>Error code</returns>
+    public MPVError DelProperty(string name) => mpv_del_property(Handle, name);
+    
     /// <summary>
     /// Set option using MPVNode format
     /// </summary>
