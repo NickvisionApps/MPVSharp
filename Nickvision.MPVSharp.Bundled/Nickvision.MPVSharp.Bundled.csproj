@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.MPVSharp.Bundled</PackageId>
-    <Version>2023.7.2</Version>
+    <Version>2023.9.0</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Use MPV in your C# apps</Description>
