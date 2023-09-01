@@ -11,7 +11,7 @@
       ],
       "dest": "api",
       "includePrivateMembers": false,
-      "disableGitFeatures": false,
+      "disableGitFeatures": true,
       "disableDefaultFilter": false,
       "noRestore": false,
       "namespaceLayout": "flattened",
@@ -44,17 +44,12 @@
     ],
     "output": "_site",
     "globalMetadataFiles": [],
-    "globalMetadata":
-    {
-      "_disableContribution": true
-    },
     "fileMetadataFiles": [],
     "template": [
       "default",
       "modern"
     ],
     "postProcessors": [],
-    "keepFileLink": false,
-    "disableGitFeatures": false
+    "keepFileLink": false
   }
 }

@@ -15,7 +15,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/blob/main/Docfx/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/NickvisionApps/MPVSharp/blob/windows/Docfx/index.md/#L1">
   </head>
 
   <script type="module">
@@ -77,11 +77,8 @@
 <p><strong>Use MPV in your C# apps</strong></p>
 <p>MPVSharp provides C# bindings for <a href="https://mpv.io/manual/master/#embedding-into-other-programs-libmpv">libmpv</a>, a library for embedding amazing <a href="https://mpv.io/">MPV</a> player into another apps.</p>
 <h1 id="installation">Installation</h1>
-<p><a href='https://www.nuget.org/packages/Nickvision.MPVSharp/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'></a></p>
-<p>You also need <code>libmpv</code> installed on your system.</p>
-<blockquote>
-<p><strong>The package only supports Linux at the moment!</strong></p>
-</blockquote>
+<p><strong><a href="https://www.nuget.org/packages/Nickvision.MPVSharp/">MPVSharp</a></strong> - main package, requires <code>libmpv</code> to be installed on the user system or provided together with your application (works on Windows and Linux).</p>
+<p><strong><a href="https://www.nuget.org/packages/Nickvision.MPVSharp.Bundled/">MPVSharp.Bundled</a></strong> - has <code>libmpv</code> built-in (Windows only).</p>
 <h1 id="how-to-use">How to use</h1>
 <p>There are 2 namespaces:</p>
 <ul>
@@ -89,7 +86,7 @@
 <li><strong><code>Nickvision.MPVSharp</code></strong> gives you another objects that work on top of <code>Internal</code> counterpart, but provides you with various helpers and convenience functions. They are easier to use, but the API is slightly different than in <code>Internal</code>, so you will probably want to read docs for <a href="api/Nickvision.MPVSharp.Client.html"><code>Client class</code></a> to find what methods you can use.</li>
 </ul>
 <p>Look at the <a href="#examples">examples</a> to get the basic idea how to use MPVSharp.</p>
-<p>There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpc, which is very well documented:</p>
+<p>There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpv, which is very well documented:</p>
 <ul>
 <li><a href="https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/client.h">client.h</a></li>
 <li><a href="https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render.h">render.h</a></li>
@@ -115,6 +112,9 @@
 <p>This project follows the <a href="https://wiki.gnome.org/Foundation/CodeOfConduct">GNOME Code of Conduct</a>.</p>
 </article>
 
+        <div class="contribution d-print-none">
+          <a href="https://github.com/NickvisionApps/MPVSharp/blob/windows/Docfx/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
         
