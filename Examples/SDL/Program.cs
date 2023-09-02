@@ -8,8 +8,9 @@ public class Program
 {
     private readonly nint _window;
     private readonly nint _renderer;
+    private readonly nint _glCtx;
     private readonly Client _player;
-    private readonly RenderContext _ctx;
+    private readonly RenderContext _playerCtx;
     private bool _running;
     
     public static void Main(string[] args) => new Program().Run();
@@ -28,6 +29,7 @@ public class Program
         {
             throw new Exception($"Failed to create SDL Window: {SDL_GetError()}");
         }
+        _glCtx = SDL_GL_CreateContext(_window);
         _renderer = SDL_CreateRenderer(_window, -1, SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
         if (_renderer == IntPtr.Zero)
         {
@@ -42,9 +44,9 @@ public class Program
             Console.Write($"[{e.Prefix}] {e.Text}"); // Log messages (e.Text) end with newline char
         };
         _player.Initialize();
-        _ctx = _player.CreateRenderContext();
+        _playerCtx = _player.CreateRenderContext();
         // We will call rendering method manually, no need for callback
-        _ctx.SetupGL(null);
+        _playerCtx.SetupGL(null);
     }
     
     /// <summary>
@@ -59,9 +61,10 @@ public class Program
             PollEvents();
             Render();
         }
-        _ctx.Dispose();
+        _playerCtx.Dispose();
         _player.Dispose();
         SDL_DestroyRenderer(_renderer);
+        SDL_GL_DeleteContext(_glCtx);
         SDL_DestroyWindow(_window);
         SDL_Quit();
     }
@@ -102,7 +105,7 @@ public class Program
     {
         SDL_RenderClear(_renderer);
         SDL_GetWindowSize(_window, out var width, out var height);
-        _ctx.RenderGL(width, height);
+        _playerCtx.RenderGL(width, height);
         SDL_GL_SwapWindow(_window);
     }
 }
