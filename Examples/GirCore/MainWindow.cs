@@ -1,4 +1,5 @@
 using Nickvision.MPVSharp;
+using System;
 
 namespace Nickvision.MPVSharp.Examples.GirCore;
 
