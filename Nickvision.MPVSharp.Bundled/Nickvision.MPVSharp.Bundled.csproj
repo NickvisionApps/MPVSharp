@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nickvision.MPVSharp" Version="2023.7.2" />
+    <ProjectReference Include="..\Nickvision.MPVSharp\Nickvision.MPVSharp.csproj" />
   </ItemGroup>
   
   <ItemGroup>
