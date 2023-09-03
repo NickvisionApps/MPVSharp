@@ -51,7 +51,7 @@ public class Program
     private void Run()
     {
         _running = true;
-        _player.LoadFile("https://www.youtube.com/watch?v=UXqq0ZvbOnk");
+        _player.LoadFile("https://www.youtube.com/watch?v=Y-rmzh0PI3c");
         while (_running)
         {
             PollEvents();
