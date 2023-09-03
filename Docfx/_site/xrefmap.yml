@@ -126,6 +126,22 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Client.CyclePause
   nameWithType: Client.CyclePause
+- uid: Nickvision.MPVSharp.Client.DelProperty(System.String)
+  name: DelProperty(string)
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_DelProperty_System_String_
+  commentId: M:Nickvision.MPVSharp.Client.DelProperty(System.String)
+  name.vb: DelProperty(String)
+  fullName: Nickvision.MPVSharp.Client.DelProperty(string)
+  fullName.vb: Nickvision.MPVSharp.Client.DelProperty(String)
+  nameWithType: Client.DelProperty(string)
+  nameWithType.vb: Client.DelProperty(String)
+- uid: Nickvision.MPVSharp.Client.DelProperty*
+  name: DelProperty
+  href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_DelProperty_
+  commentId: Overload:Nickvision.MPVSharp.Client.DelProperty
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Client.DelProperty
+  nameWithType: Client.DelProperty
 - uid: Nickvision.MPVSharp.Client.Destroyed
   name: Destroyed
   href: api/Nickvision.MPVSharp.Client.html#Nickvision_MPVSharp_Client_Destroyed
@@ -1032,6 +1048,12 @@ references:
   commentId: T:Nickvision.MPVSharp.Internal.MPVByteArray
   fullName: Nickvision.MPVSharp.Internal.MPVByteArray
   nameWithType: MPVByteArray
+- uid: Nickvision.MPVSharp.Internal.MPVByteArray.Size
+  name: Size
+  href: api/Nickvision.MPVSharp.Internal.MPVByteArray.html#Nickvision_MPVSharp_Internal_MPVByteArray_Size
+  commentId: F:Nickvision.MPVSharp.Internal.MPVByteArray.Size
+  fullName: Nickvision.MPVSharp.Internal.MPVByteArray.Size
+  nameWithType: MPVByteArray.Size
 - uid: Nickvision.MPVSharp.Internal.MPVByteArray.op_Implicit(Nickvision.MPVSharp.Internal.MPVByteArray)~System.Byte[]
   name: implicit operator byte[](MPVByteArray)
   href: api/Nickvision.MPVSharp.Internal.MPVByteArray.html#Nickvision_MPVSharp_Internal_MPVByteArray_op_Implicit_Nickvision_MPVSharp_Internal_MPVByteArray__System_Byte__
@@ -1051,12 +1073,6 @@ references:
   fullName.vb: Nickvision.MPVSharp.Internal.MPVByteArray.CType
   nameWithType: MPVByteArray.implicit operator
   nameWithType.vb: MPVByteArray.CType
-- uid: Nickvision.MPVSharp.Internal.MPVByteArray.Size
-  name: Size
-  href: api/Nickvision.MPVSharp.Internal.MPVByteArray.html#Nickvision_MPVSharp_Internal_MPVByteArray_Size
-  commentId: F:Nickvision.MPVSharp.Internal.MPVByteArray.Size
-  fullName: Nickvision.MPVSharp.Internal.MPVByteArray.Size
-  nameWithType: MPVByteArray.Size
 - uid: Nickvision.MPVSharp.Internal.MPVClient
   name: MPVClient
   href: api/Nickvision.MPVSharp.Internal.MPVClient.html
@@ -1207,6 +1223,22 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.MPVClient.CommandString
   nameWithType: MPVClient.CommandString
+- uid: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(System.String)
+  name: DelProperty(string)
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_DelProperty_System_String_
+  commentId: M:Nickvision.MPVSharp.Internal.MPVClient.DelProperty(System.String)
+  name.vb: DelProperty(String)
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(string)
+  fullName.vb: Nickvision.MPVSharp.Internal.MPVClient.DelProperty(String)
+  nameWithType: MPVClient.DelProperty(string)
+  nameWithType.vb: MPVClient.DelProperty(String)
+- uid: Nickvision.MPVSharp.Internal.MPVClient.DelProperty*
+  name: DelProperty
+  href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_DelProperty_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVClient.DelProperty
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVClient.DelProperty
+  nameWithType: MPVClient.DelProperty
 - uid: Nickvision.MPVSharp.Internal.MPVClient.Destroy
   name: Destroy()
   href: api/Nickvision.MPVSharp.Internal.MPVClient.html#Nickvision_MPVSharp_Internal_MPVClient_Destroy
@@ -1804,18 +1836,18 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVError.NoMem
   fullName: Nickvision.MPVSharp.Internal.MPVError.NoMem
   nameWithType: MPVError.NoMem
-- uid: Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
-  name: NothingToPlay
-  href: api/Nickvision.MPVSharp.Internal.MPVError.html#Nickvision_MPVSharp_Internal_MPVError_NothingToPlay
-  commentId: F:Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
-  fullName: Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
-  nameWithType: MPVError.NothingToPlay
 - uid: Nickvision.MPVSharp.Internal.MPVError.NotImplemented
   name: NotImplemented
   href: api/Nickvision.MPVSharp.Internal.MPVError.html#Nickvision_MPVSharp_Internal_MPVError_NotImplemented
   commentId: F:Nickvision.MPVSharp.Internal.MPVError.NotImplemented
   fullName: Nickvision.MPVSharp.Internal.MPVError.NotImplemented
   nameWithType: MPVError.NotImplemented
+- uid: Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
+  name: NothingToPlay
+  href: api/Nickvision.MPVSharp.Internal.MPVError.html#Nickvision_MPVSharp_Internal_MPVError_NothingToPlay
+  commentId: F:Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
+  fullName: Nickvision.MPVSharp.Internal.MPVError.NothingToPlay
+  nameWithType: MPVError.NothingToPlay
 - uid: Nickvision.MPVSharp.Internal.MPVError.OptionError
   name: OptionError
   href: api/Nickvision.MPVSharp.Internal.MPVError.html#Nickvision_MPVSharp_Internal_MPVError_OptionError
@@ -2554,6 +2586,19 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.MPVNode.FromIntPtr
   nameWithType: MPVNode.FromIntPtr
+- uid: Nickvision.MPVSharp.Internal.MPVNode.ToString
+  name: ToString()
+  href: api/Nickvision.MPVSharp.Internal.MPVNode.html#Nickvision_MPVSharp_Internal_MPVNode_ToString
+  commentId: M:Nickvision.MPVSharp.Internal.MPVNode.ToString
+  fullName: Nickvision.MPVSharp.Internal.MPVNode.ToString()
+  nameWithType: MPVNode.ToString()
+- uid: Nickvision.MPVSharp.Internal.MPVNode.ToString*
+  name: ToString
+  href: api/Nickvision.MPVSharp.Internal.MPVNode.html#Nickvision_MPVSharp_Internal_MPVNode_ToString_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNode.ToString
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVNode.ToString
+  nameWithType: MPVNode.ToString
 - uid: Nickvision.MPVSharp.Internal.MPVNode.op_Explicit(Nickvision.MPVSharp.Internal.MPVNode)~Nickvision.MPVSharp.Internal.MPVNode[]
   name: explicit operator MPVNode[]?(MPVNode)
   href: api/Nickvision.MPVSharp.Internal.MPVNode.html#Nickvision_MPVSharp_Internal_MPVNode_op_Explicit_Nickvision_MPVSharp_Internal_MPVNode__Nickvision_MPVSharp_Internal_MPVNode__
@@ -2627,19 +2672,6 @@ references:
   fullName.vb: Nickvision.MPVSharp.Internal.MPVNode.CType
   nameWithType: MPVNode.explicit operator
   nameWithType.vb: MPVNode.CType
-- uid: Nickvision.MPVSharp.Internal.MPVNode.ToString
-  name: ToString()
-  href: api/Nickvision.MPVSharp.Internal.MPVNode.html#Nickvision_MPVSharp_Internal_MPVNode_ToString
-  commentId: M:Nickvision.MPVSharp.Internal.MPVNode.ToString
-  fullName: Nickvision.MPVSharp.Internal.MPVNode.ToString()
-  nameWithType: MPVNode.ToString()
-- uid: Nickvision.MPVSharp.Internal.MPVNode.ToString*
-  name: ToString
-  href: api/Nickvision.MPVSharp.Internal.MPVNode.html#Nickvision_MPVSharp_Internal_MPVNode_ToString_
-  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNode.ToString
-  isSpec: "True"
-  fullName: Nickvision.MPVSharp.Internal.MPVNode.ToString
-  nameWithType: MPVNode.ToString
 - uid: Nickvision.MPVSharp.Internal.MPVNodeList
   name: MPVNodeList
   href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html
@@ -2652,6 +2684,32 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVNodeList.Num
   fullName: Nickvision.MPVSharp.Internal.MPVNodeList.Num
   nameWithType: MPVNodeList.Num
+- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
+  name: ToDictionary(MPVNodeList)
+  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToDictionary_Nickvision_MPVSharp_Internal_MPVNodeList_
+  commentId: M:Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
+  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
+  nameWithType: MPVNodeList.ToDictionary(MPVNodeList)
+- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary*
+  name: ToDictionary
+  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToDictionary_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary
+  nameWithType: MPVNodeList.ToDictionary
+- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToString
+  name: ToString()
+  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToString
+  commentId: M:Nickvision.MPVSharp.Internal.MPVNodeList.ToString
+  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToString()
+  nameWithType: MPVNodeList.ToString()
+- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToString*
+  name: ToString
+  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToString_
+  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNodeList.ToString
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToString
+  nameWithType: MPVNodeList.ToString
 - uid: Nickvision.MPVSharp.Internal.MPVNodeList.op_Explicit(Nickvision.MPVSharp.Internal.MPVNodeList)~Nickvision.MPVSharp.Internal.MPVNode[]
   name: explicit operator MPVNode[](MPVNodeList)
   href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_op_Explicit_Nickvision_MPVSharp_Internal_MPVNodeList__Nickvision_MPVSharp_Internal_MPVNode__
@@ -2680,32 +2738,6 @@ references:
   fullName.vb: Nickvision.MPVSharp.Internal.MPVNodeList.CType
   nameWithType: MPVNodeList.explicit operator
   nameWithType.vb: MPVNodeList.CType
-- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
-  name: ToDictionary(MPVNodeList)
-  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToDictionary_Nickvision_MPVSharp_Internal_MPVNodeList_
-  commentId: M:Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
-  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary(Nickvision.MPVSharp.Internal.MPVNodeList)
-  nameWithType: MPVNodeList.ToDictionary(MPVNodeList)
-- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary*
-  name: ToDictionary
-  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToDictionary_
-  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary
-  isSpec: "True"
-  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToDictionary
-  nameWithType: MPVNodeList.ToDictionary
-- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToString
-  name: ToString()
-  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToString
-  commentId: M:Nickvision.MPVSharp.Internal.MPVNodeList.ToString
-  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToString()
-  nameWithType: MPVNodeList.ToString()
-- uid: Nickvision.MPVSharp.Internal.MPVNodeList.ToString*
-  name: ToString
-  href: api/Nickvision.MPVSharp.Internal.MPVNodeList.html#Nickvision_MPVSharp_Internal_MPVNodeList_ToString_
-  commentId: Overload:Nickvision.MPVSharp.Internal.MPVNodeList.ToString
-  isSpec: "True"
-  fullName: Nickvision.MPVSharp.Internal.MPVNodeList.ToString
-  nameWithType: MPVNodeList.ToString
 - uid: Nickvision.MPVSharp.Internal.MPVOpenGLDRMDrawSurfaceSize
   name: MPVOpenGLDRMDrawSurfaceSize
   href: api/Nickvision.MPVSharp.Internal.MPVOpenGLDRMDrawSurfaceSize.html
@@ -2982,6 +3014,12 @@ references:
   commentId: T:Nickvision.MPVSharp.Internal.MPVRenderParamType
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType
   nameWithType: MPVRenderParamType
+- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
+  name: APIType
+  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_APIType
+  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
+  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
+  nameWithType: MPVRenderParamType.APIType
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.AdvancedControl
   name: AdvancedControl
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_AdvancedControl
@@ -2994,24 +3032,12 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.AmbientLight
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.AmbientLight
   nameWithType: MPVRenderParamType.AmbientLight
-- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
-  name: APIType
-  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_APIType
-  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
-  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.APIType
-  nameWithType: MPVRenderParamType.APIType
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.BlockForTargetTime
   name: BlockForTargetTime
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_BlockForTargetTime
   commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.BlockForTargetTime
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.BlockForTargetTime
   nameWithType: MPVRenderParamType.BlockForTargetTime
-- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
-  name: Depth
-  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_Depth
-  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
-  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
-  nameWithType: MPVRenderParamType.Depth
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.DRMDisplayV2
   name: DRMDisplayV2
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_DRMDisplayV2
@@ -3024,6 +3050,12 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.DRMDrawSurfaceSize
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.DRMDrawSurfaceSize
   nameWithType: MPVRenderParamType.DRMDrawSurfaceSize
+- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
+  name: Depth
+  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_Depth
+  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
+  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.Depth
+  nameWithType: MPVRenderParamType.Depth
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.FlipY
   name: FlipY
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_FlipY
@@ -3060,12 +3092,6 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.OpenGLInitParams
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.OpenGLInitParams
   nameWithType: MPVRenderParamType.OpenGLInitParams
-- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
-  name: SkipRendering
-  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_SkipRendering
-  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
-  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
-  nameWithType: MPVRenderParamType.SkipRendering
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.SWFormat
   name: SWFormat
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_SWFormat
@@ -3090,6 +3116,12 @@ references:
   commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.SWStride
   fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.SWStride
   nameWithType: MPVRenderParamType.SWStride
+- uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
+  name: SkipRendering
+  href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_SkipRendering
+  commentId: F:Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
+  fullName: Nickvision.MPVSharp.Internal.MPVRenderParamType.SkipRendering
+  nameWithType: MPVRenderParamType.SkipRendering
 - uid: Nickvision.MPVSharp.Internal.MPVRenderParamType.WLDisplay
   name: WLDisplay
   href: api/Nickvision.MPVSharp.Internal.MPVRenderParamType.html#Nickvision_MPVSharp_Internal_MPVRenderParamType_WLDisplay
@@ -3152,6 +3184,57 @@ references:
   isSpec: "True"
   fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.GLGetIntegerV
   nameWithType: OpenGLHelpers.GLGetIntegerV
+- uid: Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress(System.String)
+  name: WGLGetProcAddress(string)
+  href: api/Nickvision.MPVSharp.Internal.OpenGLHelpers.html#Nickvision_MPVSharp_Internal_OpenGLHelpers_WGLGetProcAddress_System_String_
+  commentId: M:Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress(System.String)
+  name.vb: WGLGetProcAddress(String)
+  fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress(string)
+  fullName.vb: Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress(String)
+  nameWithType: OpenGLHelpers.WGLGetProcAddress(string)
+  nameWithType.vb: OpenGLHelpers.WGLGetProcAddress(String)
+- uid: Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress*
+  name: WGLGetProcAddress
+  href: api/Nickvision.MPVSharp.Internal.OpenGLHelpers.html#Nickvision_MPVSharp_Internal_OpenGLHelpers_WGLGetProcAddress_
+  commentId: Overload:Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.WGLGetProcAddress
+  nameWithType: OpenGLHelpers.WGLGetProcAddress
+- uid: Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress(System.String)
+  name: WindowsGetProcAddress(string)
+  href: api/Nickvision.MPVSharp.Internal.OpenGLHelpers.html#Nickvision_MPVSharp_Internal_OpenGLHelpers_WindowsGetProcAddress_System_String_
+  commentId: M:Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress(System.String)
+  name.vb: WindowsGetProcAddress(String)
+  fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress(string)
+  fullName.vb: Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress(String)
+  nameWithType: OpenGLHelpers.WindowsGetProcAddress(string)
+  nameWithType.vb: OpenGLHelpers.WindowsGetProcAddress(String)
+- uid: Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress*
+  name: WindowsGetProcAddress
+  href: api/Nickvision.MPVSharp.Internal.OpenGLHelpers.html#Nickvision_MPVSharp_Internal_OpenGLHelpers_WindowsGetProcAddress_
+  commentId: Overload:Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.OpenGLHelpers.WindowsGetProcAddress
+  nameWithType: OpenGLHelpers.WindowsGetProcAddress
+- uid: Nickvision.MPVSharp.Internal.Resolver
+  name: Resolver
+  href: api/Nickvision.MPVSharp.Internal.Resolver.html
+  commentId: T:Nickvision.MPVSharp.Internal.Resolver
+  fullName: Nickvision.MPVSharp.Internal.Resolver
+  nameWithType: Resolver
+- uid: Nickvision.MPVSharp.Internal.Resolver.SetResolver
+  name: SetResolver()
+  href: api/Nickvision.MPVSharp.Internal.Resolver.html#Nickvision_MPVSharp_Internal_Resolver_SetResolver
+  commentId: M:Nickvision.MPVSharp.Internal.Resolver.SetResolver
+  fullName: Nickvision.MPVSharp.Internal.Resolver.SetResolver()
+  nameWithType: Resolver.SetResolver()
+- uid: Nickvision.MPVSharp.Internal.Resolver.SetResolver*
+  name: SetResolver
+  href: api/Nickvision.MPVSharp.Internal.Resolver.html#Nickvision_MPVSharp_Internal_Resolver_SetResolver_
+  commentId: Overload:Nickvision.MPVSharp.Internal.Resolver.SetResolver
+  isSpec: "True"
+  fullName: Nickvision.MPVSharp.Internal.Resolver.SetResolver
+  nameWithType: Resolver.SetResolver
 - uid: Nickvision.MPVSharp.LoadFlags
   name: LoadFlags
   href: api/Nickvision.MPVSharp.LoadFlags.html

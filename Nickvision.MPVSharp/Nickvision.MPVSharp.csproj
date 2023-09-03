@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.MPVSharp</PackageId>
-    <Version>2023.7.1</Version>
+    <Version>2023.9.0</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Use MPV in your C# apps</Description>
@@ -14,8 +14,8 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
-    <PackageReleaseNotes>- Added support for weak clients
-    - Created enum flags for Client methods</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added Windows support
+      - Added MPVClient.DelProperty method</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 

@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/home/user/.var/distrobox/fedora/Projects/Nickvision/MPVSharp/Docfx",
+  "source_base_path": "C:/Devel/MPVSharp/Docfx",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -389,6 +389,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Nickvision.MPVSharp.Internal.OpenGLHelpers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Nickvision.MPVSharp.Internal.Resolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Nickvision.MPVSharp.Internal.Resolver.html"
         }
       },
       "version": ""

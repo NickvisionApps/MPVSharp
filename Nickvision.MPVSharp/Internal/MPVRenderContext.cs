@@ -10,21 +10,21 @@ public partial class MPVRenderContext
 {
     public delegate void MPVRenderUpdateFn(nint data);
 
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_render_context_create(out nint ctx, nint handle, MPVRenderParam[] param);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_render_context_set_parameter(nint ctx, MPVRenderParam param);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_render_context_get_info(nint ctx, MPVRenderParam param);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_render_context_set_update_callback(nint ctx, MPVRenderUpdateFn callback, nint data);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial ulong mpv_render_context_update(nint ctx);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial MPVError mpv_render_context_render(nint ctx, MPVRenderParam[] param);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_render_context_report_swap(nint ctx);
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_render_context_free(nint ctx);
     
     private nint _handle;

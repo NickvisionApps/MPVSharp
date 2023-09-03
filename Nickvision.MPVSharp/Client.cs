@@ -470,6 +470,20 @@ public class Client : MPVClient, IDisposable
             throw new ClientException(success);
         }
     }
+    
+    /// <summary>
+    /// Delete property
+    /// </summary>
+    /// <param name="name">Property name</param>
+    /// <exception cref="ClientException">Thrown if can't delete property</exception>
+    public new void DelProperty(string name)
+    {
+        var success = base.DelProperty(name);
+        if (success < MPVError.Success)
+        {
+            throw new ClientException(success);
+        }
+    }
 
     /// <summary>
     /// Set option using Node format

@@ -7,9 +7,9 @@ namespace Nickvision.MPVSharp.Internal;
 /// </summary>
 public static partial class MPV
 {
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial ulong mpv_client_api_version();
-    [LibraryImport("libmpv.so.2")]
+    [LibraryImport("mpv")]
     private static partial void mpv_free(nint data);
     
     /// <summary>

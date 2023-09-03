@@ -9,11 +9,9 @@
 MPVSharp provides C# bindings for [libmpv](https://mpv.io/manual/master/#embedding-into-other-programs-libmpv), a library for embedding amazing [MPV](https://mpv.io/) player into another apps.
 
 # Installation
-<a href='https://www.nuget.org/packages/Nickvision.MPVSharp/'><img width='140' alt='Download on Nuget' src='https://www.nuget.org/Content/gallery/img/logo-header.svg'/></a>
+**[MPVSharp](https://www.nuget.org/packages/Nickvision.MPVSharp/)** - main package, requires `libmpv` to be installed on the user system or provided together with your application (works on Windows and Linux).
 
-You also need `libmpv` installed on your system.
-
-> **The package only supports Linux at the moment!**
+**[MPVSharp.Bundled](https://www.nuget.org/packages/Nickvision.MPVSharp.Bundled/)** - has `libmpv` built-in (Windows 64-bit only, the build is from [this repo](https://github.com/shinchiro/mpv-winbuild-cmake)).
 
 # How to use
 
@@ -25,12 +23,12 @@ There are 2 namespaces:
 
 Look at the [examples](#examples) to get the basic idea how to use MPVSharp.
 
-There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpc, which is very well documented:
-* [client.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/client.h)
-* [render.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render.h)
-* [renger_gl.h](https://github.com/mpv-player/mpv/blob/release/0.35/libmpv/render_gl.h)
+There are comments in the code, but they are mostly an adaptation of some parts of comments from libmpv, which is very well documented:
+* [client.h](https://github.com/mpv-player/mpv/blob/release/0.36/libmpv/client.h)
+* [render.h](https://github.com/mpv-player/mpv/blob/release/0.36/libmpv/render.h)
+* [renger_gl.h](https://github.com/mpv-player/mpv/blob/release/0.36/libmpv/render_gl.h)
 
-Refer to MPV documentation to find the list of [options](https://mpv.io/manual/master/#options), [commands](https://mpv.io/manual/master/#list-of-input-commands) and [properties](https://mpv.io/manual/master/#properties).
+Refer to MPV documentation to find the list of [options](https://mpv.io/manual/stable/#options), [commands](https://mpv.io/manual/stable/#list-of-input-commands) and [properties](https://mpv.io/manual/stable/#properties).
 
 # Examples
 

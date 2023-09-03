@@ -61,11 +61,30 @@ public class RenderContext : MPVRenderContext, IDisposable
     /// <exception cref="ClientException">Thrown if unable to setup GL</exception>
     public void SetupGL(MPVRenderUpdateFn? callback)
     {
-        var glParams = new MPVOpenGLInitParams()
+        MPVOpenGLInitParams glParams;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            GetProcAddrFn = (ctx, name) => OpenGLHelpers.EGLGetProcAddress(name),
-            Param = IntPtr.Zero
-        };
+            glParams = new MPVOpenGLInitParams()
+            {
+                GetProcAddrFn = (ctx, name) => {
+                    var res = OpenGLHelpers.WGLGetProcAddress(name);
+                    if (res != IntPtr.Zero)
+                    {
+                        return res;
+                    }
+                    return OpenGLHelpers.WindowsGetProcAddress(name);
+                },
+                Param = IntPtr.Zero
+            };
+        }
+        else
+        {
+            glParams = new MPVOpenGLInitParams()
+            {
+                GetProcAddrFn = (ctx, name) => OpenGLHelpers.EGLGetProcAddress(name),
+                Param = IntPtr.Zero
+            };
+        }
         var glParamsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(glParams));
         Marshal.StructureToPtr(glParams, glParamsPtr, false);
         var glStringPtr = Marshal.StringToCoTaskMemUTF8("opengl");
