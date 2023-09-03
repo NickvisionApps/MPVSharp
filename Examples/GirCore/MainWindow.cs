@@ -15,6 +15,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     private readonly Gtk.GLArea _glArea;
     private readonly Client _player;
     private RenderContext? _ctx;
+    private (int, int) _size;
     
     /// <summary>
     /// Construct window
@@ -32,6 +33,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         SetChild(_glArea);
         _glArea.SetVexpand(true);
         _glArea.SetHexpand(true);
+        _size = (0, 0);
         // Create MPV client
         _player = new Client();
         _player.SetProperty("ytdl", true);
@@ -58,6 +60,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _glArea.OnRealize += OnRealizeGLArea;
         _glArea.OnUnrealize += OnUnrealizeGLArea;
         _glArea.OnRender += OnRenderGLArea;
+        _glArea.OnResize += (_, e) => _size = (e.Width, e.Height);
         // Keyboard shortcuts
         var keyboardController = Gtk.EventControllerKey.New();
         keyboardController.SetPropagationPhase(Gtk.PropagationPhase.Capture);
@@ -105,7 +108,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private bool OnRenderGLArea(Gtk.Widget sender, EventArgs e)
     {
-        _ctx?.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());
+        _ctx?.RenderGL(_size.Item1, _size.Item2);
         return false;
     }
 
