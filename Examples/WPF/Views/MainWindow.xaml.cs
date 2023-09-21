@@ -13,8 +13,6 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e) => OnLoadVideo(sender, e);
-
     private void OnExit(object sender, RoutedEventArgs e) => Close();
 
     private void OnLoadVideo(object sender, RoutedEventArgs e) => MPV.LoadFromYtdlp(TxtUrl.Text);

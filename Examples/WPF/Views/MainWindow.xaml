@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Nickvision.MPVSharp.Examples.WPF.Views"
 		xmlns:controls="clr-namespace:Nickvision.MPVSharp.Examples.WPF.Controls"
         mc:Ignorable="d"
-        Title="WPF MPV# Example" Height="402" Width="640" Loaded="OnLoaded">
+        Title="WPF MPV# Example" Height="402" Width="640">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

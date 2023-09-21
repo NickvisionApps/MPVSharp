@@ -11,8 +11,4 @@
     <ProjectReference Include="..\..\Nickvision.MPVSharp.Bundled\Nickvision.MPVSharp.Bundled.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="OpenTK.GLWpfControl" Version="4.2.3" />
-  </ItemGroup>
-  
 </Project>

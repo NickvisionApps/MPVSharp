@@ -47,7 +47,7 @@ internal class MPVHwndHost : HwndHost
     protected override HandleRef BuildWindowCore(HandleRef hwndParent)
     {
         var playerHostPtr = CreateWindowEx(0, "static", "", WS_CHILD | WS_VISIBLE,
-            0, 0, 100, 100, hwndParent.Handle, HOST_ID, IntPtr.Zero, 0);
+            0, 0, 100, 100, hwndParent.Handle, HOST_ID, IntPtr.Zero, IntPtr.Zero);
         _client.SetProperty("wid", playerHostPtr.ToInt64());
         return new HandleRef(this, playerHostPtr);
     }
