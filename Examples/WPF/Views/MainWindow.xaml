@@ -6,15 +6,40 @@
         xmlns:local="clr-namespace:Nickvision.MPVSharp.Examples.WPF.Views"
 		xmlns:controls="clr-namespace:Nickvision.MPVSharp.Examples.WPF.Controls"
         mc:Ignorable="d"
-        Title="WPF MPV Example" Height="402" Width="640" Loaded="OnLoaded">
+        Title="WPF MPV# Example" Height="402" Width="640" Loaded="OnLoaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="42"></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-		<controls:MPVControl x:Name="MPV" Grid.Row="0"/>
-        
-		<Button Grid.Row="1" Height="42" Content="Toggle Pause" Click="OnPauseClicked"/>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="OnExit"/>
+            </MenuItem>
+
+            <MenuItem Header="_Player">
+                <MenuItem Header="_Load Video Url" Click="OnLoadVideo"/>
+                
+                <Separator/>
+
+                <MenuItem Header="_Toggle Pause" Click="OnPause"/>
+            </MenuItem>
+
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="OnAbout"/>
+            </MenuItem>
+        </Menu>
+
+        <controls:MPVControl x:Name="MPV" Grid.Row="1"/>
+
+        <DockPanel Grid.Row="3">
+            <Button DockPanel.Dock="Right" Content="Toggle Pause" Click="OnPause"/>
+
+            <Button DockPanel.Dock="Right" Margin="6,0,6,0" Content="Load Video" Click="OnLoadVideo"/>
+
+            <TextBox x:Name="TxtUrl" Text="https://www.youtube.com/watch?v=u9lj-c29dxI" DockPanel.Dock="Left"/>
+        </DockPanel>
     </Grid>
 </Window>

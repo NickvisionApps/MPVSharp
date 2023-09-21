@@ -13,7 +13,13 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e) => MPV.LoadFromYtdlp("https://www.youtube.com/watch?v=u9lj-c29dxI");
+    private void OnLoaded(object sender, RoutedEventArgs e) => OnLoadVideo(sender, e);
 
-    private void OnPauseClicked(object sender, EventArgs e) => MPV.CyclePause();
+    private void OnExit(object sender, RoutedEventArgs e) => Close();
+
+    private void OnLoadVideo(object sender, RoutedEventArgs e) => MPV.LoadFromYtdlp(TxtUrl.Text);
+
+    private void OnPause(object sender, RoutedEventArgs e) => MPV.CyclePause();
+
+    private void OnAbout(object sender, RoutedEventArgs e) => MessageBox.Show("WPF MPV# Example", "About", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
 }
