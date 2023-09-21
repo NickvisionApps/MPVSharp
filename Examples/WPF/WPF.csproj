@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Nickvision.MPVSharp\Nickvision.MPVSharp.csproj" />
+    <ProjectReference Include="..\..\Nickvision.MPVSharp.Bundled\Nickvision.MPVSharp.Bundled.csproj" />
   </ItemGroup>
 
   <ItemGroup>

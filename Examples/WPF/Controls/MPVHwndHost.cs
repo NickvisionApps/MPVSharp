@@ -1,15 +1,14 @@
-using Nickvision.MPVSharp;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 
-namespace Nickvision.MPVSharp.Examples.WPF;
+namespace Nickvision.MPVSharp.Examples.WPF.Controls;
 
 /// <summary>
 /// MPV Client Window Host
 /// </summary>
 /// <remarks>Code from https://github.com/milleniumbug/Mpv.WPF/blob/master/src/Mpv.WPF/MpvPlayerHwndHost.cs</remarks>
-public class MPVHwndHost : HwndHost
+internal class MPVHwndHost : HwndHost
 {
     [DllImport("user32.dll", EntryPoint = "CreateWindowEx", CharSet = CharSet.Unicode)]
     internal static extern IntPtr CreateWindowEx(int dwExStyle,
