@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows;
 
 namespace Nickvision.MPVSharp.Examples.WPF.Views;
@@ -13,9 +14,23 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+    private void OnOpenVideo(object sender, RoutedEventArgs e)
+    {
+        var openFileDialog = new OpenFileDialog()
+        {
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+            Filter = "Video files (*.mp4;*.mov;*.avi;*.wmv;*.flv)|*.mp4;*.mov;*.avi;*.wmv;*.flv"
+        };
+        if(openFileDialog.ShowDialog() == true)
+        {
+            TxtUrl.Text = openFileDialog.FileName;
+        }
+        OnLoadVideo(sender, e);
+    }
+
     private void OnExit(object sender, RoutedEventArgs e) => Close();
 
-    private void OnLoadVideo(object sender, RoutedEventArgs e) => MPV.LoadFromYtdlp(TxtUrl.Text);
+    private void OnLoadVideo(object sender, RoutedEventArgs e) => MPV.Load(TxtUrl.Text);
 
     private void OnPause(object sender, RoutedEventArgs e) => MPV.CyclePause();
 

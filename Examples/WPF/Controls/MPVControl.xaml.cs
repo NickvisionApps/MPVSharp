@@ -1,3 +1,4 @@
+using System.IO;
 using System.Windows.Controls;
 
 namespace Nickvision.MPVSharp.Examples.WPF.Controls;
@@ -14,11 +15,14 @@ public partial class MPVControl : UserControl
         _hwndHost = new MPVHwndHost(_client);
         _client.Initialize();
         _client.SetProperty("keep-open", "yes"); // to not terminate on playlist end
-        _client.SetProperty("ytdl", true);
         AddChild(_hwndHost);
     }
     
-    public void LoadFromYtdlp(string url) => _client.LoadFile(url);
+    public void Load(string url)
+    {
+        _client.SetProperty("ytdl", File.Exists(url));
+        _client.LoadFile(url);
+    }
 
     public void CyclePause() => _client.CyclePause();
 }

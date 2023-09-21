@@ -16,11 +16,15 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
+                <MenuItem Header="_Open Video" Click="OnOpenVideo"/>
+
+                <Separator/>
+
                 <MenuItem Header="_Exit" Click="OnExit"/>
             </MenuItem>
 
             <MenuItem Header="_Player">
-                <MenuItem Header="_Load Video Url" Click="OnLoadVideo"/>
+                <MenuItem Header="_Load Video" Click="OnLoadVideo"/>
                 
                 <Separator/>
 
@@ -36,6 +40,8 @@
 
         <DockPanel Grid.Row="3">
             <Button DockPanel.Dock="Right" Content="Toggle Pause" Click="OnPause"/>
+
+            <Button DockPanel.Dock="Right" Margin="0,0,6,0" Content="Open Video File" Click="OnOpenVideo"/>
 
             <Button DockPanel.Dock="Right" Margin="6,0,6,0" Content="Load Video" Click="OnLoadVideo"/>
 
