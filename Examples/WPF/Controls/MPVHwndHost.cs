@@ -23,7 +23,8 @@ internal class MPVHwndHost : HwndHost
         IntPtr lpParam);
     [DllImport("user32.dll", EntryPoint = "DestroyWindow", CharSet = CharSet.Unicode)]
     internal static extern bool DestroyWindow(IntPtr hwnd);
-    
+
+    private const int WS_EX_TRANSPARENT = 0x00000020;
     private const int WS_CHILD = 0x40000000;
     private const int WS_VISIBLE = 0x10000000;
     private const int HOST_ID = 0x00000002;
@@ -46,7 +47,7 @@ internal class MPVHwndHost : HwndHost
     /// <returns>The handle of created window</returns>
     protected override HandleRef BuildWindowCore(HandleRef hwndParent)
     {
-        var playerHostPtr = CreateWindowEx(0, "static", "", WS_CHILD | WS_VISIBLE,
+        var playerHostPtr = CreateWindowEx(WS_EX_TRANSPARENT, "static", "", WS_CHILD | WS_VISIBLE,
             0, 0, 100, 100, hwndParent.Handle, HOST_ID, IntPtr.Zero, IntPtr.Zero);
         _client.SetProperty("wid", playerHostPtr.ToInt64());
         return new HandleRef(this, playerHostPtr);

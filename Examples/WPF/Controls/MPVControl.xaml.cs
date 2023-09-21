@@ -14,15 +14,16 @@ public partial class MPVControl : UserControl
         _client = new Client();
         _hwndHost = new MPVHwndHost(_client);
         _client.Initialize();
-        _client.SetProperty("keep-open", "yes"); // to not terminate on playlist end
+        _client.SetProperty("keep-open", "yes"); // to pause on playlist end
+        _client.SetProperty("ytdl", true); // to enable yt-dlp support
         AddChild(_hwndHost);
     }
     
     public void Load(string url)
     {
-        _client.SetProperty("ytdl", File.Exists(url));
         _client.LoadFile(url);
+        _client.SetProperty("pause", false);
     }
-
+    
     public void CyclePause() => _client.CyclePause();
 }
