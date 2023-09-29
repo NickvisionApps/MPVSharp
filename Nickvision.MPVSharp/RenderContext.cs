@@ -72,7 +72,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     /// Setup OpenGL rendering
     /// </summary>
     /// <exception cref="ClientException">Thrown if unable to setup GL</exception>
-    public void SetupGL(MPVRenderUpdateFn? callback)
+    public void SetupGL(Action? callback)
     {
         MPVOpenGLInitParams glParams;
         if (_getProcAddressFn != null)
@@ -124,7 +124,7 @@ public class RenderContext : MPVRenderContext, IDisposable
         }
         if (callback != null)
         {
-            _callback = callback;
+            _callback = (_) => callback();
             SetUpdateCallback(_callback);
         }
     }
