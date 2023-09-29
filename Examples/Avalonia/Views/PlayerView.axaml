@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AvaloniaMPV.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaMPV.Views.PlayerView">
+    <Grid Background="#2b2b2b" RowDefinitions="* 48" ColumnDefinitions="100 * 100">
+        <controls:MPVControl x:Name="MPVControl" Grid.Row="0" Grid.ColumnSpan="3" />
+        <Button x:Name="PauseButton" Margin="6 6" Click="OnPauseClicked" Grid.Row="1" Grid.Column="0">Loading...</Button>
+        <TextBlock x:Name="TimeLabel" Margin="12 6" VerticalAlignment="Center" TextAlignment="Right" FontWeight="Bold" Grid.Row="1" Grid.Column="2">--:--</TextBlock>
+    </Grid>
+</UserControl>
