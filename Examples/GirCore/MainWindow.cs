@@ -81,7 +81,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _ctx = _player.CreateRenderContext();
         // We create callback for MPV to call every time the screen needs to be redrawn,
         // the callback calls GtkGLArea.QueueDraw which in turn makes RenderContext draw image
-        _ctx.SetupGL((x) => GLib.Functions.IdleAdd(0, () =>
+        _ctx.SetupGL(() => GLib.Functions.IdleAdd(0, () =>
         {
             _glArea.QueueDraw(); // QueueDraw must be called from GTK thread
             return false;
