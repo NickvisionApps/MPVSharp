@@ -33,6 +33,7 @@ public class MPVControl : OpenGlControlBase
             return;
         }
         _ctx = Player.CreateRenderContext();
+        _ctx.GetProcAddressFn = gl.GetProcAddress;
         _ctx.SetupGL(() => Dispatcher.UIThread.Post(RequestNextFrameRendering));
     }
 
@@ -46,6 +47,6 @@ public class MPVControl : OpenGlControlBase
     {
         gl.ClearColor(0, 0, 0, 1);
         gl.Clear(GL_COLOR_BUFFER_BIT);
-        _ctx?.RenderGL((int)Bounds.Width, (int)Bounds.Height);
+        _ctx?.RenderGL((int)Bounds.Width, (int)Bounds.Height, fb);
     }
 }
