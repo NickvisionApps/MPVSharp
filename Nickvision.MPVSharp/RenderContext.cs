@@ -134,12 +134,17 @@ public class RenderContext : MPVRenderContext, IDisposable
     /// </summary>
     /// <param name="width">Rendering area width</param>
     /// <param name="height">Rendering area width</param>
-    public void RenderGL(int width, int height)
+    /// <param name="fb">Framebuffer</param>
+    public void RenderGL(int width, int height, int? fb = null)
     {
-        OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out int fboInt);
+        if (fb == null)
+        {
+            OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out var temp);
+            fb = temp;
+        }
         var fbo = new MPVOpenGLFBO
         {
-            FBO = fboInt,
+            FBO = fb.Value,
             Width = width,
             Height = height
         };
