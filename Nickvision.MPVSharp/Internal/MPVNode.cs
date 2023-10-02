@@ -37,6 +37,7 @@ public partial struct MPVNode
     /// </summary>
     /// <param name="str">String</param>
     /// <param name="format">Node format (String or OSDString)</param>
+    /// <exception cref="ArgumentException">Thrown if format is not String or OSDString</exception>
     public MPVNode(string str, MPVFormat format = MPVFormat.String)
     {
         if (format != MPVFormat.String && format != MPVFormat.OSDString)
