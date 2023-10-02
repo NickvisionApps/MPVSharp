@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Nickvision.MPVSharp.Internal;
@@ -27,14 +28,23 @@ public partial struct MPVNode
     public MPVFormat Format;
 
     /// <summary>
+    /// Empty MPVNode
+    /// </summary>
+    public static MPVNode Empty { get; } = new MPVNode();
+
+    /// <summary>
     /// Construct MPVNode containing string
     /// </summary>
     /// <param name="str">String</param>
     /// <param name="format">Node format (String or OSDString)</param>
     public MPVNode(string str, MPVFormat format = MPVFormat.String)
     {
+        if (format != MPVFormat.String && format != MPVFormat.OSDString)
+        {
+            throw new ArgumentException("MPVNode with string should have format String or OSDString");
+        }
         _string = Marshal.StringToCoTaskMemUTF8(str);
-        Format = MPVFormat.String;
+        Format = format;
     }
 
     /// <summary>
