@@ -18,7 +18,7 @@ public struct MPVEventClientMessage
     private nint _argsPtr;
     
     /// <summary>
-    /// Get string args from args pointer of a message
+    /// Gets string args from args pointer of a message
     /// </summary>
     public static string[] GetStringArgs(MPVEventClientMessage m)
     {

@@ -30,7 +30,7 @@ public partial class MPVRenderContext
     private nint _handle;
     
     /// <summary>
-    /// Construct MPVRenderContext
+    /// Constructs MPVRenderContext
     /// </summary>
     public MPVRenderContext()
     {
@@ -38,29 +38,29 @@ public partial class MPVRenderContext
     }
     
     /// <summary>
-    /// Initialize the renderer state. Depending on the backend used, this will access the underlying GPU API and initialize its own objects.
+    /// Initializes the renderer state. Depending on the backend used, this will access the underlying GPU API and initialize its own objects.
     /// </summary>
-    /// <param name="clientHandle">Pointer to MPVClient</param>
+    /// <param name="clientHandle">Pointer to <see cref="MPVClient"/></param>
     /// <param name="param">An array of parameters, terminated by { MPVRenderParamType.Invalid, 0 }</param>
     /// <returns>Error code</returns>
     public MPVError Create(nint clientHandle, MPVRenderParam[] param) => mpv_render_context_create(out _handle, clientHandle, param);
     
     /// <summary>
-    /// Attempt to change a single parameter. Not all backends and parameter types support all kinds of changes.
+    /// Attempts to change a single parameter. Not all backends and parameter types support all kinds of changes.
     /// </summary>
     /// <param name="param">The parameter type and data that should be set</param>
     /// <returns>Error code</returns>
     public MPVError SetParameter(MPVRenderParam param) => mpv_render_context_set_parameter(_handle, param);
     
     /// <summary>
-    /// Retrieve information from the render context.
+    /// Retrieves information from the render context.
     /// </summary>
     /// <param name="param">The parameter type and data that should be retrieved</param>
     /// <returns>Error code</returns>
     public MPVError GetInfo(MPVRenderParam param) => mpv_render_context_get_info(_handle, param);
     
     /// <summary>
-    /// Set the callback that notifies you when a new video frame is available, or if the video display configuration somehow changed and requires a redraw.
+    /// Sets the callback that notifies you when a new video frame is available, or if the video display configuration somehow changed and requires a redraw.
     /// </summary>
     /// <remarks>
     /// You must not call any mpv API from the callback or exit from callback in unusual way (such as by throwing an exception)
@@ -80,19 +80,19 @@ public partial class MPVRenderContext
     public ulong Update() => mpv_render_context_update(_handle);
 
     /// <summary>
-    /// Render video.
+    /// Renders video.
     /// </summary>
     /// <param name="param">An array of parameters, terminated by { MPVRenderParamType.Invalid, 0 }</param>
     /// <returns>Error code</returns>
     /// <remarks>
     /// You should pass the following parameters:
-    /// - Backend-specific target object, such as MPVRenderParam.OpenGLFBO.
-    /// - Possibly transformations, such as MPVRenderParam.FlipY.
+    /// - Backend-specific target object, such as <see cref="MPVRenderParamType.OpenGLFBO"/>.
+    /// - Possibly transformations, such as <see cref="MPVRenderParamType.FlipY"/>.
     /// </remarks>
     public MPVError Render(MPVRenderParam[] param) => mpv_render_context_render(_handle, param);
 
     /// <summary>
-    /// Tell the renderer that a frame was flipped at the given time. This is optional, but can help the player to achieve better timing.
+    /// Tells the renderer that a frame was flipped at the given time. This is optional, but can help the player to achieve better timing.
     /// </summary>
     /// <remarks>
     /// Calling this at least once informs libmpv that you will use this function. If you use it inconsistently, expect bad video playback.
@@ -100,7 +100,7 @@ public partial class MPVRenderContext
     public void ReportSwap() => mpv_render_context_report_swap(_handle);
 
     /// <summary>
-    /// Destroy the mpv renderer state.
+    /// Destroys the mpv renderer state.
     /// </summary>
     public void Free() => mpv_render_context_free(_handle);
 }

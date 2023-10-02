@@ -14,7 +14,7 @@ public class ClientException : Exception
     public MPVError Error { get; init; }
 
     /// <summary>
-    /// Construct Client Exception
+    /// Constructs Client Exception
     /// </summary>
     /// <param name="error">Error code</param>
     public ClientException(MPVError error) : base(error.ToMPVErrorString())

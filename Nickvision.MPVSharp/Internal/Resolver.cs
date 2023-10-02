@@ -15,7 +15,7 @@ public static class Resolver
     private static Dictionary<string, nint> _libraries = new Dictionary<string, nint>();
 
     /// <summary>
-    /// Set import resolver if needed
+    /// Sets import resolver if needed
     /// </summary>
     public static void SetResolver()
     {
@@ -26,7 +26,7 @@ public static class Resolver
     }
     
     /// <summary>
-    /// Resolve native libraries
+    /// Resolves native libraries
     /// </summary>
     /// <param name="libraryName">The string representing a library</param>
     /// <param name="assembly">The assembly loading a native library</param>

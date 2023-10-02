@@ -1,3 +1,4 @@
+using Nickvision.MPVSharp.Internal;
 using System;
 
 namespace Nickvision.MPVSharp;
@@ -17,10 +18,10 @@ public class HookTriggeredEventArgs : EventArgs
     public ulong Id { get; init; }
 
     /// <summary>
-    /// Create args for Hook event
+    /// Creates args for Hook event
     /// </summary>
-    /// <param name="name">The hook name as passed to MPVClient.HookAdd()</param>
-    /// <param name="id">Internal ID that must be passed to MPVClient.HookContinue()</param>
+    /// <param name="name">The hook name as passed to <see cref="MPVClient.HookAdd"/></param>
+    /// <param name="id">Internal ID that must be passed to <see cref="MPVClient.HookContinue"/></param>
     public HookTriggeredEventArgs(string name, ulong id)
     {
         Name = name;

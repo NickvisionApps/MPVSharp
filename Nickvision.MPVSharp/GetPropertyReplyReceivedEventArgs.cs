@@ -1,4 +1,3 @@
-using Nickvision.MPVSharp.Internal;
 using System;
 
 namespace Nickvision.MPVSharp;
@@ -22,7 +21,7 @@ public class GetPropertyReplyReceivedEventArgs : EventArgs
     public Node Node { get; init; }
 
     /// <summary>
-    /// Create args for GetPropertyReply event
+    /// Creates args for GetPropertyReply event
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>

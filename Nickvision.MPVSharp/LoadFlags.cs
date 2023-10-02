@@ -1,9 +1,7 @@
-using System;
-
 namespace Nickvision.MPVSharp;
 
 /// <summary>
-/// Flags for Client.LoadFile and Client.LoadList methods
+/// Flags for <see cref="Client.LoadFile"/> and <see cref="Client.LoadList"/> methods
 /// </summary>
 /// <remarks>
 /// This is called flags to match terminology from MPV docs,
@@ -31,7 +29,7 @@ public enum LoadFlags
 public static class LoadFlagsExtensions
 {
     /// <summary>
-    /// Convert LoadFlags to a string acceptable by MPV
+    /// Converts <see cref="LoadFlags"/> to a string acceptable by MPV
     /// </summary>
     public static string FlagsToString(this LoadFlags flags)
     {

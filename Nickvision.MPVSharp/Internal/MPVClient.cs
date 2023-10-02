@@ -136,7 +136,7 @@ public partial class MPVClient : ICloneable
     public long Id => mpv_client_id(Handle);
 
     /// <summary>
-    /// Construct MPVClient
+    /// Constructs MPVClient
     /// </summary>
     /// <param name="handle">Optional handle to create client for the same player core</param>
     /// <param name="name">Optional unique client name</param>
@@ -159,26 +159,26 @@ public partial class MPVClient : ICloneable
     }
     
     /// <summary>
-    /// Clone object, creating new MPVClient for the same player core
+    /// Clones object, creating new MPVClient for the same player core
     /// </summary>
     /// <returns>MPVClient as object</returns>
     public object Clone() => new MPVClient(Handle);
 
     /// <summary>
-    /// Load a config file
+    /// Loads a config file
     /// </summary>
     /// <param name="path">Absolute path to config</param>
     /// <returns>Error code</returns>
     public MPVError LoadConfigFile(string path) => mpv_load_config_file(Handle, path);
 
     /// <summary>
-    /// Get internal time
+    /// Gets internal time
     /// </summary>
     /// <returns>Time in microseconds</returns>
     public long GetTimeUs() => mpv_get_time_us(Handle);
 
     /// <summary>
-    /// Initialize an uninitialized mpv instance.
+    /// Initializes an uninitialized mpv instance.
     /// If the mpv instance is already running, an error is returned.
     /// </summary>
     /// <returns>Error code</returns>
@@ -190,7 +190,7 @@ public partial class MPVClient : ICloneable
     public MPVError Initialize() => mpv_initialize(Handle);
 
     /// <summary>
-    /// Send a command to the player.
+    /// Sends a command to the player.
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
     /// <returns>Error code</returns>
@@ -203,18 +203,18 @@ public partial class MPVClient : ICloneable
     }
 
     /// <summary>
-    /// Same as CommandRet(), but allows passing structured data in any format.
+    /// Same as <see cref="CommandRet"/>, but allows passing structured data in any format.
     /// </summary>
-    /// <param name="command">MPVNode with NodeList containing positional or named arguments.</param>
-    /// <param name="result">MPVNode containing result on command success. Should be freed with MPVNode.FreeNodeContents().</param>
+    /// <param name="command"><see cref="MPVNode"/> with <see cref="MPVNodeList"/> containing positional or named arguments.</param>
+    /// <param name="result"><see cref="MPVNode"/> containing result on command success. Should be freed with MPVNode.FreeNodeContents().</param>
     /// <returns>Error code</returns>
     public MPVError CommandNode(MPVNode command, out MPVNode result) => mpv_command_node(Handle, ref command, out result);
 
     /// <summary>
-    /// Send a command to the player and return the result.
+    /// Sends a command to the player and returns the result.
     /// </summary>
     /// <param name="command">A command to execute as array of strings</param>
-    /// <param name="node">MPVNode containing result on command success.</param>
+    /// <param name="node"><see cref="MPVNode"/> containing result on command success.</param>
     /// <returns>Error code</returns>
     public MPVError CommandRet(string[] command, out MPVNode node)
     {
@@ -225,14 +225,14 @@ public partial class MPVClient : ICloneable
     }
 
     /// <summary>
-    /// Send a command to the player.
+    /// Sends a command to the player.
     /// </summary>
     /// <param name="command">A command string</param>
     /// <returns>Error code</returns>
     public MPVError CommandString(string command) => mpv_command_string(Handle, command);
     
     /// <summary>
-    /// Same as Command(), but run the command asynchronously.
+    /// Same as <see cref="Command"/>, but runs the command asynchronously.
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="command">A command to execute as array of strings</param>
@@ -246,56 +246,56 @@ public partial class MPVClient : ICloneable
     }
 
     /// <summary>
-    /// Same as CommandNode(), but run the command asynchronously.
+    /// Same as <see cref="CommandNode"/>, but runs the command asynchronously.
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
-    /// <param name="command">MPVNode with NodeList containing positional or named arguments</param>
+    /// <param name="command"><see cref="MPVNode"/> with <see cref="MPVNodeList"/> containing positional or named arguments</param>
     /// <returns>Error code</returns>
     public MPVError CommandNodeAsync(ulong replyUserdata, MPVNode command) => mpv_command_node_async(Handle, replyUserdata, ref command);
 
     /// <summary>
-    /// Signal to all async requests with the matching Id to abort.
+    /// Sends a signal to all async requests with the matching Id to abort.
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     public void AbortAsyncCommand(ulong replyUserdata) => mpv_abort_async_command(Handle, replyUserdata);
 
     /// <summary>
-    /// Wait for an event or until timeout
+    /// Waits for an event or until timeout
     /// </summary>
     /// <param name="eventTimeout">Timeout in seconds</param>
     /// <returns>Error code</returns>
     public MPVEvent WaitEvent(double eventTimeout) => Marshal.PtrToStructure<MPVEvent>(mpv_wait_event(Handle, eventTimeout));
 
     /// <summary>
-    /// Interrupt the current WaitEvent() call
+    /// Interrupts the current <see cref="WaitEvent"/> call
     /// </summary>
     public void WakeUp() => mpv_wakeup(Handle);
 
     /// <summary>
-    /// Set a custom function that should be called when there are new events
+    /// Sets a custom function that should be called when there are new events
     /// </summary>
     /// <param name="callback">Callback function</param>
     /// <param name="data">Pointer to arbitrary data to pass to callback</param>
     public void SetWakeUpCallback(WakeUpCallback callback, nint data) => mpv_set_wakeup_callback(Handle, callback, data);
 
     /// <summary>
-    /// Add property to watch using events
+    /// Adds property to watch using events
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="format">Property MPVFormat</param>
+    /// <param name="format">Property <see cref="MPVFormat"/></param>
     /// <param name="replyUserdata">Optional reply Id</param>
     /// <returns>Error code</returns>
     public MPVError ObserveProperty(string name, MPVFormat format, ulong replyUserdata) => mpv_observe_property(Handle, replyUserdata, name, format);
     
     /// <summary>
-    /// Undo all ObserveProperty() for given reply Id
+    /// Undo all <see cref="ObserveProperty"/> for the given reply Id
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <returns>Number of properties to unobserve or error code</returns>
     public int UnobserveProperty(ulong replyUserdata) => mpv_unobserve_property(Handle, replyUserdata);
 
     /// <summary>
-    /// Set property using String format
+    /// Sets property using <see cref="MPVFormat.String">String format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
@@ -303,7 +303,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetProperty(string name, string data) => mpv_set_property(Handle, name, MPVFormat.String, ref data);
 
     /// <summary>
-    /// Set property using Flag format
+    /// Sets property using <see cref="MPVFormat.Flag">Flag format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Flag data (0 or 1)</param>
@@ -311,7 +311,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetProperty(string name, int data) => mpv_set_property(Handle, name, MPVFormat.Flag, ref data);
 
     /// <summary>
-    /// Set property using Int64 format
+    /// Sets property using <see cref="MPVFormat.Int64">Int64 format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Long int data</param>
@@ -319,7 +319,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetProperty(string name, long data) => mpv_set_property(Handle, name, MPVFormat.Int64, ref data);
 
     /// <summary>
-    /// Set property using Double format
+    /// Sets property using <see cref="MPVFormat.Double">Double format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Double data</param>
@@ -327,15 +327,15 @@ public partial class MPVClient : ICloneable
     public MPVError SetProperty(string name, double data) => mpv_set_property(Handle, name, MPVFormat.Double, ref data);
 
     /// <summary>
-    /// Set property using Node format
+    /// Sets property using <see cref="MPVFormat.Node">Node format</see>
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="data"><see cref="MPVNode"/> with data</param>
     /// <returns>Error code</returns>
     public MPVError SetProperty(string name, MPVNode data) => mpv_set_property(Handle, name, MPVFormat.Node, ref data);
 
     /// <summary>
-    /// Set property using String format
+    /// Sets property using <see cref="MPVFormat.String">String format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">String data</param>
@@ -343,7 +343,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetPropertyString(string name, string data) => SetProperty(name, data);
 
     /// <summary>
-    /// Set property using Flag format asynchronously
+    /// Sets property using <see cref="MPVFormat.Flag">Flag format</see> asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -352,7 +352,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetPropertyAsync(ulong replyUserdata, string name, int data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Flag, ref data);
 
     /// <summary>
-    /// Set property using Int64 format asynchronously
+    /// Sets property using <see cref="MPVFormat.Int64">Int64 format</see> asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -361,7 +361,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetPropertyAsync(ulong replyUserdata, string name, long data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Int64, ref data);
 
     /// <summary>
-    /// Set property using Double format asynchronously
+    /// Sets property using <see cref="MPVFormat.Double">Double format</see> asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -370,7 +370,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetPropertyAsync(ulong replyUserdata, string name, double data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Double, ref data);
 
     /// <summary>
-    /// Set property using String format asynchronously
+    /// Sets property using <see cref="MPVFormat.String">String format</see> asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -379,16 +379,16 @@ public partial class MPVClient : ICloneable
     public MPVError SetPropertyAsync(ulong replyUserdata, string name, string data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.String, ref data);
 
     /// <summary>
-    /// Set property using MPVNode format asynchronously
+    /// Sets property using <see cref="MPVFormat.Node">Node format</see> asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode containing data</param>
+    /// <param name="data"><see cref="MPVNode"/> containing data</param>
     /// <returns>Error code</returns>
     public MPVError SetPropertyAsync(ulong replyUserdata, string name, MPVNode data) => mpv_set_property_async(Handle, replyUserdata, name, MPVFormat.Node, ref data);
 
     /// <summary>
-    /// Get property using Flag format
+    /// Gets property using <see cref="MPVFormat.Flag">Flag format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -396,7 +396,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetProperty(string name, out int data) => mpv_get_property(Handle, name, MPVFormat.Flag, out data);
 
     /// <summary>
-    /// Get property using Int64 format
+    /// Gets property using <see cref="MPVFormat.Int64">Int64 format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -404,7 +404,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetProperty(string name, out long data) => mpv_get_property(Handle, name, MPVFormat.Int64, out data);
 
     /// <summary>
-    /// Get property using Double format
+    /// Gets property using <see cref="MPVFormat.Double">Double format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -412,7 +412,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetProperty(string name, out double data) => mpv_get_property(Handle, name, MPVFormat.Double, out data);
 
     /// <summary>
-    /// Get property using String format
+    /// Get property using <see cref="MPVFormat.String">String format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -420,7 +420,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetProperty(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.String, out data);
 
     /// <summary>
-    /// Get property using Node format
+    /// Get property using <see cref="MPVFormat.Node">Node format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -428,7 +428,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetProperty(string name, out MPVNode data) => mpv_get_property(Handle, name, MPVFormat.Node, out data);
 
     /// <summary>
-    /// Get property using String format
+    /// Get property using <see cref="MPVFormat.String">String format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -436,7 +436,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetPropertyString(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.String, out data);
 
     /// <summary>
-    /// Get property using OSDString format
+    /// Get property using <see cref="MPVFormat.OSDString">OSDString format</see>
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="data">Object to write data to</param>
@@ -444,26 +444,26 @@ public partial class MPVClient : ICloneable
     public MPVError GetPropertyOSDString(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.OSDString, out data);
 
     /// <summary>
-    /// Get property asynchroniously
+    /// Gets property asynchroniously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
-    /// <param name="format">MPVFormat for returning data</param>
+    /// <param name="format"><see cref="MPVFormat"/> for returning data</param>
     /// <returns>Error code</returns>
     public MPVError GetPropertyAsync(ulong replyUserdata, string name, MPVFormat format) => mpv_get_property_async(Handle, replyUserdata, name, format);
 
     /// <summary>
-    /// Delete property
+    /// Deletes property
     /// </summary>
     /// <param name="name">Property name</param>
     /// <returns>Error code</returns>
     public MPVError DelProperty(string name) => mpv_del_property(Handle, name);
     
     /// <summary>
-    /// Set option using MPVNode format
+    /// Sets option using <see cref="MPVFormat.Node">Node format</see>
     /// </summary>
     /// <param name="name">Option name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="data"><see cref="MPVNode"/> with data</param>
     /// <returns>Error code</returns>
     /// <remarks>
     /// You can't normally set options during runtime.
@@ -471,7 +471,7 @@ public partial class MPVClient : ICloneable
     public MPVError SetOption(string name, MPVNode data) => mpv_set_option(Handle, name, MPVFormat.Node, ref data);
 
     /// <summary>
-    /// Set option using String format
+    /// Sets option using <see cref="MPVFormat.String">String format</see>
     /// </summary>
     /// <param name="name">Option name</param>
     /// <param name="data">String data</param>
@@ -482,17 +482,17 @@ public partial class MPVClient : ICloneable
     public MPVError SetOptionString(string name, string data) => mpv_set_option_string(Handle, name, data);
 
     /// <summary>
-    /// Request log messages with specified minimum log level
+    /// Requests log messages with specified minimum log level
     /// </summary>
     /// <param name="logLevel">Log level as string</param>
     /// <returns>Error code</returns>
     public MPVError RequestLogMessages(string logLevel) => mpv_request_log_messages(Handle, logLevel);
 
     /// <summary>
-    /// Enable or disable the given event
+    /// Enables or disables the given event
     /// </summary>
     /// <remarks>
-    /// All event are enabled by default
+    /// All events are enabled by default
     /// </remarks>
     /// <param name="eid">Event Id</param>
     /// <param name="enabled">Whether the event should be enabled (1) or not (0)</param>
@@ -500,12 +500,12 @@ public partial class MPVClient : ICloneable
     public MPVError RequestEvent(MPVEventId eid, int enabled) => mpv_request_event(Handle, eid, enabled);
 
     /// <summary>
-    /// Block until all asynchronous requests are done
+    /// Blocks until all asynchronous requests are done
     /// </summary>
     public void WaitAsyncRequests() => mpv_wait_async_requests(Handle);
 
     /// <summary>
-    /// Register a hook handler.
+    /// Registers a hook handler.
     /// A hook is like a synchronous event that blocks the player.
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
@@ -515,19 +515,19 @@ public partial class MPVClient : ICloneable
     public MPVError HookAdd(ulong replyUserdata, string name, int priority) => mpv_hook_add(Handle, replyUserdata, name, priority);
 
     /// <summary>
-    /// Respond to a MPVEventHook event. You must call this after you have handled the event.
+    /// Responds to a <see cref="MPVEventHook"/> event. You must call this after you have handled the event.
     /// </summary>
-    /// <param name="id">This must be the value of the MPVEventHook.Id field</param>
+    /// <param name="id">This must be the value of the <see cref="MPVEventHook.Id"/> field</param>
     /// <returns>Error code</returns>
     public MPVError HookContinue(ulong id) => mpv_hook_continue(Handle, id);
 
     /// <summary>
-    /// Disconnect and destroy the client
+    /// Disconnects and destroys the client
     /// </summary>
     public void Destroy() => mpv_destroy(Handle);
 
     /// <summary>
-    /// Bring down the player and all its clients
+    /// Brings down the player and all its clients
     /// </summary>
     public void TerminateDestroy() => mpv_terminate_destroy(Handle);
 }

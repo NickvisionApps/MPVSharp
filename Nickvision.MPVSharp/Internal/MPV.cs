@@ -13,7 +13,7 @@ public static partial class MPV
     private static partial void mpv_free(nint data);
     
     /// <summary>
-    /// Return the API version the mpv source has been compiled with.
+    /// Returns the API version the mpv source has been compiled with.
     /// </summary>
     public static ulong APIVersion => mpv_client_api_version();
     

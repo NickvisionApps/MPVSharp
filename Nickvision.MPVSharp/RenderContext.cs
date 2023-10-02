@@ -29,7 +29,7 @@ public class RenderContext : MPVRenderContext, IDisposable
     }
 
     /// <summary>
-    /// Construct RenderContext
+    /// Constructs RenderContext
     /// </summary>
     public RenderContext(nint clientHandle)
     {
@@ -69,8 +69,9 @@ public class RenderContext : MPVRenderContext, IDisposable
     }
     
     /// <summary>
-    /// Setup OpenGL rendering
+    /// Setups OpenGL rendering
     /// </summary>
+    /// <param name="callback">Action to be called when a new frame needs to be rendered</param>
     /// <exception cref="ClientException">Thrown if unable to setup GL</exception>
     public void SetupGL(Action? callback)
     {
@@ -130,11 +131,11 @@ public class RenderContext : MPVRenderContext, IDisposable
     }
     
     /// <summary>
-    /// Render frame
+    /// Renders a frame
     /// </summary>
     /// <param name="width">Rendering area width</param>
-    /// <param name="height">Rendering area width</param>
-    /// <param name="fb">Framebuffer</param>
+    /// <param name="height">Rendering area height</param>
+    /// <param name="fb">Framebuffer object name</param>
     public void RenderGL(int width, int height, int? fb = null)
     {
         if (fb == null)

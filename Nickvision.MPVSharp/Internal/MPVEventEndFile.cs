@@ -13,7 +13,7 @@ public struct MPVEventEndFile
     /// </summary>
     public MPVEndFileReason Reason;
     /// <summary>
-    /// Contains error code if reason is MPVEndFileReason.Error, or 0
+    /// Contains error code if reason is <see cref="MPVEndFileReason.Error"/>, or 0
     /// </summary>
     public MPVError Error;
     /// <summary>

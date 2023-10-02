@@ -1,4 +1,3 @@
-using Nickvision.MPVSharp.Internal;
 using System;
 
 namespace Nickvision.MPVSharp;
@@ -18,7 +17,7 @@ public class PropertyChangedEventArgs : EventArgs
     public Node Node { get; init; }
 
     /// <summary>
-    /// Create args for PropertyChange event
+    /// Creates args for PropertyChange event
     /// </summary>
     /// <param name="name">Property name</param>
     /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> holding data</param>

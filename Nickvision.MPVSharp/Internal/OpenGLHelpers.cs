@@ -19,21 +19,21 @@ public static partial class OpenGLHelpers
     private static nint? _openGLDllPtr;
     
     /// <summary>
-    /// Get the address of EGL function
+    /// Gets the address of EGL function
     /// </summary>
     /// <param name="name">Function name</param>
     /// <returns>Function address</returns>
     public static nint EGLGetProcAddress(string name) => eglGetProcAddress(name);
 
     /// <summary>
-    /// Get the address of WGL function
+    /// Gets the address of WGL function
     /// </summary>
     /// <param name="name">Function name</param>
     /// <returns>Function address</returns>
     public static nint WGLGetProcAddress(string name) => wglGetProcAddress(name);
 
     /// <summary>
-    /// Get the address of function on Windows
+    /// Gets the address of function on Windows
     /// </summary>
     /// <param name="name">Function name</param>
     /// <returns>Function address</returns>
@@ -48,7 +48,7 @@ public static partial class OpenGLHelpers
     }
 
     /// <summary>
-    /// Get the value of selected parameter
+    /// Gets the value of selected parameter
     /// </summary>
     /// <param name="pname">Parameter</param>
     /// <param name="data">Result data</param>

@@ -1,4 +1,3 @@
-using Nickvision.MPVSharp.Internal;
 using System;
 
 namespace Nickvision.MPVSharp;
@@ -22,7 +21,7 @@ public class CommandReplyReceivedEventArgs : EventArgs
     public Node Result { get; init; }
 
     /// <summary>
-    /// Create args for CommandReply event
+    /// Creates args for CommandReply event
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="error">Error code</param>

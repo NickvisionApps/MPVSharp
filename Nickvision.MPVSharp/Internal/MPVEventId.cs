@@ -18,15 +18,15 @@ public enum MPVEventId
     /// </summary>
     LogMessage,
     /// <summary>
-    /// Reply to MPVClient.GetPropertyAsync()
+    /// Reply to <see cref="MPVClient.GetPropertyAsync"/>
     /// </summary>
     GetPropertyReply,
     /// <summary>
-    /// Reply to MPVClient.SetPropertyAsync()
+    /// Reply to <see cref="MPVClient.SetPropertyAsync(ulong,string,int)"/>
     /// </summary>
     SetPropertyReply,
     /// <summary>
-    /// Reply to MPVClient.CommandAsync()
+    /// Reply to <see cref="MPVClient.CommandAsync"/>
     /// </summary>
     CommandReply,
     /// <summary>
@@ -62,7 +62,7 @@ public enum MPVEventId
     /// </summary>
     PlaybackRestart,
     /// <summary>
-    /// Event sent due to MPVClient.ObserveProperty()
+    /// Event sent due to <see cref="MPVClient.ObserveProperty"/>
     /// </summary>
     PropertyChange,
     /// <summary>
@@ -70,7 +70,7 @@ public enum MPVEventId
     /// </summary>
     QueueOverflow = 24,
     /// <summary>
-    /// Triggered if a hook handler was registered with MPVClient.HookAdd()
+    /// Triggered if a hook handler was registered with <see cref="MPVClient.HookAdd"/>
     /// </summary>
     Hook
 }
