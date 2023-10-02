@@ -159,14 +159,14 @@ public class Client : MPVClient, IDisposable
                     break;
                 case MPVEventId.GetPropertyReply:
                     var getProp = clientEvent.EventProperty;
-                    GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", (MPVNode?)getProp?.GetData()));
+                    GetPropertyReplyReceived?.Invoke(this, new GetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, getProp?.Name ?? "", new Node((MPVNode?)getProp?.GetData())));
                     break;
                 case MPVEventId.SetPropertyReply:
                     SetPropertyReplyReceived?.Invoke(this, new SetPropertyReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error));
                     break;
                 case MPVEventId.CommandReply:
                     var getResult = clientEvent.CommandResult;
-                    CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, getResult!.Value.Result));
+                    CommandReplyReceived?.Invoke(this, new CommandReplyReceivedEventArgs(clientEvent.ReplyUserdata, clientEvent.Error, new Node(getResult!.Value.Result)));
                     break;
                 case MPVEventId.StartFile:
                     var startData = clientEvent.StartFile;
@@ -197,7 +197,7 @@ public class Client : MPVClient, IDisposable
                     break;
                 case MPVEventId.PropertyChange:
                     var changedProp = clientEvent.EventProperty;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, (MPVNode?)changedProp.Value.GetData()));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProp!.Value.Name, new Node((MPVNode?)changedProp.Value.GetData())));
                     break;
                 case MPVEventId.QueueOverflow:
                     QueueOverflowed?.Invoke();
@@ -286,14 +286,14 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Set property using Node format
+    /// Set property using <see cref="Nickvision.MPVSharp.Node"/> format
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> with data</param>
     /// <exception cref="ClientException">Thrown if can't set property</exception>
-    public new void SetProperty(string name, MPVNode data)
+    public void SetProperty(string name, Node node)
     {
-        var success = base.SetProperty(name, data);
+        var success = base.SetProperty(name, node.Data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -365,15 +365,15 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Set property using Node format asynchroniously
+    /// Set property using <see cref="Nickvision.MPVSharp.Node"/> format asynchroniously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> with data</param>
     /// <exception cref="ClientException">Thrown if can't set property</exception>
-    public new void SetPropertyAsync(ulong replyUserdata, string name, MPVNode data)
+    public void SetPropertyAsync(ulong replyUserdata, string name, Node node)
     {
-        var success = base.SetPropertyAsync(replyUserdata, name, data);
+        var success = base.SetPropertyAsync(replyUserdata, name, node.Data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -442,22 +442,23 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Get property using Node format
+    /// Get property using <see cref="Nickvision.MPVSharp.Node"/> format
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> with data</param>
     /// <exception cref="ClientException">Thrown if can't get property</exception>
-    public new void GetProperty(string name, out MPVNode data)
+    public void GetProperty(string name, out Node node)
     {
-        var success = base.GetProperty(name, out data);
+        var success = base.GetProperty(name, out MPVNode data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
         }
+        node = new Node(data);
     }
 
     /// <summary>
-    /// Get property using Node format asynchroniously
+    /// Get property using <see cref="Nickvision.MPVSharp.Node"/> format asynchroniously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -486,17 +487,17 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Set option using Node format
+    /// Set option using <see cref="Nickvision.MPVSharp.Node"/> format
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="data">MPVNode with data</param>
+    /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> with data</param>
     /// <remarks>
     /// You can't normally set options during runtime.
     /// </remarks>
     /// <exception cref="ClientException">Thrown if can't set option</exception>
-    public new void SetOption(string name, MPVNode data)
+    public void SetOption(string name, Node node)
     {
-        var success = base.SetOption(name, data);
+        var success = base.SetOption(name, node.Data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);
@@ -514,7 +515,7 @@ public class Client : MPVClient, IDisposable
     /// <exception cref="ClientException">Thrown if can't set option</exception>
     public void SetOption(string name, string data)
     {
-        var success = base.SetOptionString(name, data);
+        var success = SetOptionString(name, data);
         if (success < MPVError.Success)
         {
             throw new ClientException(success);

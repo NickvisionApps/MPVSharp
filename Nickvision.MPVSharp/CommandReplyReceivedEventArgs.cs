@@ -17,17 +17,17 @@ public class CommandReplyReceivedEventArgs : EventArgs
     /// </summary>
     public int Error { get; init; }
     /// <summary>
-    /// Command result
+    /// <see cref="Nickvision.MPVSharp.Node"/> with command result
     /// </summary>
-    public MPVNode Result { get; init; }
+    public Node Result { get; init; }
 
     /// <summary>
     /// Create args for CommandReply event
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="error">Error code</param>
-    /// <param name="result">Command result</param>
-    public CommandReplyReceivedEventArgs(ulong replyUserdata, int error, MPVNode result)
+    /// <param name="result"><see cref="Nickvision.MPVSharp.Node"/> with command result</param>
+    public CommandReplyReceivedEventArgs(ulong replyUserdata, int error, Node result)
     {
         ReplyUserdata = replyUserdata;
         Error = error;

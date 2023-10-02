@@ -13,16 +13,16 @@ public class PropertyChangedEventArgs : EventArgs
     /// </summary>
     public string Name { get; init; }
     /// <summary>
-    /// MPVNode holding data
+    /// <see cref="Nickvision.MPVSharp.Node"/> holding data
     /// </summary>
-    public MPVNode? Node { get; init; }
+    public Node Node { get; init; }
 
     /// <summary>
     /// Create args for PropertyChange event
     /// </summary>
     /// <param name="name">Property name</param>
-    /// <param name="node">Node holding data</param>
-    public PropertyChangedEventArgs(string name, MPVNode? node)
+    /// <param name="node"><see cref="Nickvision.MPVSharp.Node"/> holding data</param>
+    public PropertyChangedEventArgs(string name, Node node)
     {
         Name = name;
         Node = node;
