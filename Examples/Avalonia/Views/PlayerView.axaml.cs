@@ -23,17 +23,13 @@ public partial class PlayerView : UserControl
     
     public void OnMPVPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.Node == null)
-        {
-            return;
-        }
         switch (e.Name)
         {
             case "pause":
-                PauseButton.Content = (bool)e.Node! ? "Paused" : "Playing";
+                PauseButton.Content = (bool)e.Node ? "Paused" : "Playing";
                 break;
             case "time-pos":
-                TimeLabel.Text = TimeSpan.FromSeconds((double)e.Node!).ToString(@"mm\:ss");
+                TimeLabel.Text = TimeSpan.FromSeconds((double)e.Node).ToString(@"mm\:ss");
                 break;
         }
     }

@@ -46,11 +46,11 @@ public partial class MainWindow : Gtk.ApplicationWindow
         {
             if (e.Name == "pause")
             {
-                pauseButton.SetIconName((bool)e.Node! ? "media-playback-start-symbolic" : "media-playback-pause-symbolic");
+                pauseButton.SetIconName((bool)e.Node ? "media-playback-start-symbolic" : "media-playback-pause-symbolic");
             }
             if (e.Name == "media-title")
             {
-                title.SetLabel((string)e.Node!);
+                title.SetLabel((string)e.Node);
             }
         };
         _player.ObserveProperty("pause");
