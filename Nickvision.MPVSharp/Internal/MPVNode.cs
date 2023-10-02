@@ -33,7 +33,7 @@ public partial struct MPVNode
     public static MPVNode Empty { get; } = new MPVNode();
 
     /// <summary>
-    /// Construct MPVNode containing string
+    /// Constructs MPVNode containing string
     /// </summary>
     /// <param name="str">String</param>
     /// <param name="format">Node format (String or OSDString)</param>
@@ -49,7 +49,7 @@ public partial struct MPVNode
     }
 
     /// <summary>
-    /// Construct MPVNode containing flag
+    /// Constructs MPVNode containing flag
     /// </summary>
     /// <param name="flag">Flag (0 or 1)</param>
     public MPVNode(int flag)
@@ -59,7 +59,7 @@ public partial struct MPVNode
     }
 
     /// <summary>
-    /// Construct MPVNode containing Int64
+    /// Constructs MPVNode containing Int64
     /// </summary>
     /// <param name="int64">Long int</param>
     public MPVNode(long int64)
@@ -69,7 +69,7 @@ public partial struct MPVNode
     }
 
     /// <summary>
-    /// Construct MPVNode containing Double
+    /// Constructs MPVNode containing Double
     /// </summary>
     /// <param name="dbl">Double</param>
     public MPVNode(double dbl)
@@ -79,18 +79,23 @@ public partial struct MPVNode
     }
 
     /// <summary>
-    /// Construct MPVNode containing NodeList
+    /// Constructs MPVNode containing <see cref="MPVNodeList"/>
     /// </summary>
-    /// <param name="list">NodeList</param>
-    /// <param name="format">Node format (NodeMap or NodeArray)</param>
+    /// <param name="list">MPVNodeList</param>
+    /// <param name="format">Node format (<see cref="MPVFormat.NodeMap"/> or <see cref="MPVFormat.NodeArray"/>)</param>
+    /// <exception cref="ArgumentException">Thrown if format is not NodeMap or NodeArray</exception>
     public MPVNode(MPVNodeList list, MPVFormat format)
     {
+        if (format != MPVFormat.NodeMap && format != MPVFormat.NodeArray)
+        {
+            throw new ArgumentException("MPVNode with MPVNodeList should have format NodeMap or NodeArray");
+        }
         Marshal.StructureToPtr(list, _nodeList, true);
         Format = format;
     }
 
     /// <summary>
-    /// Construct MPVNode containing ByteArray
+    /// Constructs MPVNode containing <see cref="MPVByteArray"/>
     /// </summary>
     /// <param name="ba">MPVByteArray</param>
     public MPVNode(MPVByteArray ba)
@@ -100,10 +105,10 @@ public partial struct MPVNode
     }
 
     /// <summary>
-    /// Get MPVNode from pointer
+    /// Gets MPVNode from pointer
     /// </summary>
     /// <param name="data">Pointer to node</param>
-    /// <returns>Node from pointer</returns>
+    /// <returns>MPVNode from pointer</returns>
     public static MPVNode FromIntPtr(nint data) => Marshal.PtrToStructure<MPVNode>(data);
 
     /// <summary>
@@ -126,7 +131,7 @@ public partial struct MPVNode
     public static explicit operator MPVByteArray?(MPVNode n) => n.Format == MPVFormat.ByteArray ? Marshal.PtrToStructure<MPVByteArray>(n._byteArray) : null;
 
     /// <summary>
-    /// Get string representation of the node content.
+    /// Gets string representation of the node content.
     /// Not to be confused with string? cast.
     /// </summary>
     public override string ToString()
