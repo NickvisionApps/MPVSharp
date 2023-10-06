@@ -6,12 +6,21 @@ using static Avalonia.OpenGL.GlConsts;
 
 namespace AvaloniaMPV.Controls;
 
+/// <summary>
+/// MPV Avalonia Control.
+/// This is based on <see cref="Avalonia.OpenGL.Controls.OpenGlControlBase"/>.
+/// It creates the <see cref="Player"/> and initializes it, then <see cref="RenderContext"/> is created
+/// on OpenGL initialization and it gets configured to request new frame to be drawn when MPV requires it.
+/// </summary>
 public class MPVControl : OpenGlControlBase
 {
     private RenderContext? _ctx;
     
-    public readonly Client Player;
+    public Client Player { get; init; }
     
+    /// <summary>
+    /// Constructs MPVControl
+    /// </summary>
     public MPVControl()
     {
         Player = new Client();
@@ -24,6 +33,10 @@ public class MPVControl : OpenGlControlBase
         Player.Initialize();
     }
 
+    /// <summary>
+    /// Occurs on OpenGL initialization
+    /// </summary>
+    /// <param name="gl">OpenGL interface</param>
     protected override void OnOpenGlInit(GlInterface gl)
     {
         if (_ctx != null)
@@ -33,16 +46,25 @@ public class MPVControl : OpenGlControlBase
             return;
         }
         _ctx = Player.CreateRenderContext();
-        _ctx.GetProcAddressFn = gl.GetProcAddress;
-        _ctx.SetupGL(() => Dispatcher.UIThread.Post(RequestNextFrameRendering));
+        _ctx.GetProcAddressFn = gl.GetProcAddress; // Required to make it work on Windows
+        _ctx.SetupGL(() => Dispatcher.UIThread.Post(RequestNextFrameRendering)); // Use Post, not Invoke, to avoid lags
     }
 
+    /// <summary>
+    /// Occurs on OpenGL deiniitalization
+    /// </summary>
+    /// <param name="gl">OpenGL interface</param>
     protected override void OnOpenGlDeinit(GlInterface gl)
     {
         _ctx?.Dispose();
         Player.Dispose();
     }
 
+    /// <summary>
+    /// Used to draw a frame
+    /// </summary>
+    /// <param name="gl">OpenGL interface</param>
+    /// <param name="fb">Framebuffer object name</param>
     protected override void OnOpenGlRender(GlInterface gl, int fb)
     {
         gl.ClearColor(0, 0, 0, 1);
