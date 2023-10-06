@@ -9,11 +9,19 @@ namespace Nickvision.MPVSharp.Examples.WPF.Views;
 /// </summary>
 public partial class MainWindow : Window
 {
+    /// <summary>
+    /// Constructs MainWindow
+    /// </summary>
     public MainWindow()
     {
         InitializeComponent();
     }
 
+    /// <summary>
+    /// Occurs when Open Video File button was clicked
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void OnOpenVideo(object sender, RoutedEventArgs e)
     {
         var openFileDialog = new OpenFileDialog()
@@ -28,11 +36,31 @@ public partial class MainWindow : Window
         OnLoadVideo(sender, e);
     }
 
+    /// <summary>
+    /// Occurs when Exit action was activated
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void OnExit(object sender, RoutedEventArgs e) => Close();
 
+    /// <summary>
+    /// Occurs when Load Video button was clicked
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void OnLoadVideo(object sender, RoutedEventArgs e) => MPV.Load(TxtUrl.Text);
 
+    /// <summary>
+    /// Occurs when Pause button aws clicked
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void OnPause(object sender, RoutedEventArgs e) => MPV.CyclePause();
 
+    /// <summary>
+    /// Occurs when About action was activated
+    /// </summary>
+    /// <param name="sender">Sender</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void OnAbout(object sender, RoutedEventArgs e) => MessageBox.Show("WPF MPV# Example", "About", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
 }

@@ -3,11 +3,18 @@ using System.Windows.Controls;
 
 namespace Nickvision.MPVSharp.Examples.WPF.Controls;
 
+/// <summary>
+/// MPV WPF Control.
+/// Embedded window is created and MPV window is connected to it (see <see cref="MPVHwndHost"/>).
+/// </summary>
 public partial class MPVControl : UserControl
 {
     private Client _client;
     private MPVHwndHost _hwndHost;
     
+    /// <summary>
+    /// Constructs MPVControl
+    /// </summary>
     public MPVControl()
     {
         InitializeComponent();
@@ -19,11 +26,18 @@ public partial class MPVControl : UserControl
         AddChild(_hwndHost);
     }
     
+    /// <summary>
+    /// Loads and plays file from path or URL
+    /// </summary>
+    /// <param name="url">Path or URL</param>
     public void Load(string url)
     {
         _client.LoadFile(url);
         _client.SetProperty("pause", false);
     }
     
+    /// <summary>
+    /// Toggles pause
+    /// </summary>
     public void CyclePause() => _client.CyclePause();
 }
