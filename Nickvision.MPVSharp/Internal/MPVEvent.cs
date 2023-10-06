@@ -36,7 +36,7 @@ public partial struct MPVEvent
     public string Name => mpv_event_name(Id);
 
     /// <summary>
-    /// The EventLogMessage of LogMessage event
+    /// The <see cref="MPVEventLogMessage"/> of <see cref="MPVEventId.LogMessage"/> event
     /// </summary>
     public MPVEventLogMessage? EventLogMessage
     {
@@ -51,7 +51,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The MPVEventProperty of PropertyChange or GetPropertyReply event
+    /// The <see cref="MPVEventProperty"/> of <see cref="MPVEventId.PropertyChange"/> or <see cref="MPVEventId.GetPropertyReply"/> event
     /// </summary>
     public MPVEventProperty? EventProperty
     {
@@ -66,7 +66,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The MPVEventCommand of CommandReply event
+    /// The <see cref="MPVEventCommand"/> of <see cref="MPVEventId.CommandReply"/> event
     /// </summary>
     public MPVEventCommand? CommandResult
     {
@@ -81,7 +81,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The MPVEventStartFile of StartFile event
+    /// The <see cref="MPVEventStartFile"/> of <see cref="MPVEventId.StartFile"/> event
     /// </summary>
     public MPVEventStartFile? StartFile
     {
@@ -96,7 +96,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The MPVEventEndFile of EndFile event
+    /// The <see cref="MPVEventEndFile"/> of <see cref="MPVEventId.EndFile"/> event
     /// </summary>
     public MPVEventEndFile? EndFile
     {
@@ -111,7 +111,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The client message of ClientMessage event
+    /// The client message of <see cref="MPVEventId.ClientMessage"/> event
     /// </summary>
     public string[]? ClientMessage
     {
@@ -126,7 +126,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// The MPVEventHook of Hook event
+    /// The <see cref="MPVEventHook"/> of <see cref="MPVEventId.Hook"/> event
     /// </summary>
     public MPVEventHook? Hook
     {
@@ -141,7 +141,7 @@ public partial struct MPVEvent
     }
 
     /// <summary>
-    /// Convert given MPVEvent to MPVNode
+    /// Converts given MPVEvent to <see cref="MPVNode"/>
     /// </summary>
     /// <param name="node">A node where to write result to</param>
     /// <param name="e">Event</param>

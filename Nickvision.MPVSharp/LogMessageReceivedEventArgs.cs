@@ -22,7 +22,7 @@ public class LogMessageReceivedEventArgs : EventArgs
     public MPVLogLevel LogLevel { get; init; }
     
     /// <summary>
-    /// Create args for LogMessage event
+    /// Creates args for LogMessage event
     /// </summary>
     /// <param name="prefix">Module prefix</param>
     /// <param name="text">Message text</param>

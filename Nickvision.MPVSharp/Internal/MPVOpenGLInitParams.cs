@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// For initializing the mpv OpenGL state via MPVRenderParamType.OpenGLInitParams
+/// For initializing the mpv OpenGL state via <see cref="MPVRenderParamType.OpenGLInitParams"/>
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVOpenGLInitParams

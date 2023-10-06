@@ -17,6 +17,11 @@ public struct MPVByteArray
     /// </summary>
     public uint Size;
     
+    /// <summary>
+    /// Empty MPVByteArray
+    /// </summary>
+    public static MPVByteArray Empty { get; } = new MPVByteArray { Size = 0 };
+
     public static implicit operator byte[](MPVByteArray mba)
     {
         var result = new byte[mba.Size];

@@ -25,6 +25,11 @@ public struct MPVNodeList
 
     private const int NODE_SIZE = 16;
 
+    /// <summary>
+    /// Empty MPVNodeList
+    /// </summary>
+    public static MPVNodeList Empty { get; } = new MPVNodeList { Num = 0 };
+
     public static explicit operator MPVNode[](MPVNodeList n)
     {
         var result = new MPVNode[n.Num];

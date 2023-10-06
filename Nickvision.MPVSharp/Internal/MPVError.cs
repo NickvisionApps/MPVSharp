@@ -99,7 +99,7 @@ public static partial class MPVErrorExtensions
     private static partial nint mpv_error_string(MPVError error);
 
     /// <summary>
-    /// Return a string describing the error.
+    /// Returns a string describing the error.
     /// </summary>
     public static string ToMPVErrorString(this MPVError error)
     {

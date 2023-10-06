@@ -13,10 +13,23 @@ public class RenderContext : MPVRenderContext, IDisposable
 
     private bool _disposed;
     private readonly nint _clientHandle;
+    private Func<string, nint>? _getProcAddressFn;
     private MPVRenderUpdateFn? _callback;
     
     /// <summary>
-    /// Construct RenderContext
+    /// OpenGL GetProcAddress function, used in <see cref="SetupGL"/>.
+    /// </summary>
+    /// <remarks>
+    /// Most of the time, you don't need to set it, MPVSharp will try to use correct function
+    /// depending on the platform. If you need to set it, do this before calling <see cref="SetupGL"/>.
+    /// </remarks>
+    public Func<string, nint> GetProcAddressFn
+    {
+        set => _getProcAddressFn = value;
+    }
+
+    /// <summary>
+    /// Constructs RenderContext
     /// </summary>
     public RenderContext(nint clientHandle)
     {
@@ -56,13 +69,22 @@ public class RenderContext : MPVRenderContext, IDisposable
     }
     
     /// <summary>
-    /// Setup OpenGL rendering
+    /// Setups OpenGL rendering
     /// </summary>
+    /// <param name="callback">Action to be called when a new frame needs to be rendered</param>
     /// <exception cref="ClientException">Thrown if unable to setup GL</exception>
-    public void SetupGL(MPVRenderUpdateFn? callback)
+    public void SetupGL(Action? callback)
     {
         MPVOpenGLInitParams glParams;
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (_getProcAddressFn != null)
+        {
+            glParams = new MPVOpenGLInitParams()
+            {
+                GetProcAddrFn = (ctx, name) => _getProcAddressFn(name),
+                Param = IntPtr.Zero
+            };
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             glParams = new MPVOpenGLInitParams()
             {
@@ -103,22 +125,27 @@ public class RenderContext : MPVRenderContext, IDisposable
         }
         if (callback != null)
         {
-            _callback = callback;
+            _callback = (_) => callback();
             SetUpdateCallback(_callback);
         }
     }
     
     /// <summary>
-    /// Render frame
+    /// Renders a frame
     /// </summary>
     /// <param name="width">Rendering area width</param>
-    /// <param name="height">Rendering area width</param>
-    public void RenderGL(int width, int height)
+    /// <param name="height">Rendering area height</param>
+    /// <param name="fb">Framebuffer object name</param>
+    public void RenderGL(int width, int height, int? fb = null)
     {
-        OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out int fboInt);
+        if (fb == null)
+        {
+            OpenGLHelpers.GLGetIntegerV(GL_DRAW_FRAMEBUFFER_BINDING, out var temp);
+            fb = temp;
+        }
         var fbo = new MPVOpenGLFBO
         {
-            FBO = fboInt,
+            FBO = fb.Value,
             Width = width,
             Height = height
         };

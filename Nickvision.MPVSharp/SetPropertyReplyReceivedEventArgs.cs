@@ -17,7 +17,7 @@ public class SetPropertyReplyReceivedEventArgs : EventArgs
     public int Error { get; init; }
 
     /// <summary>
-    /// Create args for SetPropertyReply event
+    /// Creates args for SetPropertyReply event
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="error">Error code</param>

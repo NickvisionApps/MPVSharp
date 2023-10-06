@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// For MPVRenderParamType.OpenGLFBO
+/// For <see cref="MPVRenderParamType.OpenGLFBO"/>
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVOpenGLFBO

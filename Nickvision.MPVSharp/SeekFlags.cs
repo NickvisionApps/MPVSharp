@@ -4,7 +4,7 @@ using System.Text;
 namespace Nickvision.MPVSharp;
 
 /// <summary>
-/// Flags for Client.Seek method
+/// Flags for <see cref="Client.Seek"/> method
 /// </summary>
 [Flags]
 public enum SeekFlags
@@ -41,7 +41,7 @@ public enum SeekFlags
 public static class SeekFlagsExtensions
 {
     /// <summary>
-    /// Convert SeekFlags to a string acceptable by MPV
+    /// Converts <see cref="SeekFlags"/> to a string acceptable by MPV
     /// </summary>
     public static string FlagsToString(this SeekFlags flags)
     {

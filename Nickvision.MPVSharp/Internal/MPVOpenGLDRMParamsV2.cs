@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// For MPVRenderParamType.DRMDisplayV2.
+/// For <see cref="MPVRenderParamType.DRMDisplayV2"/>.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVOpenGLDRMParamsV2

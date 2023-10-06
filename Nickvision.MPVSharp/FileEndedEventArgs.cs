@@ -34,7 +34,7 @@ public class FileEndedEventArgs : EventArgs
     public int PlaylistInsertNumEntries { get; init; }
 
     /// <summary>
-    /// Create args for EndFile event
+    /// Creates args for EndFile event
     /// </summary>
     /// <param name="reason">File ending reason</param>
     /// <param name="error">Error code for error reason</param>

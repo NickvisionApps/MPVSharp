@@ -34,19 +34,19 @@ public enum MPVFormat
     /// </summary>
     Double,
     /// <summary>
-    /// The type is MPVNode.
+    /// The type is <see cref="MPVNode"/>.
     /// </summary>
     Node,
     /// <summary>
-    /// Used with MPVNode only.
+    /// Used with <see cref="MPVNode"/> only.
     /// </summary>
     NodeArray,
     /// <summary>
-    /// Used with MPVNode only.
+    /// Used with <see cref="MPVNode"/> only.
     /// </summary>
     NodeMap,
     /// <summary>
-    /// A raw byte[], only used with MPVNode.
+    /// A raw byte[], only used with <see cref="MPVNode"/>.
     /// </summary>
     ByteArray
 }

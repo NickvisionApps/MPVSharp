@@ -1,4 +1,5 @@
 using Nickvision.MPVSharp;
+using System;
 
 namespace Nickvision.MPVSharp.Examples.GirCore;
 
@@ -14,6 +15,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     private readonly Gtk.GLArea _glArea;
     private readonly Client _player;
     private RenderContext? _ctx;
+    private (int, int) _size;
     
     /// <summary>
     /// Construct window
@@ -31,6 +33,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         SetChild(_glArea);
         _glArea.SetVexpand(true);
         _glArea.SetHexpand(true);
+        _size = (0, 0);
         // Create MPV client
         _player = new Client();
         _player.SetProperty("ytdl", true);
@@ -43,11 +46,11 @@ public partial class MainWindow : Gtk.ApplicationWindow
         {
             if (e.Name == "pause")
             {
-                pauseButton.SetIconName((bool)e.Node! ? "media-playback-start-symbolic" : "media-playback-pause-symbolic");
+                pauseButton.SetIconName((bool)e.Node ? "media-playback-start-symbolic" : "media-playback-pause-symbolic");
             }
             if (e.Name == "media-title")
             {
-                title.SetLabel((string)e.Node!);
+                title.SetLabel((string)e.Node);
             }
         };
         _player.ObserveProperty("pause");
@@ -57,6 +60,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _glArea.OnRealize += OnRealizeGLArea;
         _glArea.OnUnrealize += OnUnrealizeGLArea;
         _glArea.OnRender += OnRenderGLArea;
+        _glArea.OnResize += (_, e) => _size = (e.Width, e.Height);
         // Keyboard shortcuts
         var keyboardController = Gtk.EventControllerKey.New();
         keyboardController.SetPropagationPhase(Gtk.PropagationPhase.Capture);
@@ -77,7 +81,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
         _ctx = _player.CreateRenderContext();
         // We create callback for MPV to call every time the screen needs to be redrawn,
         // the callback calls GtkGLArea.QueueDraw which in turn makes RenderContext draw image
-        _ctx.SetupGL((x) => GLib.Functions.IdleAdd(0, () =>
+        _ctx.SetupGL(() => GLib.Functions.IdleAdd(0, () =>
         {
             _glArea.QueueDraw(); // QueueDraw must be called from GTK thread
             return false;
@@ -104,7 +108,7 @@ public partial class MainWindow : Gtk.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private bool OnRenderGLArea(Gtk.Widget sender, EventArgs e)
     {
-        _ctx?.RenderGL(_glArea.GetAllocatedWidth(), _glArea.GetAllocatedHeight());
+        _ctx?.RenderGL(_size.Item1, _size.Item2);
         return false;
     }
 

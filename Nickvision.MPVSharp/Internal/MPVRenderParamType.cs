@@ -20,14 +20,14 @@ public enum MPVRenderParamType
     /// Required parameters for initializing the OpenGL renderer.
     /// </summary>
     /// <remarks>
-    /// Type: MPVOpenGLInitParams
+    /// Type: <see cref="MPVOpenGLInitParams"/>
     /// </remarks>
     OpenGLInitParams,
     /// <summary>
     /// Describes a GL render target.
     /// </summary>
     /// <remarks>
-    /// Type: MPVOpenGLFBO
+    /// Type: <see cref="MPVOpenGLFBO"/>
     /// </remarks>
     OpenGLFBO,
     /// <summary>
@@ -48,7 +48,7 @@ public enum MPVRenderParamType
     /// ICC profile blob
     /// </summary>
     /// <remarks>
-    /// Type: Pointer to MPVByteArray
+    /// Type: Pointer to <see cref="MPVByteArray"/>
     /// </remarks>
     ICCProfile,
     /// <summary>
@@ -83,7 +83,7 @@ public enum MPVRenderParamType
     /// Return information about the next frame to render.
     /// </summary>
     /// <remarks>
-    /// Type: Pointer to MPVRenderFrameInfo
+    /// Type: Pointer to <see cref="MPVRenderFrameInfo"/>
     /// </remarks>
     NextFrameInfo,
     /// <summary>
@@ -104,14 +104,14 @@ public enum MPVRenderParamType
     /// DRM draw surface size, contains draw surface dimensions.
     /// </summary>
     /// <remarks>
-    /// Type: Pointer to MPVOpenGLDRMDrawSurfaceSize
+    /// Type: Pointer to <see cref="MPVOpenGLDRMDrawSurfaceSize"/>
     /// </remarks>
     DRMDrawSurfaceSize = 15,
     /// <summary>
     /// DRM display, contains drm display handles.
     /// </summary>
     /// <remarks>
-    /// Type: Pointer to MPVOpenGLDRMParamsV2
+    /// Type: Pointer to <see cref="MPVOpenGLDRMParamsV2"/>
     /// </remarks>
     DRMDisplayV2,
     /// <summary>

@@ -9,11 +9,11 @@ namespace Nickvision.MPVSharp.Internal;
 public struct MPVEventHook
 {
     /// <summary>
-    /// The hook name as passed to MPVClient.HookAdd()
+    /// The hook name as passed to <see cref="MPVClient.HookAdd"/>
     /// </summary>
     public string Name;
     /// <summary>
-    /// Internal ID that must be passed to MPVClient.HookContinue()
+    /// Internal ID that must be passed to <see cref="MPVClient.HookContinue"/>
     /// </summary>
     public ulong Id;
 }

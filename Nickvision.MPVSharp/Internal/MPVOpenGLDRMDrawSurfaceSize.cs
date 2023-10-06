@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 namespace Nickvision.MPVSharp.Internal;
 
 /// <summary>
-/// For MPVRenderParamType.DRMDrawSurfaceSize.
+/// For <see cref="MPVRenderParamType.DRMDrawSurfaceSize"/>.
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct MPVOpenGLDRMDrawSurfaceSize

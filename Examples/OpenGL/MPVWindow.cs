@@ -3,6 +3,7 @@ using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using System;
 
 namespace Nickvision.MPVSharp.Examples.OpenGL;
 
@@ -42,7 +43,7 @@ public class MPVWindow : GameWindow
         _ctx = _player.CreateRenderContext();
         // GameWindow calls OnRenderFrame, well, every frame, so we don't need callback for MPV to tell us when to draw
         _ctx.SetupGL(null);
-        _player.LoadFile("https://www.youtube.com/watch?v=UXqq0ZvbOnk");
+        _player.LoadFile("https://www.youtube.com/watch?v=WhWc3b3KhnY");
     }
     
     /// <summary>

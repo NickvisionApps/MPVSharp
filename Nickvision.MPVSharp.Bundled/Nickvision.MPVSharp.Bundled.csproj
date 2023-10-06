@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.MPVSharp.Bundled</PackageId>
-    <Version>2023.9.0</Version>
+    <Version>2023.10.0</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Use MPV in your C# apps</Description>
@@ -15,7 +15,7 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
-    <PackageReleaseNotes>- Initial Release (uses libmpv build 20230901)</PackageReleaseNotes>
+    <PackageReleaseNotes>- libmpv-2.dll updated to build 20231006</PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 
