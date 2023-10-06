@@ -301,7 +301,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Sets property using <see cref="MPVFormat.Flag"/> format asynchroniously
+    /// Sets property using <see cref="MPVFormat.Flag"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -317,7 +317,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Sets property using <see cref="MPVFormat.Int64"/> format asynchroniously
+    /// Sets property using <see cref="MPVFormat.Int64"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -333,7 +333,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Sets property using <see cref="MPVFormat.Double"/> format asynchroniously
+    /// Sets property using <see cref="MPVFormat.Double"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -349,7 +349,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Sets property using <see cref="MPVFormat.String"/> format asynchroniously
+    /// Sets property using <see cref="MPVFormat.String"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -365,7 +365,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Sets property using <see cref="MPVFormat.Node"/> format asynchroniously
+    /// Sets property using <see cref="MPVFormat.Node"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
@@ -458,7 +458,7 @@ public class Client : MPVClient, IDisposable
     }
 
     /// <summary>
-    /// Gets property using <see cref="MPVFormat.Node"/> format asynchroniously
+    /// Gets property using <see cref="MPVFormat.Node"/> format asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>

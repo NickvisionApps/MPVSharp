@@ -444,7 +444,7 @@ public partial class MPVClient : ICloneable
     public MPVError GetPropertyOSDString(string name, out string data) => mpv_get_property(Handle, name, MPVFormat.OSDString, out data);
 
     /// <summary>
-    /// Gets property asynchroniously
+    /// Gets property asynchronously
     /// </summary>
     /// <param name="replyUserdata">Reply Id</param>
     /// <param name="name">Property name</param>
