@@ -21,5 +21,5 @@ public struct MPVRenderFrameInfo
     /// normally block until the time is elapsed, unless you pass it
     /// <see cref="MPVRenderParamType.BlockForTargetTime"/> = 0.
     /// </summary>
-    ulong TargetTime;
+    public ulong TargetTime;
 }
