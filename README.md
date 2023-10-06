@@ -36,10 +36,12 @@ Refer to MPV documentation to find the list of [options](https://mpv.io/manual/s
 
 <sub>GirCore example playing [Charge](https://www.youtube.com/watch?v=UXqq0ZvbOnk) - Blender open movie, licensed under CC BY 4.0</sub>
 
-* [Simple](Examples/Simple) - basic program playing your file/link. If the file is video, a window will be created by MPV itself.
-* [GirCore](Examples/GirCore) - GTK4 application playing a video from youtube. Made with [GirCore](https://github.com/gircore/gir.core). Requires GTK4 to be installed.
-* [OpenGL](Examples/OpenGL) - [OpenTK](https://opentk.net/index.html) application playing a video from youtube.
-* [SDL](Examples/SDL) - Similar to OpenGL example, but uses [SDL2-CS](https://github.com/flibitijibibo/SDL2-CS/). Requires libSDL2 to be installed.
+There's [Simple](Examples/Simple) example, a basic program playing your file or URL (if the file is a video, a window will be created by MPV itself). If you're interested in embedding MPV into GUI, see these examples:
+* [GirCore](Examples/GirCore) - GTK4 using [GirCore](https://github.com/gircore/gir.core). Requires GTK4 to be installed.
+* [Avalonia](Examples/Avalonia)
+* [WPF](Examples/WPF)
+* [OpenGL](Examples/OpenGL) - using [OpenTK](https://opentk.net/index.html).
+* [SDL](Examples/SDL) - using [SDL2-CS](https://github.com/flibitijibibo/SDL2-CS/). Requires libSDL2 to be installed.
 
 # Chat
 <a href='https://matrix.to/#/#nickvision:matrix.org'><img width='140' alt='Join our room' src='https://user-images.githubusercontent.com/17648453/196094077-c896527d-af6d-4b43-a5d8-e34a00ffd8f6.png'/></a>
