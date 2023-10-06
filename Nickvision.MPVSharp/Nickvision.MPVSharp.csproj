@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Nickvision.MPVSharp</PackageId>
-    <Version>2023.9.0</Version>
+    <Version>2023.10.0</Version>
     <Company>Nickvision</Company>
     <Authors>Nickvision</Authors>
     <Description>Use MPV in your C# apps</Description>
@@ -14,8 +14,12 @@
     <Copyright>(c) Nickvision 2021-2023</Copyright>
     <PackageProjectUrl>https://nickvision.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NickvisionApps/MPVSharp</RepositoryUrl>
-    <PackageReleaseNotes>- Added Windows support
-      - Added MPVClient.DelProperty method</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added Node class that is used in Client instead of MPVNode
+- Added missing MPVRenderFrameInfo and MPVRenderFrameInfoFlag
+- Added ability to set GetProcAddress function for RenderContext
+- Added ability to pass framebuffer object name to RenderContext.RenderGL method
+- Callback for RenderContext.SetupGL is now an Action type
+    </PackageReleaseNotes>
     <PackageIcon>logo-r.png</PackageIcon>
   </PropertyGroup>
 
