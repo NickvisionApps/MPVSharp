@@ -12,6 +12,7 @@ namespace Nickvision.MPVSharp;
 public class Client : MPVClient, IDisposable
 {
     private bool _disposed;
+    private bool _isDisposing;
 
     public event EventHandler<LogMessageReceivedEventArgs>? LogMessageReceived;
     public event EventHandler<GetPropertyReplyReceivedEventArgs>? GetPropertyReplyReceived;
@@ -64,6 +65,7 @@ public class Client : MPVClient, IDisposable
         }
         if (disposing)
         {
+            _isDisposing = true;
             Destroy();
         }
         _disposed = true;
@@ -144,7 +146,7 @@ public class Client : MPVClient, IDisposable
     /// </summary>
     private void HandleEvents()
     {
-        while (!_disposed)
+        while (!_disposed && !_isDisposing)
         {
             var clientEvent = WaitEvent(0);
             switch (clientEvent.Id)
